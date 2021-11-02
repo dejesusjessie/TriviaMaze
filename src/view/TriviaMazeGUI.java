@@ -44,17 +44,34 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	private static final String MY_TITLE = "Trivia Maze 1.0";
 	
 	/**
-	 * The basic Frame
+	 * The basic Frame.
 	 */
 	public static final JFrame myWindow  = new JFrame();
 	
 	/**
-	 * The maze panel
+	 * The main panel.
 	 */
 	private static final JPanel MY_MAIN_PANEL = new JPanel(new GridLayout(1, 2));
+	
+	/**
+	 * The maze panel.
+	 */
 	private static final MazePanel MY_MAZE_PANEL = new MazePanel();
+	
+	/**
+	 * The info panel.
+	 */
 	private static final InfoPanel MY_INFO_PANEL = new InfoPanel();
+	
+	/**
+	 * The room panel.
+	 */
 	private static final RoomPanel MY_ROOM_PANEL = new RoomPanel();
+	
+	/**
+	 * The left panel.
+	 * which will contain the info panel and the room panel.
+	 */
 	private static final JPanel leftPanel = new JPanel(new GridLayout(0, 1));
 	
 	/**
@@ -118,12 +135,18 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		myWindow.setVisible(true);
 	} 
 	
+	/**
+	 * Setting the main panel.
+	 */
 	private void setMainPanel() {
 		MY_MAIN_PANEL.setBackground(Color.black);
 		MY_MAIN_PANEL.add(leftPanel, BorderLayout.EAST);
 		MY_MAIN_PANEL.add(MY_MAZE_PANEL, BorderLayout.CENTER);
 	}
 	
+	/**
+	 * Setting the maze panel.
+	 */
 	private void setMazePanel() {
 		MY_MAZE_PANEL.setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT, MY_WIDTH, MY_HEIGHT, MY_WIDTH));
 		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
@@ -132,16 +155,25 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
 	}
 	
+	/**
+	 * Setting the info panel.
+	 */
 	private void setInfoPanel() {
 		MY_INFO_PANEL.setBackground(Color.CYAN);
 	}
 	
+	/**
+	 * Setting the room panel.
+	 */
 	private void setRoomPanel() {
 		MY_ROOM_PANEL.setBackground(Color.pink);
 		MY_ROOM_PANEL.setSize(MY_WIDTH/2, MY_HEIGHT/2);
 		MY_ROOM_PANEL.setSize(MY_WIDTH/2, MY_HEIGHT/2);
 	}
 	
+	/**
+	 * Setting the lest penel.
+	 */
 	private void setLeftPanel() {
 		leftPanel.setOpaque(false);
 		leftPanel.add(MY_INFO_PANEL);
