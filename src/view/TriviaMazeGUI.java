@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +13,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  * A basic GUI for the game.
@@ -27,7 +31,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * The width of the frame.
 	 */
-	private static final int MY_WIDTH = 600;
+	private static final int MY_WIDTH = 400;
 	
 	/**
 	 * The height of the frame.
@@ -40,15 +44,35 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	private static final String MY_TITLE = "Trivia Maze 1.0";
 	
 	/**
-	 * The basic Frame
+	 * The basic Frame.
 	 */
 	public static final JFrame myWindow  = new JFrame();
 	
 	/**
-	 * The maze panel
+	 * The main panel.
 	 */
-	private static final MazePanel myMazePanel = new MazePanel();
+	private static final JPanel MY_MAIN_PANEL = new JPanel(new GridLayout(1, 2));
 	
+	/**
+	 * The maze panel.
+	 */
+	private static final MazePanel MY_MAZE_PANEL = new MazePanel();
+	
+	/**
+	 * The info panel.
+	 */
+	private static final InfoPanel MY_INFO_PANEL = new InfoPanel();
+	
+	/**
+	 * The room panel.
+	 */
+	private static final RoomPanel MY_ROOM_PANEL = new RoomPanel();
+	
+	/**
+	 * The left panel.
+	 * which will contain the info panel and the room panel.
+	 */
+	private static final JPanel leftPanel = new JPanel(new GridLayout(0, 1));
 	
 	/**
 	 * The File menu at menu bar.
@@ -75,16 +99,21 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	public void basicWindow() {
 		
-		//basic setting for the window.
-		myMazePanel.setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT, MY_WIDTH, MY_HEIGHT, MY_WIDTH));
-		myMazePanel.setLayout(new GridLayout());
-		myWindow.add(myMazePanel, BorderLayout.CENTER);
+		//Setting the panels.
+		setMazePanel();
+		setInfoPanel();
+		setRoomPanel();
+		setLeftPanel();
+		setMainPanel();
+
+		//Basic setting of the window.
+		myWindow.add(MY_MAIN_PANEL);
+		myWindow.setSize(MY_HEIGHT, MY_WIDTH);
 		myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//setting the title of the frame.
+		//setting the title of the window.
 		myWindow.setTitle(MY_TITLE);
 
-		
 		//adding menu bar
 		JMenuBar menuBar = new JMenuBar();
 		myWindow.setJMenuBar(menuBar);
@@ -105,6 +134,51 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		myWindow.pack();
 		myWindow.setVisible(true);
 	} 
+	
+	/**
+	 * Setting the main panel.
+	 */
+	private void setMainPanel() {
+		MY_MAIN_PANEL.setBackground(Color.black);
+		MY_MAIN_PANEL.add(leftPanel, BorderLayout.EAST);
+		MY_MAIN_PANEL.add(MY_MAZE_PANEL, BorderLayout.CENTER);
+	}
+	
+	/**
+	 * Setting the maze panel.
+	 */
+	private void setMazePanel() {
+		MY_MAZE_PANEL.setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT, MY_WIDTH, MY_HEIGHT, MY_WIDTH));
+		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
+		MY_MAZE_PANEL.setLayout(new BorderLayout(1, 1));
+		MY_MAZE_PANEL.setBackground(Color.GRAY);
+		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
+	}
+	
+	/**
+	 * Setting the info panel.
+	 */
+	private void setInfoPanel() {
+		MY_INFO_PANEL.setBackground(Color.CYAN);
+	}
+	
+	/**
+	 * Setting the room panel.
+	 */
+	private void setRoomPanel() {
+		MY_ROOM_PANEL.setBackground(Color.pink);
+		MY_ROOM_PANEL.setSize(MY_WIDTH/2, MY_HEIGHT/2);
+		MY_ROOM_PANEL.setSize(MY_WIDTH/2, MY_HEIGHT/2);
+	}
+	
+	/**
+	 * Setting the lest penel.
+	 */
+	private void setLeftPanel() {
+		leftPanel.setOpaque(false);
+		leftPanel.add(MY_INFO_PANEL);
+		leftPanel.add(MY_ROOM_PANEL);
+	}
 
 	/**
 	 * Adding the exit menu and the action listener.
