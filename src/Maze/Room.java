@@ -1,4 +1,4 @@
-package Maze;
+package maze;
 
 // Create the room for the Maze
 public class Room {
