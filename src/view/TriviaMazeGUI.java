@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,6 +14,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import io.ResourceManager;
+import io.Save;
 
 /**
  * A basic GUI for the game.
@@ -157,7 +161,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * Setting the info panel.
 	 */
 	private void setInfoPanel() {
-		MY_INFO_PANEL.setBackground(Color.CYAN);
+		MY_INFO_PANEL.setBackground(Color.white);
 	}
 	
 	/**
@@ -199,6 +203,24 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	private void addSaveMenu() {
 		JMenuItem saveMenu = new JMenuItem("Save Game");
 		myFileMenu.add(saveMenu);
+//		TextField fieldName = new TextField();
+//		TextField fieldHP = new TextField();
+//		saveMenu.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//
+//				Save data =  new Save();
+//				data.myName = fieldName.getText();
+//				data.myHitPoint = Integer.parseInt(fieldHP.getText());
+//				try {
+//					ResourceManager.saveGame(data, "save");
+//				}
+//				catch(Exception theException) {
+//					System.out.println("Could'n save: " + theException.getMessage());
+//				}
+//			}
+//		});
 	}
 	
 	/**
