@@ -1,4 +1,4 @@
-package model;
+package io;
 
 public interface Trivia {
     static Trivia createQuestion(String theQuestion, String theAnswer, String[] theOptions, String theType) {

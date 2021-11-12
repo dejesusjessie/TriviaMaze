@@ -1,4 +1,4 @@
-package model;
+package io;
 
 public abstract class Question implements Trivia {
 
