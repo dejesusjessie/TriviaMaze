@@ -3,19 +3,24 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
-import io.ResourceManager;
+import io.Load;
 import io.Save;
 
 /**
@@ -28,7 +33,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * The serial version UID.
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7115556081062648196L;
 
 	/**
 	 * The width of the frame.
@@ -86,7 +91,15 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	private static final JMenu helpMenu = new JMenu("Help");
 	
+	/**
+	 * The file chooser of loading game.
+	 */
+	private final JFileChooser myFileChooser = new JFileChooser(System.getProperty("user.dir") + "/savedGame");
 	
+	/**
+	 * Set a filter that only allow to load .bin file
+	 */
+	final FileNameExtensionFilter fileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
 	
 	/**
 	 * Constructor.
@@ -174,7 +187,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * Setting the lest penel.
+	 * Setting the lest panel.
 	 */
 	private void setLeftPanel() {
 		leftPanel.setOpaque(false);
@@ -203,24 +216,21 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	private void addSaveMenu() {
 		JMenuItem saveMenu = new JMenuItem("Save Game");
 		myFileMenu.add(saveMenu);
-//		TextField fieldName = new TextField();
-//		TextField fieldHP = new TextField();
-//		saveMenu.addActionListener(new ActionListener() {
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//
-//				Save data =  new Save();
-//				data.myName = fieldName.getText();
-//				data.myHitPoint = Integer.parseInt(fieldHP.getText());
-//				try {
-//					ResourceManager.saveGame(data, "save");
-//				}
-//				catch(Exception theException) {
-//					System.out.println("Could'n save: " + theException.getMessage());
-//				}
-//			}
-//		});
+		saveMenu.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String userFileName = JOptionPane.showInputDialog("Enter the file name: ");
+					
+					try {
+						new Save(userFileName);
+					} catch (IOException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+
+			}
+		});
 	}
 	
 	/**
@@ -229,6 +239,36 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	private void addLoadMenu() {
 		JMenuItem loadMenu = new JMenuItem("Load Game");
 		myFileMenu.add(loadMenu);
+		
+		//Set only allow to load .bin file
+		myFileChooser.addChoosableFileFilter(fileNameFilter);
+		myFileChooser.setAcceptAllFileFilterUsed(false);
+			
+		loadMenu.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				final int selection = myFileChooser.showOpenDialog(null);
+				if(selection == JFileChooser.APPROVE_OPTION) {
+					try {
+						String fileName = myFileChooser.getSelectedFile().getName();
+						new Load(fileName);
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ClassNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						JOptionPane.showMessageDialog(null, 
+                                "The selected file did not contain an game record!", 
+                                "Error!", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+
+			}
+		});
 	}
 
 	/**

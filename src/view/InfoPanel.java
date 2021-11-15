@@ -15,12 +15,12 @@ import javax.swing.Timer;
  * @version Fall 2021
  */
 public class InfoPanel extends JPanel implements ActionListener{
-
+	
 	/**
 	 * The serial version UID.
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -7574118521223544552L;
+
 	/**
 	 * The START/STOP button.
 	 * For starting and stopping the game and the stopwatch.

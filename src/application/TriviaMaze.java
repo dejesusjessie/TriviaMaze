@@ -1,17 +1,15 @@
 package application;
 
-import java.net.CacheRequest;
-
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import view.TriviaMazeGUI;
 
 public class TriviaMaze {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
 
-		new TriviaMazeGUI();
-
-		
-		
+		TriviaMazeGUI game = new TriviaMazeGUI();
+	
 		
 	}
 
