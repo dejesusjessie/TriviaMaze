@@ -28,6 +28,16 @@ public class Save implements Serializable{
 	private final String myGameTime;
 	
 	/**
+	 * 
+	 */
+	private final int mySystemTime;
+	
+	/**
+	 * 
+	 */
+	GameData myGameData;
+	
+	/**
 	 * The dir of the project.
 	 */
 	String myDir = System.getProperty("user.dir");
@@ -45,6 +55,8 @@ public class Save implements Serializable{
 	 */
 	public Save(String theFileName) throws FileNotFoundException, IOException {
 		this.myGameTime = InfoPanel.getGameTime();
+		this.mySystemTime = InfoPanel.getSystemTime();
+		myGameData = new GameData(mySystemTime, myGameTime);
 		generateFile(theFileName);
 
 	}
@@ -58,7 +70,7 @@ public class Save implements Serializable{
 	public void generateFile(String theFileName) throws FileNotFoundException, IOException {
 		String fileName = theFileName + ".bin";
 		ObjectOutputStream saveGame = new ObjectOutputStream(new FileOutputStream(mySaveFolder.toString() + "/" + fileName));
-		saveGame.writeObject(myGameTime);
+		saveGame.writeObject(myGameData);
 	}
 
 }

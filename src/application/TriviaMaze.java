@@ -8,8 +8,9 @@ public class TriviaMaze {
 
 	public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
 
-		TriviaMazeGUI game = new TriviaMazeGUI();
-	
+		new TriviaMazeGUI();
+
+
 		
 	}
 

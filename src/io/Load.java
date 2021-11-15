@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 
+import view.InfoPanel;
+import view.TriviaMazeGUI;
+
 /**
  * The Load function.
  * @author Codi Chun
@@ -55,8 +58,12 @@ public class Load implements Serializable {
 	 */
 	public void readFile(String theFileName) throws FileNotFoundException, IOException, ClassNotFoundException {
 		ObjectInputStream loadGameStream = new ObjectInputStream(new FileInputStream(myLoadFolder +"/" + theFileName));
-		Object loadGame = loadGameStream.readObject();
-		System.out.println(loadGame);
+//		Object loadGame = loadGameStream.readObject();
+//		System.out.println(loadGame);
+		GameData myGameData = (GameData) loadGameStream.readObject();
+		TriviaMazeGUI.reloadGUI(myGameData);
+		System.out.println(myGameData.myGameTime);
+		
 	}
 	
 }

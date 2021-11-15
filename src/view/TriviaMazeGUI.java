@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import io.GameData;
 import io.Load;
 import io.Save;
 
@@ -68,7 +69,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * The info panel.
 	 */
-	private static final InfoPanel MY_INFO_PANEL = new InfoPanel();
+	public static final InfoPanel MY_INFO_PANEL = new InfoPanel();
 	
 	/**
 	 * The room panel.
@@ -108,6 +109,11 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	public TriviaMazeGUI() {
 		basicWindow();
 	}
+	
+//	public TriviaMazeGUI(GameData theGameData) {
+//		basicWindow();
+//	}
+	
 	
 	/**
 	 * Creating the basic frame and panel.
@@ -329,6 +335,12 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "The choice is wrong! (needs to be edied)");
 			}
 		});
+	}
+	
+	public static void reloadGUI(GameData theGameData) {
+		MY_INFO_PANEL.setSystemTime(theGameData.getSystemTime());
+		MY_INFO_PANEL.setGameTime(theGameData.getGameTime());
+
 	}
 
 	@Override
