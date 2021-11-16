@@ -15,12 +15,12 @@ import javax.swing.Timer;
  * @version Fall 2021
  */
 public class InfoPanel extends JPanel implements ActionListener{
-
+	
 	/**
 	 * The serial version UID.
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -7574118521223544552L;
+
 	/**
 	 * The START/STOP button.
 	 * For starting and stopping the game and the stopwatch.
@@ -130,6 +130,7 @@ public class InfoPanel extends JPanel implements ActionListener{
 		topPanel.add(myStartButton);
 		topPanel.add(myResetButton);
 		topPanel.add(myStopwatchLabel);
+		//myStopwatchLabel.setVisible(true);
 		topPanel.setBackground(Color.orange);
 		
 		//setup the bottom panel
@@ -206,6 +207,7 @@ public class InfoPanel extends JPanel implements ActionListener{
 	 */
 	private void setStopwatchLabel() {
 		// Setting the action listener.
+		//myStopwatchLabel.setVisible(true);
 		myStopwatch = new Timer(1000, new ActionListener() {
 			  
 			  public void actionPerformed(ActionEvent e) {
@@ -255,13 +257,28 @@ public class InfoPanel extends JPanel implements ActionListener{
 	}
 	
 	/**
-	 * Getter of the game time.
+	 * Getter of the time calculated by the system.
+	 * @return The total time.
+	 */
+	public static int getSystemTime() {
+		return myTime;
+	}
+	
+	/**
+	 * Getter of the game time that show on the GUI.
 	 * @return The total game time.
 	 */
 	public static String getGameTime() {
 		return myGameTime;
 	}
 	
+	public void setSystemTime(int theSystemTime) {
+		myTime = theSystemTime;
+	}
+	
+	public void setGameTime(String theGameTime) {
+		myGameTime = theGameTime;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
