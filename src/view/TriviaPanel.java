@@ -28,7 +28,7 @@ public class TriviaPanel extends JPanel implements ActionListener {
     private final JRadioButton optionButtonD;
     private ButtonGroup buttonGroup;
 
-    
+
     public TriviaPanel(){
         this.setLayout(null);
         this.setBackground(Color.white);
