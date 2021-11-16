@@ -6,7 +6,7 @@ public class MultipleChoice extends Question {
     private final String[] myOptions;
 
     public MultipleChoice(String theQuestion, String theAnswer, String[] theOptions) {
-        super(theQuestion, theAnswer);
+        super(theQuestion, theAnswer, "MULTIPLE_CHOICE");
         this.myOptions = Arrays.copyOf(theOptions, theOptions.length);
     }
 

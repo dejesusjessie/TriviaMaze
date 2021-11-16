@@ -4,11 +4,13 @@ public abstract class Question implements Trivia {
 
     private final String myQuestion;
     private final String myAnswer;
+    private final String myType;
 
 
-    protected Question(String theQuestion, String theAnswer){
+    protected Question(String theQuestion, String theAnswer, String theType){
         this.myQuestion = theQuestion;
         this.myAnswer = theAnswer;
+        this.myType = theType;
     }
 
     @Override
@@ -20,6 +22,12 @@ public abstract class Question implements Trivia {
     public String getAnswer() {
         return myAnswer;
     }
+
+    @Override
+    public String getType() {
+        return myType;
+    }
+
 
 
 }

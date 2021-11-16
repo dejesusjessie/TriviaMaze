@@ -66,16 +66,17 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	private static final InfoPanel MY_INFO_PANEL = new InfoPanel();
 	
 	/**
-	 * The room panel.
+	 * The player panel.
 	 */
-	private static final RoomPanel MY_ROOM_PANEL = new RoomPanel();
-	
+	private static PlayerPanel MY_PLAYER_PANEL = new PlayerPanel();
+
+
 	/**
 	 * The left panel.
 	 * which will contain the info panel and the room panel.
 	 */
-	private static final JPanel leftPanel = new JPanel(new GridLayout(0, 1));
-	
+	private static final JPanel leftPanel = new JPanel(new GridLayout(0,1));
+
 	/**
 	 * The File menu at menu bar.
 	 */
@@ -168,18 +169,17 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * Setting the room panel.
 	 */
 	private void setRoomPanel() {
-		MY_ROOM_PANEL.setBackground(Color.pink);
-		MY_ROOM_PANEL.setSize(MY_WIDTH/2, MY_HEIGHT/2);
-		MY_ROOM_PANEL.setSize(MY_WIDTH/2, MY_HEIGHT/2);
+		MY_PLAYER_PANEL.setBackground(Color.pink);
+
 	}
 	
 	/**
-	 * Setting the lest penel.
+	 * Setting the left panel.
 	 */
 	private void setLeftPanel() {
 		leftPanel.setOpaque(false);
 		leftPanel.add(MY_INFO_PANEL);
-		leftPanel.add(MY_ROOM_PANEL);
+		leftPanel.add(MY_PLAYER_PANEL);
 	}
 
 	/**
