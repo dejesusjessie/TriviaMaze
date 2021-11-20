@@ -1,5 +1,6 @@
 package triviaMaze;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class PromptUser {
@@ -12,6 +13,7 @@ public class PromptUser {
     }
 
     //Return the username
+    //Take username from the player input and return it
     public String userName() {
         String myUserName = ""; //Initial to empty string
 
@@ -27,6 +29,41 @@ public class PromptUser {
         System.out.println("Welcome " + myUserName +  " to the Husky Trivia Maze Game.");
 
         return myUserName;
+    }
+    
+    //There are three three difficulty level for the game:
+    //B for Beginner game: 4x4 maze
+    //M for Medium game: 8x8 maze
+    //H for Hard game: 15x15 maze
+    // return the maze size for each level
+    public int userMazeSize(){
+        char myLevel = '\0';
+        String myUserLevel = "";
+
+        System.out.println("The levels of the Husky Trivia Maze Game: \n" +
+                "Type B for Beginner level: 4x4 maze game.\n" +
+                "Type M for Medium level: 8x8 maze game.\n" +
+                "Type H for Hard level: 15x15 maze game.\n" +
+                "Please select the level:");
+        myUserLevel = myUserInput.nextLine();
+        myLevel = myUserLevel.toUpperCase().charAt(0); //For the case that the user input the lower case
+
+        while( myLevel != 'B' && myLevel != 'M' && myLevel != 'H') {
+            System.out.println(myLevel + " is invalid option, please select the level (B, M, H):");
+            myUserLevel = myUserInput.nextLine();
+            myLevel = myUserLevel.toUpperCase().charAt(0);
+
+        }
+        if (myLevel == 'B') {
+            System.out.println("You select the beginner level.");
+            return 4;
+        } else if ( myLevel == 'M') {
+            System.out.println("You select the medium level.");
+            return 8;
+        } else {
+            System.out.println("You select the hard level.");
+            return 15;
+        }
     }
 
 }
