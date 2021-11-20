@@ -2,7 +2,11 @@ package maze;
 
 import java.awt.Point;
 
-// Create the maze
+/**
+ * 
+ * @author Kannika Armstrong, Codi Chun
+ *
+ */
 public class Maze {
 
     int row; // number of rows of the maze
@@ -38,59 +42,59 @@ public class Maze {
     // toString method --> print out the maze
     @Override
     public String toString() {
-        Room room = this.rooms[this.row][this.column];
-        StringBuilder maze = new StringBuilder();
-        int i, j;
+      Room room = this.rooms[this.row][this.column];
+      StringBuilder maze = new StringBuilder();
+      int i, j;
 
-        for (i = 0; i < this.rooms.length; i++) {
-            // build north doors
-            for (j = 0; j < this.rooms[i].length; j++) {
-                maze.append("+"); // the corner of the room
-                if (i == 0){
-                    maze.append("W"); // build the wall
-                } else {
-                    if(this.rooms[i][j].getNorthDoor().isLocked()) {
-                        maze.append("x"); // print x when the door is locked on the north
-                    } else {
-                        maze.append("-"); // print the door on the north
-                    }
-                }
-            }
-            maze.append("+\n"); // the right corner
+      for (i = 0; i < this.rooms.length; i++) {
+          // build north doors
+          for (j = 0; j < this.rooms[i].length; j++) {
+              maze.append("+"); // the corner of the room
+              if (i == 0){
+                  maze.append("W"); // build the wall
+              } else {
+                  if(this.rooms[i][j].getNorthDoor().isLocked()) {
+                      maze.append("x"); // print x when the door is locked on the north
+                  } else {
+                      maze.append("-"); // print the door on the north
+                  }
+              }
+          }
+          maze.append("+\n"); // the right corner
 
-            // build west doors
-            for (j = 0; j < this.rooms[i].length; j++) {
-                if (j == 0){
-                    maze.append("W"); // build the wall
-                } else {
-                    if(this.rooms[i][j].getWestDoor().isLocked()) {
-                        maze.append("x"); // print x when the door is locked on the west
-                    } else {
-                        maze.append("|"); // print the west door
-                    }
-                }
+          // build west doors
+          for (j = 0; j < this.rooms[i].length; j++) {
+              if (j == 0){
+                  maze.append("W"); // build the wall
+              } else {
+                  if(this.rooms[i][j].getWestDoor().isLocked()) {
+                      maze.append("x"); // print x when the door is locked on the west
+                  } else {
+                      maze.append("|"); // print the west door
+                  }
+              }
 
-                // in the room space
-                if(this.rooms[i][j].isExitRoom()) {
-                    maze.append("E"); // Exit room at the bottom right corner
-                } else if(i == this.row && j == this.column) {
-                    maze.append("P"); // Represent the player position
-                } else {
-                    maze.append(" "); // Empty room
-                }
-            }
+              // in the room space
+              if(this.rooms[i][j].isExitRoom()) {
+                  maze.append("E"); // Exit room at the bottom right corner
+              } else if(i == this.row && j == this.column) {
+                  maze.append("P"); // Represent the player position
+              } else {
+                  maze.append(" "); // Empty room
+              }
+          }
 
-            maze.append("W"); // print the east door
-            maze.append("\n"); // go to the next line after print the last east door
-        }
+          maze.append("W"); // print the east door
+          maze.append("\n"); // go to the next line after print the last east door
+      }
 
-        // build south wall
-        for (j = 0; j < this.rooms[0].length; j++){
-            maze.append("+"); // the corner of the room
-            maze.append("W"); // print the door on the south
-        }
-        maze.append("+\n"); // the corner on the bottom right of the maze
-        return maze.toString();
+      // build south wall
+      for (j = 0; j < this.rooms[0].length; j++){
+          maze.append("+"); // the corner of the room
+          maze.append("W"); // print the door on the south
+      }
+      maze.append("+\n"); // the corner on the bottom right of the maze
+      return maze.toString();
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -208,5 +212,67 @@ public class Maze {
         if(!currentRoom.getWestDoor().isLocked() && !mazeGrid[row][westColumn]) {
             mazeTraversHelper(row, westColumn, mazeGrid);
         }
+    }
+    
+    /**
+     * 
+     * @return
+     */
+    public String toGUI() {
+    	
+        Room room = this.rooms[this.row][this.column];
+        StringBuilder maze = new StringBuilder();
+        int i, j;
+
+        for (i = 0; i < this.rooms.length; i++) {
+            // build north doors
+            for (j = 0; j < this.rooms[i].length; j++) {
+                maze.append("+"); // the corner of the room
+                if (i == 0){
+                    maze.append("W"); // build the wall
+                } else {
+                    if(this.rooms[i][j].getNorthDoor().isLocked()) {
+                        maze.append("x"); // print x when the door is locked on the north
+                    } else {
+                        maze.append("-"); // print the door on the north
+                    }
+                }
+            }
+            maze.append("+n"); // the right corner
+
+            // build west doors
+            for (j = 0; j < this.rooms[i].length; j++) {
+                if (j == 0){
+                    maze.append("V"); // build the wall
+                } else {
+                    if(this.rooms[i][j].getWestDoor().isLocked()) {
+                        maze.append("x"); // print x when the door is locked on the west
+                    } else {
+                        maze.append("|"); // print the west door
+                    }
+                }
+
+                // in the room space
+                if(this.rooms[i][j].isExitRoom()) {
+                    maze.append("e"); // Exit room at the bottom right corner
+                } else if(i == this.row && j == this.column) {
+                    maze.append("P"); // Represent the player position
+                } else {
+                    maze.append(" "); // Empty room
+                }
+            }
+
+            maze.append("E"); // print the east door
+            maze.append("n"); // go to the next line after print the last east door
+        }
+
+        // build south wall
+        for (j = 0; j < this.rooms[0].length; j++){
+            maze.append("+"); // the corner of the room
+            maze.append("W"); // print the door on the south
+        }
+        maze.append("+n"); // the corner on the bottom right of the maze
+        return maze.toString();
+    	
     }
 }

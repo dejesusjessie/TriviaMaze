@@ -39,12 +39,12 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * The width of the frame.
 	 */
-	private static final int MY_WIDTH = 400;
+	private static final int MY_WIDTH = 1280;
 	
 	/**
 	 * The height of the frame.
 	 */
-	private static final int MY_HEIGHT = 350;
+	private static final int MY_HEIGHT = 1960;
 
 	/**
 	 * The title of the frame.
@@ -102,11 +102,14 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	final FileNameExtensionFilter fileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
 	
+	MazeGraphic mg = new MazeGraphic(1000, 1000);
+	
 	/**
 	 * Constructor.
 	 * Constructs a new TriviaMazeGui.
+	 * @throws IOException 
 	 */
-	public TriviaMazeGUI() {
+	public TriviaMazeGUI() throws IOException {
 		basicWindow();
 	}
 	
@@ -117,8 +120,10 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	
 	/**
 	 * Creating the basic frame and panel.
+	 * @throws IOException 
 	 */
-	public void basicWindow() {
+	public void basicWindow() throws IOException {
+
 		
 		//Setting the panels.
 		setMazePanel();
@@ -160,20 +165,23 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * Setting the main panel.
 	 */
 	private void setMainPanel() {
-		MY_MAIN_PANEL.setBackground(Color.black);
+		MY_MAIN_PANEL.setBackground(new Color(255,248,220));
 		MY_MAIN_PANEL.add(leftPanel, BorderLayout.EAST);
-		MY_MAIN_PANEL.add(MY_MAZE_PANEL, BorderLayout.CENTER);
+		//MY_MAIN_PANEL.add(MY_MAZE_PANEL, BorderLayout.CENTER);
+		MY_MAIN_PANEL.add(mg, BorderLayout.CENTER);
 	}
 	
 	/**
 	 * Setting the maze panel.
+	 * @throws IOException 
 	 */
-	private void setMazePanel() {
-		MY_MAZE_PANEL.setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT, MY_WIDTH, MY_HEIGHT, MY_WIDTH));
+	private void setMazePanel() throws IOException {
+		MY_MAZE_PANEL.setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT/2, MY_WIDTH/2, MY_HEIGHT/2, MY_WIDTH/2));
 		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
 		MY_MAZE_PANEL.setLayout(new BorderLayout(1, 1));
-		MY_MAZE_PANEL.setBackground(Color.GRAY);
+		MY_MAZE_PANEL.setBackground(Color.black);
 		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
+		MY_MAZE_PANEL.add(new MazeGraphic(50,50));
 	}
 	
 	/**
