@@ -1,5 +1,10 @@
 package triviaMaze;
 
+import io.Database;
+import io.Trivia;
+
+import java.awt.*;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -90,5 +95,44 @@ public class PromptUser {
             myDirection = myUserDirection.toUpperCase().charAt(0);
         }
         return String.valueOf(myDirection);
+    }
+
+    //Display the trivia question form the database
+    public void displayTriviaQuestion() {
+        Trivia currentQuestion = Database.getQuestionList().get(0);
+
+        //Display the randomly question form database
+        System.out.println(currentQuestion.getQuestion());
+
+        //Create the option of the random question
+        //There are 2 kinds of question sets: Multiple choices and True/False question
+        //To display in the console for the multiple choice question
+        // System.out.println("Options: " + Arrays.toString(currentQuestion.getOptions()));
+        String[] answerOption = currentQuestion.getOptions();
+        if (answerOption.length == 4){
+            System.out.println("A. " + answerOption[0]);
+            System.out.println("B. " + answerOption[1]);
+            System.out.println("C. " + answerOption[2]);
+            System.out.println("D. " + answerOption[3]);
+        } else {
+            System.out.println(answerOption[0]);
+            System.out.println(answerOption[1]);
+        }
+
+        //Checking the answer
+        //We will using GUI to display this so we can avoid the invalid answer
+        //char myAnswer = '\0';
+        String myUserAnswer = "";
+        System.out.println("Please select your answer ");
+        myUserAnswer = myUserInput.nextLine();
+        //myAnswer = myUserAnswer.toUpperCase().charAt(0);
+        if ( myUserAnswer.equals(currentQuestion.getAnswer())) {
+            System.out.println("Your answer is RIGHT!!!");
+            //open the door
+        } else {
+            System.out.println("Your answer is WRONG!! The right answer is " + currentQuestion.getAnswer());
+            //close the door
+        }
+        //System.out.println("Answer: " + currentQuestion.getAnswer());
     }
 }

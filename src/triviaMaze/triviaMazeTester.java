@@ -5,7 +5,13 @@ public class triviaMazeTester {
     public static void main(String[] args) {
         //userNameTest();
         //userMazeSizeTest();
-        userSelectedDirectionTest();
+        //userSelectedDirectionTest();
+        displayTriviaQuestionTest();
+    }
+
+    private static void displayTriviaQuestionTest() {
+        PromptUser promptUser = new PromptUser();
+        promptUser.displayTriviaQuestion();
     }
 
     private static void userSelectedDirectionTest() {
