@@ -52,8 +52,8 @@ public class PromptUser {
             System.out.println(myLevel + " is invalid option, please select the level (B, M, H):");
             myUserLevel = myUserInput.nextLine();
             myLevel = myUserLevel.toUpperCase().charAt(0);
-
         }
+
         if (myLevel == 'B') {
             System.out.println("You select the beginner level.");
             return 4;
@@ -66,4 +66,29 @@ public class PromptUser {
         }
     }
 
+    //Select the direction to move
+    //N for moving north
+    //S for moving south
+    //E for moving East
+    //W for moving West
+    public String userSelectedDirection(){
+        char myDirection = '\0';
+        String myUserDirection = "";
+
+        System.out.println("The direction option: \n" +
+                "Type N for moving North\n" +
+                "Type S for moving South\n" +
+                "Type E for moving East\n" +
+                "Type W for moving West\n" +
+                "Please select the direction that you want to move:");
+        myUserDirection = myUserInput.nextLine();
+        myDirection = myUserDirection.toUpperCase().charAt(0); //For the case that the user input the lower case
+
+        while( myDirection != 'N' && myDirection != 'S' && myDirection != 'E' && myDirection != 'W') {
+            System.out.println(myDirection + " is invalid option, please select the direction (N, S, E, W):");
+            myUserDirection = myUserInput.nextLine();
+            myDirection = myUserDirection.toUpperCase().charAt(0);
+        }
+        return String.valueOf(myDirection);
+    }
 }

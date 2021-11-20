@@ -3,8 +3,14 @@ package triviaMaze;
 public class triviaMazeTester {
 
     public static void main(String[] args) {
-        //userNameMethodTest();
-        userMazeSizeTest();
+        //userNameTest();
+        //userMazeSizeTest();
+        userSelectedDirectionTest();
+    }
+
+    private static void userSelectedDirectionTest() {
+        PromptUser promptUser = new PromptUser();
+        promptUser.userSelectedDirection();
     }
 
     private static void userMazeSizeTest() {
@@ -12,7 +18,7 @@ public class triviaMazeTester {
         promptUser.userMazeSize();
     }
 
-    private static void userNameMethodTest() {
+    private static void userNameTest() {
         PromptUser promptUser = new PromptUser();
         promptUser.userName();
     }
