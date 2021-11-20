@@ -104,8 +104,9 @@ public class Maze {
             this.row--;
             if(this.row <= 0) {
                 this.row = 0; // make sure that the player cannot move through the wall
+                System.out.println("This is the wall! Please try the other way.");
             }
-            currentRoom.getNorthDoor().lock();
+            //currentRoom.getNorthDoor().lock();
         } else {
             System.out.println("Door is Locked.\n"); // Cannot enter if the door is locked
         }
@@ -118,8 +119,9 @@ public class Maze {
             this.row++;
             if (this.row >= this.rooms.length) {
                 this.row = this.rooms.length - 1; // make sure that the player cannot move through the wall
+                System.out.println("This is the wall! Please try the other way.");
             }
-            currentRoom.getSouthDoor().lock();
+            //currentRoom.getSouthDoor().lock();
         } else {
             System.out.println("Door is Locked.\n"); // Cannot enter if the door is locked
         }
@@ -132,8 +134,9 @@ public class Maze {
             this.column++;
             if(this.column >= this.rooms.length) {
                 this.column = this.rooms.length - 1; // make sure that the player cannot move through the wall
+                System.out.println("This is the wall! Please try the other way.");
             }
-            currentRoom.getEastDoor().lock();
+            //currentRoom.getEastDoor().lock();
         } else {
             System.out.println("Door is Locked.\n"); // Cannot enter if the door is locked
         }
@@ -146,8 +149,9 @@ public class Maze {
             this.column--;
             if (this.column <= 0) {
                 this.column = 0; // make sure that the player cannot move through the wall
+                System.out.println("This is the wall! Please try the other way.");
             }
-            curRoom.getWestDoor().lock();
+            //curRoom.getWestDoor().lock();
         }else {
             System.out.println("Door is Locked.\n"); // Cannot enter if the door is locked
         }
