@@ -45,10 +45,13 @@ public class RoomPanel extends JPanel {
 	private static JLabel currentRoom = new JLabel("✵ Current Room ✵" );
 
 
+
+
 	public RoomPanel(){
 		//add all pictures on JPanel
 		setLayout(new BorderLayout());
 		add(myLeftPanel, BorderLayout.WEST);
+
 		myLeftPanel.setPreferredSize(new Dimension(300,100));
 		myLeftPanel.setBackground(Color.BLUE);
 		myLeftPanel.setBorder(new EmptyBorder(10,10,10,10));
@@ -59,7 +62,6 @@ public class RoomPanel extends JPanel {
 		myCurrentRoom.add(currentRoom);
 		currentRoom.setFont(new Font("Serif", Font.PLAIN, 24));
 		//myCurrentRoom.setBorder(new EmptyBorder(0,0,10,0));
-
 		myLeftPanel.add(myRoomDisplay);
 		myRoomDisplay.setBackground(Color.WHITE);
 		myRoomDisplay.setBorder(BorderFactory.createEmptyBorder(0,10,0,10));
@@ -72,40 +74,9 @@ public class RoomPanel extends JPanel {
 		myRoomDisplay.add(myAvatar, BorderLayout.CENTER);
 
 
-
-
 		add(myRightPanel);
 		myRightPanel.setBackground(Color.GREEN);
 
-
-
-//		myLeftPanel.setLayout(new BorderLayout());
-//		myLeftPanel.add(myCurrentRoom, BorderLayout.NORTH);
-//		myCurrentRoom.setBackground(Color.GREEN);
-//		myCurrentRoom.setMinimumSize(new Dimension(100,50));
-//		myLeftPanel.add(myRoomDisplay, BorderLayout.CENTER);
-//		myRoomDisplay.setBackground(Color.black);
-//		add(myCurrentRoom);
-//		myCurrentRoom.setBackground(Color.blue);
-//		add(myRoomDisplay);
-//		myRoomDisplay.setBackground(Color.GRAY);
-//		add(myTextDisplay);
-
-//		myRoomDisplay.setLayout(new BorderLayout());
-//
-//
-//
-//		myNorthWall.setPreferredSize(new Dimension(100,100));
-//		mySouthWall.setPreferredSize(new Dimension(100,100));
-//		myEastWall.setPreferredSize(new Dimension(100,100));
-//		myWestWall.setPreferredSize(new Dimension(100,100));
-//		myAvatar.setPreferredSize(new Dimension(100,100));
-//
-//		myRoomDisplay.add(myNorthWall, BorderLayout.NORTH);
-//		myRoomDisplay.add(myWestWall, BorderLayout.WEST);
-//		myRoomDisplay.add(myEastWall, BorderLayout.EAST);
-//		myRoomDisplay.add(mySouthWall, BorderLayout.SOUTH);
-//		myRoomDisplay.add(myAvatar, BorderLayout.CENTER);
 
 
 
