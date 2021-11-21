@@ -45,10 +45,13 @@ public class RoomPanel extends JPanel {
 	private static JLabel currentRoom = new JLabel("✵ Current Room ✵" );
 
 
+
+
 	public RoomPanel(){
 		//add all pictures on JPanel
 		setLayout(new BorderLayout());
 		add(myLeftPanel, BorderLayout.WEST);
+
 		myLeftPanel.setPreferredSize(new Dimension(300,100));
 		myLeftPanel.setBackground(Color.BLUE);
 		myLeftPanel.setBorder(new EmptyBorder(10,10,10,10));
@@ -59,7 +62,6 @@ public class RoomPanel extends JPanel {
 		myCurrentRoom.add(currentRoom);
 		currentRoom.setFont(new Font("Serif", Font.PLAIN, 24));
 		//myCurrentRoom.setBorder(new EmptyBorder(0,0,10,0));
-
 		myLeftPanel.add(myRoomDisplay);
 		myRoomDisplay.setBackground(Color.WHITE);
 		myRoomDisplay.setBorder(BorderFactory.createEmptyBorder(0,10,0,10));
@@ -71,8 +73,12 @@ public class RoomPanel extends JPanel {
 		//myAvatar.setIcon(myAvatarImg);
 		myRoomDisplay.add(myAvatar, BorderLayout.CENTER);
 
+
 		add(myRightPanel);
 		myRightPanel.setBackground(Color.GREEN);
+
+
+
 
 
 	}
