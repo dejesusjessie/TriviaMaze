@@ -153,6 +153,9 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		//packing and showing the frame
 		myWindow.pack();
 		myWindow.setVisible(true);
+
+		//prevent the resizable
+		myWindow.setResizable(false);
 	} 
 	
 	/**

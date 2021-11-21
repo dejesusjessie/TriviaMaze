@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class RoomPanel extends JPanel {
@@ -19,7 +20,7 @@ public class RoomPanel extends JPanel {
 	private static ImageIcon blueSouthWallImg = new ImageIcon("src/image/blueWallSouth.png");
 	private static ImageIcon blueEastWallImg = new ImageIcon("src/image/blueWallEast.png");
 	private static ImageIcon blueWestWallImg = new ImageIcon("src/image/blueWallWest.png");
-	private static ImageIcon myAvatarImg = new ImageIcon("src/image/myAvatar.png");
+	private static ImageIcon myAvatarImg = new ImageIcon("src/image/huskyAvatar1.gif");
 	private static ImageIcon myDoorNSImg = new ImageIcon("src/image/myDoorH.gif");
 	private static ImageIcon myDoorEWImg = new ImageIcon(("src/image/myDoorV.gif"));
 
@@ -39,49 +40,44 @@ public class RoomPanel extends JPanel {
 	private static JButton myEastWall = new JButton(blueEastWallImg); // Use to display the east wall
 	private static JButton myDoorNS = new JButton(myDoorNSImg); // Use to display the east wall
 	private static JButton myDoorEW = new JButton(myDoorEWImg); // Use to display the east wall
-	private static JButton myAvatar = new JButton(myAvatarImg); // Use to display the Avatar in the room
+	private static JLabel myAvatar = new JLabel(myAvatarImg); // Use to display the Avatar in the room
+
+	private static JLabel currentRoom = new JLabel("✵ Current Room ✵" );
 
 
 	public RoomPanel(){
 		//add all pictures on JPanel
-		setLayout(new GridBagLayout());
-		GridBagConstraints gbc = new GridBagConstraints();
-		final boolean shouldFill = true;
-		final boolean shouldWeightX = true;
-		final boolean RIGHT_TO_LEFT = false;
+		setLayout(new BorderLayout());
+		add(myLeftPanel, BorderLayout.WEST);
+		myLeftPanel.setPreferredSize(new Dimension(300,100));
+		myLeftPanel.setBackground(Color.BLUE);
+		myLeftPanel.setBorder(new EmptyBorder(10,10,10,10));
+		myLeftPanel.setLayout(new BorderLayout());
+		myLeftPanel.add(myCurrentRoom, BorderLayout.NORTH);
+		myCurrentRoom.setBackground(Color.WHITE);
+		myCurrentRoom.setPreferredSize(new Dimension(100, 30));
+		myCurrentRoom.add(currentRoom);
+		currentRoom.setFont(new Font("Serif", Font.PLAIN, 24));
+		//myCurrentRoom.setBorder(new EmptyBorder(0,0,10,0));
 
-		if (shouldFill) {
-			gbc.fill = GridBagConstraints.HORIZONTAL;
-		}
-
-		if (shouldWeightX) {
-			gbc.weightx = 0.4;
-		}
-
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		add(myLeftPanel, gbc);
-
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.weightx = 0.6;
-		gbc.gridx = 1;
-		gbc.gridy = 0;
-
-		add(myRightPanel, gbc);
+		myLeftPanel.add(myRoomDisplay);
+		myRoomDisplay.setBackground(Color.WHITE);
+		myRoomDisplay.setBorder(BorderFactory.createEmptyBorder(0,10,0,10));
+		myRoomDisplay.setLayout(new BorderLayout());
+		myRoomDisplay.add(myNorthWall, BorderLayout.NORTH);
+		myRoomDisplay.add(myWestWall, BorderLayout.WEST);
+		myRoomDisplay.add(myEastWall, BorderLayout.EAST);
+		myRoomDisplay.add(mySouthWall, BorderLayout.SOUTH);
+		//myAvatar.setIcon(myAvatarImg);
+		myRoomDisplay.add(myAvatar, BorderLayout.CENTER);
 
 
 
-		//gbc.fill = GridBagConstraints.VERTICAL;
 
-//		gbc.gridx = 0;
-//		gbc.gridy = 0;
-//		add(myLeftPanel, gbc);
-//		myLeftPanel.setBackground(Color.blue);
-//		gbc.gridx = 1;
-//		gbc.gridy = 0;
-//		add(myRightPanel, gbc);
-//		myRightPanel.setBackground(Color.GREEN);
+		add(myRightPanel);
+		myRightPanel.setBackground(Color.GREEN);
+
+
 
 //		myLeftPanel.setLayout(new BorderLayout());
 //		myLeftPanel.add(myCurrentRoom, BorderLayout.NORTH);
