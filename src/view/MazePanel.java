@@ -1,21 +1,21 @@
 package view;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import java.io.IOException;
+import javax.swing.*;
+
 
 public class MazePanel extends JPanel {
+	
+	MazeGraphic maze = new MazeGraphic();
+	
+	public MazePanel() throws IOException {
 
-	/**
-	 * The serial version UID.
-	 */
-	private static final long serialVersionUID = -7582476271051605776L;
+		setLayout(new BorderLayout());
+		//setBackground(new Color(255,255,255));
+		add(maze, BorderLayout.CENTER);
 
-	//MazeGraphic mazeGraphic = new MazeGraphic(200, 200);
 
-	public MazePanel() {
-		//add(mazeGraphic);
 	}
-	
-	
 
 }

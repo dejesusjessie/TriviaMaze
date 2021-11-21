@@ -20,9 +20,19 @@ public class MazeGraphic extends JComponent {
 	 * 
 	 */
 	private static final long serialVersionUID = 2669892546274779870L;
+	
+	/**
+	 * The width of the frame.
+	 */
+	private static final int MY_WIDTH = 680;
+	
+	/**
+	 * The height of the frame.
+	 */
+	private static final int MY_HEIGHT = 880;
 
-	private int myWidth;
-	private int myHeight;
+	//private int myWidth;
+	//private int myHeight;
 	String myDir = System.getProperty("user.dir");
 	
 	BufferedImage myWallH = ImageIO.read(new File(myDir + "/src/image/WallH.png"));
@@ -53,17 +63,36 @@ public class MazeGraphic extends JComponent {
 	//JLabel label = new JLabel(icon);
 	
 	String myMaze;
+	int myX;
+	int myY;
 	
-	public MazeGraphic(int theWidth, int theHeight) throws IOException {
+	public MazeGraphic() throws IOException {
 		//System.out.println(myCharacterURL);
-		myWidth = theWidth;
-		myHeight = theHeight;
+		//myWidth = theWidth;
+		//myHeight = theHeight;
+		//painComponent();
+		setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT/2, MY_WIDTH/2, MY_HEIGHT/2, MY_WIDTH/2));
+        MazeBuilder builder = new MazeBuilder();
+        Maze maze = builder.buildRoom();
+        myMaze = maze.toGUI();
+       // add(label);
+       
+             
+	}
+	
+	public MazeGraphic(int x, int y) throws IOException {
+		//System.out.println(myCharacterURL);
+		//myWidth = theWidth;
+		//myHeight = theHeight;
 		//painComponent();
         MazeBuilder builder = new MazeBuilder();
         Maze maze = builder.buildRoom();
         myMaze = maze.toGUI();
        // add(label);
+       
         
+        
+       
 
         
 	}
@@ -118,6 +147,7 @@ public class MazeGraphic extends JComponent {
 
 				//g2d.drawImage(myCharacter,x,y,70,50, null);
 				g2d.drawImage(myHusky, x-30,y+30,wallSize/2,wallSize/2, null);
+				//System.out.println(x-30+" "+y+30);
 				
 			} else if (myMaze.charAt(i) == 'x') {
 				g2d.drawImage(myDoorH,x,y,wallSize,wallSize, null);
@@ -125,8 +155,10 @@ public class MazeGraphic extends JComponent {
 				x+=wallSize;
 			}
 			
-			// Don't delete
-			// use later
+// 			//***********************************************************************************		
+//			// Don't delete
+//			// use later
+//			
 //			//adding bloker and bridge 
 //			if(answer wrong) {
 //				g2d.drawImage(myBlokerH,x+50,y+50,wallSize/3,wallSize/3, null);
@@ -135,12 +167,17 @@ public class MazeGraphic extends JComponent {
 //			if(anser correct) {
 //				g2d.drawImage(myBridgeH,x+50,y+50,wallSize/3,wallSize/3, null);
 //			}
+//			
+// 			//**********************************************************************************
 		}
 		
 		
 	}
 	
-	public void drawMaze() {
 
+	
+	
+	
+	public void drawMaze() {
 	}
 }

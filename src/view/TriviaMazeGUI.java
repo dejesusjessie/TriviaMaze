@@ -2,14 +2,17 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -44,7 +47,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * The height of the frame.
 	 */
-	private static final int MY_HEIGHT = 1960;
+	private static final int MY_HEIGHT = 1360;
 
 	/**
 	 * The title of the frame.
@@ -64,8 +67,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * The maze panel.
 	 */
-	private static final MazePanel MY_MAZE_PANEL = new MazePanel();
-	
+	//private static final MazePanel MY_MAZE_PANEL = new MazePanel(MY_WIDTH, MY_HEIGHT);	
+	private final MazePanel MY_MAZE_PANEL = new MazePanel();
 	/**
 	 * The info panel.
 	 */
@@ -102,7 +105,10 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	final FileNameExtensionFilter fileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
 	
-	MazeGraphic mg = new MazeGraphic(1000, 1000);
+	String myDir = System.getProperty("user.dir");
+	BufferedImage myHusky = ImageIO.read(new File(myDir + "/src/image/husky.png"));
+	
+	//MazeGraphic mg = new MazeGraphic(1000, 1000);
 	
 	/**
 	 * Constructor.
@@ -135,6 +141,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		//Basic setting of the window.
 		myWindow.add(MY_MAIN_PANEL);
 		myWindow.setSize(MY_HEIGHT, MY_WIDTH);
+		myWindow.setPreferredSize(new Dimension(MY_HEIGHT, MY_WIDTH));
 		myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//setting the title of the window.
@@ -159,16 +166,19 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		//packing and showing the frame
 		myWindow.pack();
 		myWindow.setVisible(true);
+
 	} 
 	
 	/**
 	 * Setting the main panel.
 	 */
 	private void setMainPanel() {
-		MY_MAIN_PANEL.setBackground(new Color(255,248,220));
+		//MY_MAIN_PANEL.setBackground(new Color(255,248,220));
+		MY_MAIN_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
 		MY_MAIN_PANEL.add(leftPanel, BorderLayout.EAST);
-		//MY_MAIN_PANEL.add(MY_MAZE_PANEL, BorderLayout.CENTER);
-		MY_MAIN_PANEL.add(mg, BorderLayout.CENTER);
+		MY_MAIN_PANEL.add(MY_MAZE_PANEL, BorderLayout.CENTER);
+		//mg.setSize(MY_WIDTH/2, MY_HEIGHT/2);
+		//MY_MAIN_PANEL.add(mg, BorderLayout.CENTER);
 	}
 	
 	/**
@@ -176,12 +186,12 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * @throws IOException 
 	 */
 	private void setMazePanel() throws IOException {
-		MY_MAZE_PANEL.setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT/2, MY_WIDTH/2, MY_HEIGHT/2, MY_WIDTH/2));
-		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
-		MY_MAZE_PANEL.setLayout(new BorderLayout(1, 1));
-		MY_MAZE_PANEL.setBackground(Color.black);
-		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
-		MY_MAZE_PANEL.add(new MazeGraphic(50,50));
+//		MY_MAZE_PANEL.setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT/2, MY_WIDTH/2, MY_HEIGHT/2, MY_WIDTH/2));
+//		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
+//		MY_MAZE_PANEL.setLayout(new BorderLayout(1, 1));
+//		//MY_MAZE_PANEL.setBackground(Color.black);
+//		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
+//		//MY_MAZE_PANEL.add(new MazeGraphic(50,50));
 	}
 	
 	/**
@@ -196,8 +206,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	private void setRoomPanel() {
 		MY_ROOM_PANEL.setBackground(Color.pink);
-		MY_ROOM_PANEL.setSize(MY_WIDTH/2, MY_HEIGHT/2);
-		MY_ROOM_PANEL.setSize(MY_WIDTH/2, MY_HEIGHT/2);
+		//MY_ROOM_PANEL.setSize(MY_WIDTH/2, MY_HEIGHT/2);
+		//MY_ROOM_PANEL.setSize(MY_WIDTH/2, MY_HEIGHT/2);
 	}
 	
 	/**
@@ -207,6 +217,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		leftPanel.setOpaque(false);
 		leftPanel.add(MY_INFO_PANEL);
 		leftPanel.add(MY_ROOM_PANEL);
+		leftPanel.setSize(MY_WIDTH/2, MY_HEIGHT);
 	}
 
 	/**
@@ -348,6 +359,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	public static void reloadGUI(GameData theGameData) {
 		MY_INFO_PANEL.setSystemTime(theGameData.getSystemTime());
 		MY_INFO_PANEL.setGameTime(theGameData.getGameTime());
+		//MY_MAZE_PANEL.
 
 	}
 
