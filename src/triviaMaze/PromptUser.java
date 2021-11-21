@@ -150,4 +150,8 @@ public class PromptUser {
         //button to close or start the new game
     }
 
+    //close the Scanner after use it
+    public void closeScanner() {
+        this.myUserInput.close();
+    }
 }
