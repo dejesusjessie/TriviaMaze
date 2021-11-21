@@ -11,29 +11,30 @@ import java.util.Scanner;
 public class PromptUser {
 
     private Scanner myUserInput; // use to take all input from the user
+    private String myUserName; // the username
 
     // The PromptUser constructor
     public PromptUser(){
         this.myUserInput = new Scanner(System.in); //get the input from the user
+        this.myUserName = ""; //Initial to empty string
     }
 
     //Return the username
     //Take username from the player input and return it
     public String userName() {
-        String myUserName = ""; //Initial to empty string
 
         System.out.println("Please enter your username: ");
-        myUserName = myUserInput.nextLine();
+        this.myUserName = myUserInput.nextLine();
 
         //The player have to create the username.
-        while (myUserName.isEmpty()){
+        while (this.myUserName.isEmpty()){
             System.out.println("You did not enter your username, please enter your username:");
-            myUserName = myUserInput.nextLine();
+            this.myUserName = myUserInput.nextLine();
         }
 
-        System.out.println("Welcome " + myUserName +  " to the Husky Trivia Maze Game.");
+        System.out.println("Welcome " + this.myUserName +  " to the Husky Trivia Maze Game.");
 
-        return myUserName;
+        return this.myUserName;
     }
     
     //There are three three difficulty level for the game:
@@ -135,4 +136,18 @@ public class PromptUser {
         }
         //System.out.println("Answer: " + currentQuestion.getAnswer());
     }
+
+    // The message for the winning player
+    public void displayWinningMessage() {
+        System.out.println("Congratulation " + myUserName + ", You Win!!");
+        //display the playing time
+        //button to close or start the new game
+    }
+
+    // The message when losing the same
+    public void displayLosingMessage() {
+        System.out.println("Sorry " + myUserName + ", You lose!! Let's try it again!!");
+        //button to close or start the new game
+    }
+
 }

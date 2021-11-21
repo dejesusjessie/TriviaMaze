@@ -3,10 +3,22 @@ package triviaMaze;
 public class triviaMazeTester {
 
     public static void main(String[] args) {
-        //userNameTest();
-        //userMazeSizeTest();
-        //userSelectedDirectionTest();
-        displayTriviaQuestionTest();
+//        userNameTest();
+//        userMazeSizeTest();
+//        userSelectedDirectionTest();
+//        displayTriviaQuestionTest();
+//        displayWinningMessageTest();
+//        displayLosingMessageTest();
+    }
+
+    private static void displayLosingMessageTest() {
+        PromptUser promptUser = new PromptUser();
+        promptUser.displayLosingMessage();
+    }
+
+    private static void displayWinningMessageTest() {
+        PromptUser promptUser = new PromptUser();
+        promptUser.displayWinningMessage();
     }
 
     private static void displayTriviaQuestionTest() {
