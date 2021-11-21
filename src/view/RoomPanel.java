@@ -71,43 +71,8 @@ public class RoomPanel extends JPanel {
 		//myAvatar.setIcon(myAvatarImg);
 		myRoomDisplay.add(myAvatar, BorderLayout.CENTER);
 
-
-
-
 		add(myRightPanel);
 		myRightPanel.setBackground(Color.GREEN);
-
-
-
-//		myLeftPanel.setLayout(new BorderLayout());
-//		myLeftPanel.add(myCurrentRoom, BorderLayout.NORTH);
-//		myCurrentRoom.setBackground(Color.GREEN);
-//		myCurrentRoom.setMinimumSize(new Dimension(100,50));
-//		myLeftPanel.add(myRoomDisplay, BorderLayout.CENTER);
-//		myRoomDisplay.setBackground(Color.black);
-//		add(myCurrentRoom);
-//		myCurrentRoom.setBackground(Color.blue);
-//		add(myRoomDisplay);
-//		myRoomDisplay.setBackground(Color.GRAY);
-//		add(myTextDisplay);
-
-//		myRoomDisplay.setLayout(new BorderLayout());
-//
-//
-//
-//		myNorthWall.setPreferredSize(new Dimension(100,100));
-//		mySouthWall.setPreferredSize(new Dimension(100,100));
-//		myEastWall.setPreferredSize(new Dimension(100,100));
-//		myWestWall.setPreferredSize(new Dimension(100,100));
-//		myAvatar.setPreferredSize(new Dimension(100,100));
-//
-//		myRoomDisplay.add(myNorthWall, BorderLayout.NORTH);
-//		myRoomDisplay.add(myWestWall, BorderLayout.WEST);
-//		myRoomDisplay.add(myEastWall, BorderLayout.EAST);
-//		myRoomDisplay.add(mySouthWall, BorderLayout.SOUTH);
-//		myRoomDisplay.add(myAvatar, BorderLayout.CENTER);
-
-
 
 
 	}
