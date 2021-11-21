@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,6 +16,7 @@ import maze.MazeBuilder;
 
 
 public class MazeGraphic extends JComponent {
+	
 
 	/**
 	 * 
@@ -31,14 +33,27 @@ public class MazeGraphic extends JComponent {
 	 */
 	private static final int MY_HEIGHT = 880;
 
-	//private int myWidth;
-	//private int myHeight;
+	/**
+	 * 
+	 */
 	String myDir = System.getProperty("user.dir");
 	
+	/**
+	 * 
+	 */
 	BufferedImage myWallH = ImageIO.read(new File(myDir + "/src/image/WallH.png"));
+	
+	/**
+	 * 
+	 */
 	BufferedImage myWallV = ImageIO.read(new File(myDir + "/src/image/WallV.png"));
 	
+	/**
+	 * 
+	 */
 	BufferedImage myDoorH = ImageIO.read(new File(myDir + "/src/image/DoorH.png"));
+	
+	
 	BufferedImage myDoorV = ImageIO.read(new File(myDir + "/src/image/DoorV.png"));
 	
 	BufferedImage myOpenedDoorH = ImageIO.read(new File(myDir + "/src/image/OpenedDoorH.png"));
@@ -66,36 +81,32 @@ public class MazeGraphic extends JComponent {
 	int myX;
 	int myY;
 	
-	public MazeGraphic() throws IOException {
+	public MazeGraphic(String theMaze) throws IOException {
 		//System.out.println(myCharacterURL);
 		//myWidth = theWidth;
 		//myHeight = theHeight;
 		//painComponent();
-		setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT/2, MY_WIDTH/2, MY_HEIGHT/2, MY_WIDTH/2));
-        MazeBuilder builder = new MazeBuilder();
-        Maze maze = builder.buildRoom();
-        myMaze = maze.toGUI();
+		//setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT/2, MY_WIDTH/2, MY_HEIGHT/2, MY_WIDTH/2));
+//        MazeBuilder builder = new MazeBuilder();
+//        Maze maze = builder.buildRoom();
+//        myMaze = maze.toGUI();
        // add(label);
        
+		
+		myMaze = theMaze;
              
 	}
 	
-	public MazeGraphic(int x, int y) throws IOException {
-		//System.out.println(myCharacterURL);
-		//myWidth = theWidth;
-		//myHeight = theHeight;
-		//painComponent();
-        MazeBuilder builder = new MazeBuilder();
-        Maze maze = builder.buildRoom();
-        myMaze = maze.toGUI();
-       // add(label);
-       
-        
-        
-       
-
-        
-	}
+//	public MazeGraphic(int x, int y) throws IOException {
+//		//System.out.println(myCharacterURL);
+//		//myWidth = theWidth;
+//		//myHeight = theHeight;
+//		//painComponent();
+//        MazeBuilder builder = new MazeBuilder();
+//        Maze maze = builder.buildRoom();
+//        myMaze = maze.toGUI();
+//       // add(label);        
+//	}
 	
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -149,6 +160,8 @@ public class MazeGraphic extends JComponent {
 				g2d.drawImage(myHusky, x-30,y+30,wallSize/2,wallSize/2, null);
 				//System.out.println(x-30+" "+y+30);
 				
+				//g2d.drawImage(myHusky, myX,myY,wallSize/2,wallSize/2, null);
+				
 			} else if (myMaze.charAt(i) == 'x') {
 				g2d.drawImage(myDoorH,x,y,wallSize,wallSize, null);
 				g2d.drawImage(myBlokerH,x+50,y+50,wallSize/3,wallSize/3, null);
@@ -173,9 +186,6 @@ public class MazeGraphic extends JComponent {
 		
 		
 	}
-	
-
-	
 	
 	
 	public void drawMaze() {

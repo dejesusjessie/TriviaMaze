@@ -68,7 +68,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * The maze panel.
 	 */
 	//private static final MazePanel MY_MAZE_PANEL = new MazePanel(MY_WIDTH, MY_HEIGHT);	
-	private final MazePanel MY_MAZE_PANEL = new MazePanel();
+	private final MazePanel MY_MAZE_PANEL;
 	/**
 	 * The info panel.
 	 */
@@ -115,8 +115,9 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * Constructs a new TriviaMazeGui.
 	 * @throws IOException 
 	 */
-	public TriviaMazeGUI() throws IOException {
-		basicWindow();
+	public TriviaMazeGUI(String theMaze) throws IOException {
+		MY_MAZE_PANEL = new MazePanel(theMaze);
+		basicWindow(theMaze);
 	}
 	
 //	public TriviaMazeGUI(GameData theGameData) {
@@ -128,7 +129,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * Creating the basic frame and panel.
 	 * @throws IOException 
 	 */
-	public void basicWindow() throws IOException {
+	public void basicWindow(String theMaze) throws IOException {
 
 		
 		//Setting the panels.
@@ -142,6 +143,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		myWindow.add(MY_MAIN_PANEL);
 		myWindow.setSize(MY_HEIGHT, MY_WIDTH);
 		myWindow.setPreferredSize(new Dimension(MY_HEIGHT, MY_WIDTH));
+		//myWindow.setResizable(false);
 		myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//setting the title of the window.
@@ -361,7 +363,12 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		MY_INFO_PANEL.setGameTime(theGameData.getGameTime());
 		//MY_MAZE_PANEL.
 
+
+
 	}
+	
+	
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
