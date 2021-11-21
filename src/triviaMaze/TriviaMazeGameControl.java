@@ -1,6 +1,6 @@
 package triviaMaze;
 
-// Not finished yet 
+// Not finished yet
 import io.Trivia;
 import maze.Maze;
 import maze.Room;
