@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -75,16 +74,17 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	public static final InfoPanel MY_INFO_PANEL = new InfoPanel();
 	
 	/**
-	 * The room panel.
+	 * The player panel.
 	 */
-	private static final RoomPanel MY_ROOM_PANEL = new RoomPanel();
-	
+	private static RoomPanel MY_ROOM_PANEL = new RoomPanel();
+
+
 	/**
 	 * The left panel.
 	 * which will contain the info panel and the room panel.
 	 */
-	private static final JPanel leftPanel = new JPanel(new GridLayout(0, 1));
-	
+	private static final JPanel leftPanel = new JPanel(new GridLayout(0,1));
+
 	/**
 	 * The File menu at menu bar.
 	 */
@@ -169,6 +169,10 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		myWindow.pack();
 		myWindow.setVisible(true);
 
+
+		//prevent the resizable
+		myWindow.setResizable(false);
+
 	} 
 	
 	/**
@@ -208,12 +212,14 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	private void setRoomPanel() {
 		MY_ROOM_PANEL.setBackground(Color.pink);
-		//MY_ROOM_PANEL.setSize(MY_WIDTH/2, MY_HEIGHT/2);
-		//MY_ROOM_PANEL.setSize(MY_WIDTH/2, MY_HEIGHT/2);
 	}
 	
 	/**
+<<<<<<< HEAD
+	 * Setting the left panel.
+=======
 	 * Setting the lest panel.
+>>>>>>> refs/remotes/origin/main
 	 */
 	private void setLeftPanel() {
 		leftPanel.setOpaque(false);
