@@ -62,6 +62,9 @@ public class Load implements Serializable {
 //		System.out.println(loadGame);
 		GameData myGameData = (GameData) loadGameStream.readObject();
 		TriviaMazeGUI.reloadGUI(myGameData);
+		
+		
+		
 		System.out.println(myGameData.myGameTime);
 		
 	}
