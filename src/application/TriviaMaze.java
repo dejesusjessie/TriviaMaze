@@ -21,7 +21,7 @@ public class TriviaMaze {
         String myMaze = maze.toGUI();
 
 		TriviaMazeGUI game = new TriviaMazeGUI(myMaze);
-		
+		//System.out.println(maze.toGUI());
 		
 //		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 //
@@ -29,6 +29,7 @@ public class TriviaMaze {
 //			public void run() {
 //				// TODO Auto-generated method stub
 //				try {
+//					String myMaze = maze.toGUI();
 //					game.basicWindow(myMaze);
 //				} catch (IOException e) {
 //					// TODO Auto-generated catch block
@@ -40,16 +41,15 @@ public class TriviaMaze {
 
 
 		
-//		JFrame test = new JFrame();
-//		MazeGraphic mg = new MazeGraphic(200,200);
-//		test.setSize(1280,1960);
-//		test.add(mg);
-//		test.setVisible(true);
-		
-        Scanner input = new Scanner(System.in);
-
+        Scanner input = new Scanner(System.in);		
         while(!maze.reachExit()) {
             System.out.println(maze.toString());
+            
+            //maze panel repaint;
+            myMaze = maze.toGUI();
+            game.repaintMaze(myMaze);
+
+            
             System.out.println("Select your option: \nn --> Move North\ns --> Move South" +
                     "\nw --> Move West\ne --> Move East");
 
@@ -57,7 +57,9 @@ public class TriviaMaze {
             switch(dir) {
                 case('n'):
                     maze.moveNorth();
-           
+
+    
+        		
                     break;
                 case('s'):
                     maze.moveSouth();

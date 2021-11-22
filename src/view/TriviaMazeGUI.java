@@ -367,10 +367,13 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	public static void reloadGUI(GameData theGameData) {
 		MY_INFO_PANEL.setSystemTime(theGameData.getSystemTime());
 		MY_INFO_PANEL.setGameTime(theGameData.getGameTime());
-		//MY_MAZE_PANEL.
 
 
 
+	}
+	
+	public void repaintMaze(String theString) {
+		MY_MAZE_PANEL.setMaze(theString);
 	}
 	
 	

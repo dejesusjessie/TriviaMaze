@@ -68,7 +68,8 @@ public class MazeGraphic extends JComponent {
 	BufferedImage myBridgeH = ImageIO.read(new File(myDir + "/src/image/bridgeH.png"));
 	BufferedImage myBridgeV = ImageIO.read(new File(myDir + "/src/image/bridgeV.png"));
 	
-	BufferedImage myHusky = ImageIO.read(new File(myDir + "/src/image/husky.png"));
+	//BufferedImage myHusky = ImageIO.read(new File(myDir + "/src/image/husky.png"));
+	ImageIcon myHusky = new ImageIcon(("/src/image/husky.png"));
 	
 	//BufferedImage myCharacter = ImageIO.read(new File(myDir + "/image/human.gif"));
 	URL myCharacterURL = this.getClass().getClassLoader().getResource("image/running.gif");
@@ -76,6 +77,8 @@ public class MazeGraphic extends JComponent {
 	//Icon myCharacter = new ImageIcon(myDir + "/image/human.gif");
 	//ImageIcon icon = new ImageIcon(myCharacterURL);
 	//JLabel label = new JLabel(icon);
+	
+	BufferedImage myFruit = ImageIO.read(new File(myDir + "/src/image/fruit.png"));
 	
 	String myMaze;
 	int myX;
@@ -156,16 +159,18 @@ public class MazeGraphic extends JComponent {
 				x += wallSize;
 			} else if(myMaze.charAt(i) == 'P') {
 
-				//g2d.drawImage(myCharacter,x,y,70,50, null);
-				g2d.drawImage(myHusky, x-30,y+30,wallSize/2,wallSize/2, null);
-				//System.out.println(x-30+" "+y+30);
-				
-				//g2d.drawImage(myHusky, myX,myY,wallSize/2,wallSize/2, null);
+				//g2d.drawImage(myHusky, x-30,y+30,wallSize/2,wallSize/2, null);
+				//g2d.drawImage(myHusky, x-30,y+30,wallSize/2,wallSize/2, null);
+				myHusky.paintIcon(this, g2d, x-30, y+30);
 				
 			} else if (myMaze.charAt(i) == 'x') {
 				g2d.drawImage(myDoorH,x,y,wallSize,wallSize, null);
 				g2d.drawImage(myBlokerH,x+50,y+50,wallSize/3,wallSize/3, null);
 				x+=wallSize;
+			}
+			
+			else if (myMaze.charAt(i) == 'e') {
+				g2d.drawImage(myFruit, x-30,y+30,wallSize/2,wallSize/2, null);
 			}
 			
 // 			//***********************************************************************************		
