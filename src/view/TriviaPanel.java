@@ -28,6 +28,7 @@ public class TriviaPanel extends JPanel implements ActionListener {
     public TriviaPanel(){
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setBackground(Color.white);
+        this.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
         questionPane = new JTextPane();
         multipleQuestionGroup = new ButtonGroup();
         optionA = new JRadioButton();
