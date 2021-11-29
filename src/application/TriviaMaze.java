@@ -1,27 +1,32 @@
 package application;
 
-import java.awt.Frame;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
-import java.util.Scanner;
-
-import javax.swing.JFrame;
-
-import maze.Maze;
-import maze.MazeBuilder;
-import view.MazeGraphic;
+import model.gameRunner;
+import view.InitialGUI;
 import view.TriviaMazeGUI;
 
+/**
+ * The main of the program.
+ * @author Codi Chun
+ * @version Fall 2021
+ */
 public class TriviaMaze {
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		
-        MazeBuilder builder = new MazeBuilder();
-        Maze maze = builder.buildRoom();
-        String myMaze = maze.toGUI();
+		//Version 1
+//        MazeBuilder myBuilder = new MazeBuilder();
+//        Maze myMaze = myBuilder.buildRoom();
+//        String myMazeString = myMaze.toGUI();
+//		TriviaMazeGUI myGUI = new TriviaMazeGUI(myMazeString);
+//		new gameRunner(myBuilder, myMaze, myMazeString, myGUI);
+		
+        //Version 2
+        InitialGUI myInitialGUI = new InitialGUI();
+		new gameRunner(myInitialGUI.getBuilder(), myInitialGUI.getMaze(), 
+				myInitialGUI.getString(), myInitialGUI.getGUI());
 
-		TriviaMazeGUI game = new TriviaMazeGUI(myMaze);
-		//System.out.println(maze.toGUI());
 		
 //		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 //
@@ -38,44 +43,6 @@ public class TriviaMaze {
 //			}
 //			
 //		});
-
-
-		
-        Scanner input = new Scanner(System.in);		
-        while(!maze.reachExit()) {
-            System.out.println(maze.toString());
-            
-            //maze panel repaint;
-            myMaze = maze.toGUI();
-            game.repaintMaze(myMaze);
-
-            
-            System.out.println("Select your option: \nn --> Move North\ns --> Move South" +
-                    "\nw --> Move West\ne --> Move East");
-
-            char dir = input.next().charAt(0);
-            switch(dir) {
-                case('n'):
-                    maze.moveNorth();
-
-    
-        		
-                    break;
-                case('s'):
-                    maze.moveSouth();
-                    break;
-                case('w'):
-                    maze.moveWest();
-                    break;
-                case('e'):
-                    maze.moveEast();
-                	game.repaint();
-                    break;
-                default:
-                    System.out.println("Wrong option");
-            }
-        }
-
 		
 	}
 

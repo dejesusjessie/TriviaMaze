@@ -2,11 +2,15 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 
 /**
@@ -108,12 +112,25 @@ public class InfoPanel extends JPanel implements ActionListener{
 	 */
 	Dimension myButtonSize = new Dimension(100, 50); 
 	
+
+	
+//	String formatted = text.replace("\n", "<br>");
+//	formatted = "<html><font size='9'>" + formatted + "</font></html>";
+//	JLabel label = new JLabel(formatted);
+//	JLabel myWelcomeLabel = new JLabel("Welcome!"
+//			+"\nYou are a husky and looking for food in the jungle."
+//			+"\nThere are many rivers block your way during the serching."
+//			+"\nBut luckly, if when you click the river, there will be a trivia question,"
+//			+ "\nif you select the correct answer, you will get a bridge to cross the river,"
+//			+ "\nbut if you select the wrong answer, ahhhhhhhhhh...");
+	JTextArea myWelcomeText;
+	
 	
 	/**
 	 * The constructor.
 	 */
 	public InfoPanel() {
-		setLayout(new BorderLayout());
+		setLayout(new BorderLayout(0, 0));
 		myStarted = false;
 		
 		setStopwatchLabel();
@@ -125,23 +142,41 @@ public class InfoPanel extends JPanel implements ActionListener{
 		setResetButton();
 		layoutResetButton();
 		
+		setWelcomeText();
+		
 		//setup the top panel
 		JPanel topPanel = new JPanel();
 		topPanel.add(myStartButton);
 		topPanel.add(myResetButton);
 		topPanel.add(myStopwatchLabel);
 		//myStopwatchLabel.setVisible(true);
-		topPanel.setBackground(Color.orange);
+		topPanel.setBackground(new Color(255,222,173));
 		
 		//setup the bottom panel
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.add(myHintButton);
 		bottomPanel.add(myKeyButton);
-		bottomPanel.setBackground(Color.orange);
+		bottomPanel.setBackground(new Color(255,222,173));
 		
 		//add the sub panels to info panel.
 		add(topPanel, BorderLayout.NORTH);
 		add(bottomPanel, BorderLayout.SOUTH);
+		add(myWelcomeText, BorderLayout.CENTER);
+	}
+	
+	private void setWelcomeText() {
+		myWelcomeText = new JTextArea("Howooooody!\n\n"
+				+"You are a starving husky looking for num-num in the jungle."
+				+"There are many rivers blocking your way from those paw-licking-good delisiouses."
+				+"Luckly, you have a magic skill learnt from the Woof God, that when you point your paw on a river, the Woof God will ask you a trivia question"
+				+ "If you answer it right, the Woof God will give you a bridge to cross the river."
+				+ "However, if you provide a wrong answer... Muhahahaha...!!", 10,20);
+		myWelcomeText.setForeground(new Color(0,128,0));
+		myWelcomeText.setWrapStyleWord(true);
+		myWelcomeText.setLineWrap(true);
+		myWelcomeText.setBackground(new Color(255,222,173));
+		myWelcomeText.setFont(new Font("Apple Braille", Font.ITALIC, 20));
+		add(myWelcomeText, BorderLayout.CENTER);
 	}
 	
 	/**

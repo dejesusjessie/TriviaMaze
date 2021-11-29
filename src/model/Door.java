@@ -1,4 +1,4 @@
-package maze;
+package model;
 
 // Create Door for each room
 // Condition to pass the door: Locked/Open - Result

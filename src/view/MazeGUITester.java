@@ -6,8 +6,8 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import maze.Maze;
-import maze.MazeBuilder;
+import model.Maze;
+import model.MazeBuilder;
 
 public class MazeGUITester {
 

@@ -1,4 +1,4 @@
-package maze;
+package model;
 
 // Create the room for the Maze
 public class Room {

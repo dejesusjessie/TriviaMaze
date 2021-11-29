@@ -1,4 +1,4 @@
-package maze;
+package model;
 
 import java.awt.Point;
 
