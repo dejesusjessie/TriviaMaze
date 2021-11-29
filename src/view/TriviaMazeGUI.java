@@ -28,7 +28,7 @@ import io.Save;
  * @version Fall 2021
  */
 public class TriviaMazeGUI extends JFrame implements ActionListener {
-	
+
 	/**
 	 * The serial version UID.
 	 */
@@ -38,7 +38,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * The width of the frame.
 	 */
 	private static final int MY_WIDTH = 400;
-	
+
 	/**
 	 * The height of the frame.
 	 */
@@ -48,27 +48,27 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * The title of the frame.
 	 */
 	private static final String MY_TITLE = "Trivia Maze 1.0";
-	
+
 	/**
 	 * The basic Frame.
 	 */
 	public static final JFrame myWindow  = new JFrame();
-	
+
 	/**
 	 * The main panel.
 	 */
 	private static final JPanel MY_MAIN_PANEL = new JPanel(new GridLayout(1, 2));
-	
+
 	/**
 	 * The maze panel.
 	 */
 	private static final MazePanel MY_MAZE_PANEL = new MazePanel();
-	
+
 	/**
 	 * The info panel.
 	 */
 	public static final InfoPanel MY_INFO_PANEL = new InfoPanel();
-	
+
 	/**
 	 * The player panel.
 	 */
@@ -85,22 +85,22 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * The File menu at menu bar.
 	 */
 	private static final JMenu myFileMenu = new JMenu("File");
-	
+
 	/**
 	 * The Help menu at menu bar.
 	 */
 	private static final JMenu helpMenu = new JMenu("Help");
-	
+
 	/**
 	 * The file chooser of loading game.
 	 */
 	private final JFileChooser myFileChooser = new JFileChooser(System.getProperty("user.dir") + "/savedGame");
-	
+
 	/**
 	 * Set a filter that only allow to load .bin file
 	 */
 	final FileNameExtensionFilter fileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
-	
+
 	/**
 	 * Constructor.
 	 * Constructs a new TriviaMazeGui.
@@ -108,17 +108,17 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	public TriviaMazeGUI() {
 		basicWindow();
 	}
-	
+
 //	public TriviaMazeGUI(GameData theGameData) {
 //		basicWindow();
 //	}
-	
-	
+
+
 	/**
 	 * Creating the basic frame and panel.
 	 */
 	public void basicWindow() {
-		
+
 		//Setting the panels.
 		setMazePanel();
 		setInfoPanel();
@@ -130,34 +130,34 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		myWindow.add(MY_MAIN_PANEL);
 		myWindow.setSize(MY_HEIGHT, MY_WIDTH);
 		myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		//setting the title of the window.
 		myWindow.setTitle(MY_TITLE);
 
 		//adding menu bar
 		JMenuBar menuBar = new JMenuBar();
 		myWindow.setJMenuBar(menuBar);
-		
+
 		// adding File menu
 		menuBar.add(myFileMenu);
 		addSaveMenu();
 		addLoadMenu();
 		addExitMenu();
-		
-		//adding Help menu 
+
+		//adding Help menu
 		menuBar.add(helpMenu);
 		addAboutMenu();
 		addInstructionMenu();
 		addCheatsMenu();
-		
+
 		//packing and showing the frame
 		myWindow.pack();
 		myWindow.setVisible(true);
 
 		//prevent the resizable
 		myWindow.setResizable(false);
-	} 
-	
+	}
+
 	/**
 	 * Setting the main panel.
 	 */
@@ -166,7 +166,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		MY_MAIN_PANEL.add(leftPanel, BorderLayout.EAST);
 		MY_MAIN_PANEL.add(MY_MAZE_PANEL, BorderLayout.CENTER);
 	}
-	
+
 	/**
 	 * Setting the maze panel.
 	 */
@@ -177,14 +177,14 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		MY_MAZE_PANEL.setBackground(Color.GRAY);
 		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
 	}
-	
+
 	/**
 	 * Setting the info panel.
 	 */
 	private void setInfoPanel() {
 		MY_INFO_PANEL.setBackground(Color.white);
 	}
-	
+
 	/**
 	 * Setting the room panel.
 	 */
@@ -192,13 +192,13 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		MY_ROOM_PANEL.setBackground(Color.pink);
 
 	}
-	
+
 	/**
-<<<<<<< HEAD
+	 <<<<<<< HEAD
 	 * Setting the left panel.
-=======
+	 =======
 	 * Setting the lest panel.
->>>>>>> refs/remotes/origin/main
+	 >>>>>>> refs/remotes/origin/main
 	 */
 	private void setLeftPanel() {
 		leftPanel.setOpaque(false);
@@ -220,7 +220,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 			}
 		});
 	}
-	
+
 	/**
 	 * Adding the save menu and the action listener.
 	 */
@@ -232,34 +232,34 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String userFileName = JOptionPane.showInputDialog("Enter the file name: ");
-					
-					try {
-						new Save(userFileName);
-					} catch (IOException e2) {
-						// TODO Auto-generated catch block
-						e2.printStackTrace();
-					}
+
+				try {
+					new Save(userFileName);
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 
 			}
 		});
 	}
-	
+
 	/**
 	 * Adding the load menu and the action listener.
 	 */
 	private void addLoadMenu() {
 		JMenuItem loadMenu = new JMenuItem("Load Game");
 		myFileMenu.add(loadMenu);
-		
+
 		//Set only allow to load .bin file
 		myFileChooser.addChoosableFileFilter(fileNameFilter);
 		myFileChooser.setAcceptAllFileFilterUsed(false);
-			
+
 		loadMenu.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				final int selection = myFileChooser.showOpenDialog(null);
 				if(selection == JFileChooser.APPROVE_OPTION) {
 					try {
@@ -272,9 +272,9 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (IOException e1) {
-						JOptionPane.showMessageDialog(null, 
-                                "The selected file did not contain an game record!", 
-                                "Error!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null,
+								"The selected file did not contain an game record!",
+								"Error!", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 
@@ -295,9 +295,9 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Trivia Maze\nVersion 1.0\n");
 			}
 		});
-		
+
 	}
-	
+
 	/**
 	 * Adding the instruction menu and the action listener.
 	 */
@@ -313,7 +313,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 			}
 		});
 	}
-	
+
 	/**
 	 * Adding the cheats menu and the action listener.
 	 */
@@ -324,7 +324,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		cheatsMenu.add(doorKeyMenu);
 		cheatsMenu.add(hinsAngelMenu);
 		helpMenu.add(cheatsMenu);
-		
+
 		doorKeyMenu.addActionListener(new ActionListener() {
 
 			@Override
@@ -332,7 +332,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "needs to be edied");
 			}
 		});
-		
+
 		hinsAngelMenu.addActionListener(new ActionListener() {
 
 			@Override
@@ -341,7 +341,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 			}
 		});
 	}
-	
+
 	public static void reloadGUI(GameData theGameData) {
 		MY_INFO_PANEL.setSystemTime(theGameData.getSystemTime());
 		MY_INFO_PANEL.setGameTime(theGameData.getGameTime());
@@ -351,8 +351,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 
 }

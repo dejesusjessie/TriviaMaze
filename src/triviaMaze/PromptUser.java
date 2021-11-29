@@ -98,8 +98,8 @@ public class PromptUser {
         return String.valueOf(myDirection);
     }
 
-    //Display the trivia question form the database
-    public void displayTriviaQuestion() {
+    //Display the trivia question form the database and return the user answer
+    public String displayTrivia() {
         Trivia currentQuestion = Database.getQuestionList().get(0);
 
         //Display the randomly question form database
@@ -126,12 +126,17 @@ public class PromptUser {
         String myUserAnswer = "";
         System.out.println("Please select your answer ");
         myUserAnswer = myUserInput.nextLine();
+
+
+
         //myAnswer = myUserAnswer.toUpperCase().charAt(0);
         if ( myUserAnswer.equals(currentQuestion.getAnswer())) {
             System.out.println("Your answer is RIGHT!!!");
+            return "Correct";
             //open the door
         } else {
             System.out.println("Your answer is WRONG!! The right answer is " + currentQuestion.getAnswer());
+            return "Wrong";
             //close the door
         }
         //System.out.println("Answer: " + currentQuestion.getAnswer());

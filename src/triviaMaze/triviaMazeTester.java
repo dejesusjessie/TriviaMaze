@@ -9,6 +9,7 @@ public class triviaMazeTester {
 //        displayTriviaQuestionTest();
 //        displayWinningMessageTest();
 //        displayLosingMessageTest();
+        new TriviaMazeGameControl();
     }
 
     private static void displayLosingMessageTest() {
@@ -23,7 +24,7 @@ public class triviaMazeTester {
 
     private static void displayTriviaQuestionTest() {
         PromptUser promptUser = new PromptUser();
-        promptUser.displayTriviaQuestion();
+        promptUser.displayTrivia();
     }
 
     private static void userSelectedDirectionTest() {
