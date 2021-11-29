@@ -2,6 +2,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -153,18 +154,20 @@ public class InfoPanel extends JPanel implements ActionListener{
 		topPanel.setBackground(new Color(255,222,173));
 		
 		//setup the bottom panel
-		JPanel bottomPanel = new JPanel();
-		bottomPanel.add(myHintButton);
-		bottomPanel.add(myKeyButton);
-		bottomPanel.setBackground(new Color(255,222,173));
+//		JPanel bottomPanel = new JPanel();
+//		bottomPanel.add(myHintButton);
+//		bottomPanel.add(myKeyButton);
+//		bottomPanel.setBackground(new Color(255,222,173));
 		
 		//add the sub panels to info panel.
 		add(topPanel, BorderLayout.NORTH);
-		add(bottomPanel, BorderLayout.SOUTH);
+		//add(bottomPanel, BorderLayout.SOUTH);
+		myWelcomeText.setAlignmentX(100);
 		add(myWelcomeText, BorderLayout.CENTER);
 	}
 	
 	private void setWelcomeText() {
+		//setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		myWelcomeText = new JTextArea("Howooooody!\n\n"
 				+"You are a starving husky looking for num-num in the jungle."
 				+"There are many rivers blocking your way from those paw-licking-good delisiouses."
@@ -175,7 +178,7 @@ public class InfoPanel extends JPanel implements ActionListener{
 		myWelcomeText.setWrapStyleWord(true);
 		myWelcomeText.setLineWrap(true);
 		myWelcomeText.setBackground(new Color(255,222,173));
-		myWelcomeText.setFont(new Font("Apple Braille", Font.ITALIC, 20));
+		myWelcomeText.setFont(new Font("Wawati SC", Font.PLAIN, 20));
 		add(myWelcomeText, BorderLayout.CENTER);
 	}
 	
