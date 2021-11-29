@@ -168,17 +168,17 @@ public class InfoPanel extends JPanel implements ActionListener{
 	
 	private void setWelcomeText() {
 		//setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		myWelcomeText = new JTextArea("Howooooody!\n\n"
-				+"You are a starving husky looking for num-num in the jungle."
-				+"There are many rivers blocking your way from those paw-licking-good delisiouses."
-				+"Luckly, you have a magic skill learnt from the Woof God, that when you point your paw on a river, the Woof God will ask you a trivia question"
-				+ "If you answer it right, the Woof God will give you a bridge to cross the river."
-				+ "However, if you provide a wrong answer... Muhahahaha...!!", 10,20);
+		myWelcomeText = new JTextArea("\nHowooooody! \n\n"
+				+"You are a starving husky looking for num-num in the jungle. "
+				+"There are many rivers blocking your way from those paw-licking-good delisiouses. "
+				+"Luckly, you have a magic skill learnt from the Woof God, that when you point your paw on a river, the Woof God will ask you a trivia question. "
+				+ "If you answer it right, the Woof God will give you a bridge to cross the river. "
+				+ "However, if you provide a wrong answer... Muhahahaha...!! ", 10,20);
 		myWelcomeText.setForeground(new Color(0,128,0));
 		myWelcomeText.setWrapStyleWord(true);
 		myWelcomeText.setLineWrap(true);
 		myWelcomeText.setBackground(new Color(255,222,173));
-		myWelcomeText.setFont(new Font("Wawati SC", Font.PLAIN, 20));
+		myWelcomeText.setFont(new Font("Wawati SC", Font.BOLD, 21));
 		add(myWelcomeText, BorderLayout.CENTER);
 	}
 	

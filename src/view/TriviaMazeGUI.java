@@ -197,14 +197,14 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * Setting the info panel.
 	 */
 	private void setInfoPanel() {
-		MY_INFO_PANEL.setBackground(Color.white);
+		//MY_INFO_PANEL.setBackground(Color.white);
 	}
 	
 	/**
 	 * Setting the room panel.
 	 */
 	private void setRoomPanel() {
-		MY_ROOM_PANEL.setBackground(Color.pink);
+		//MY_ROOM_PANEL.setBackground(Color.pink);
 	}
 	
 	/**

@@ -11,7 +11,7 @@ import view.TriviaMazeGUI;
 public class gameRunner {
     MazeBuilder myBuilder;
     Maze myMaze;
-    String myMazeString;
+    static String myMazeString;
 	TriviaMazeGUI myGUI;
 	
 	/**
@@ -32,7 +32,8 @@ public class gameRunner {
 	/**
 	 * Running the a new game.
 	 */
-	private void runGame(){
+	public void runGame(){
+
         Scanner input = new Scanner(System.in);		
         while(!myMaze.reachExit()) {
             System.out.println(myMaze.toString());
@@ -66,5 +67,12 @@ public class gameRunner {
         }
 	}
 	
+	
+	/**
+	 * Return the current status of the game.
+	 */
+	public static String getStatus() {
+		return myMazeString;
+	}
 
 }

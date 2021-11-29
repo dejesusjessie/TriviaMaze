@@ -24,19 +24,25 @@ public class GameData implements Serializable{
 	 */
 	String myGameTime;
 	
+//	/**
+//	 * 
+//	 */
+//	String SystemTime;
+	
 	/**
 	 * 
 	 */
-	String theSystemTime;
+	String myGameStatus;
 	
 	/**
 	 * 
 	 * @param theSystemTime
 	 * @param theGameTime
 	 */
-	public GameData(int theSystemTime, String theGameTime) {
+	public GameData(int theSystemTime, String theGameTime, String theGameStatus) {
 		this.mySystemTime = theSystemTime;
 		this.myGameTime = theGameTime;
+		this.myGameStatus = theGameStatus;
 	}
 	
 	/**
@@ -54,6 +60,15 @@ public class GameData implements Serializable{
 	 */
 	public String getGameTime() {
 		return myGameTime;
+		
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String getGameStatus() {
+		return myGameStatus;
 		
 	}
 

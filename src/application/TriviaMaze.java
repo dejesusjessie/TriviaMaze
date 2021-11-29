@@ -3,7 +3,7 @@ package application;
 
 import java.io.IOException;
 import model.gameRunner;
-import view.InitialGUI;
+import view.IniMaze;
 import view.TriviaMazeGUI;
 
 /**
@@ -23,9 +23,9 @@ public class TriviaMaze {
 //		new gameRunner(myBuilder, myMaze, myMazeString, myGUI);
 		
         //Version 2
-        InitialGUI myInitialGUI = new InitialGUI();
-		new gameRunner(myInitialGUI.getBuilder(), myInitialGUI.getMaze(), 
-				myInitialGUI.getString(), myInitialGUI.getGUI());
+        IniMaze myIniMaze = IniMaze.getInstance();
+		new gameRunner(myIniMaze.getBuilder(), myIniMaze.getMaze(), 
+				myIniMaze.getString(), myIniMaze.getGUI());
 
 		
 //		javax.swing.SwingUtilities.invokeLater(new Runnable() {

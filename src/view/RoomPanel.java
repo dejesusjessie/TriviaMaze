@@ -75,7 +75,7 @@ public class RoomPanel extends JPanel {
 
 
 		add(myRightPanel);
-		myRightPanel.setBackground(Color.GREEN);
+		myRightPanel.setBackground(new Color(255,222,173));
 
 
 
