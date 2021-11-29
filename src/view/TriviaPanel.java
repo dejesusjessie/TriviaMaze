@@ -4,122 +4,66 @@ package view;
 import io.Database;
 import io.Trivia;
 import javax.swing.*;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Objects;
 
 
-public class TriviaPanel extends JPanel implements ActionListener {
+public class TriviaPanel extends JPanel {
 
-    private Trivia myTrivia;
-    private String MY_QUESTION;
-    private String MY_ANSWER;
-    private String[] MY_OPTIONS;
-    private final JTextPane questionPane;
-    private final ButtonGroup multipleQuestionGroup, trueFalseQuestionGroup;
-    private final JRadioButton optionA, optionB, optionC, optionD, trueOption, falseOption;
-    private final JButton submitButton;
-   
+    protected static final Trivia myTrivia = Database.getQuestionList().get(0);
+    protected static final String MY_QUESTION = myTrivia.getQuestion();
+    protected static final String MY_ANSWER = myTrivia.getAnswer();
+    protected static final String[] MY_OPTIONS = myTrivia.getOptions();
+
+    private final JPanel myTriviaDisplayPanel;
+
+    private final QuestionDisplayPanel myQuestionDisplayPanel;
+    private final OptionDisplayPanel myOptionDisplayPanel;
+    private final SubmitDisplayPanel mySubmitDisplayPanel;
+
+    private static ImageIcon blueNorthWallImg = new ImageIcon("src/image/blueWallNorth.png");
+    private static ImageIcon blueSouthWallImg = new ImageIcon("src/image/blueWallSouth.png");
+    private static ImageIcon blueEastWallImg = new ImageIcon("src/image/blueWallEast.png");
+    private static ImageIcon blueWestWallImg = new ImageIcon("src/image/blueWallWest.png");
+
+    private static JLabel myNorthWall = new JLabel(blueNorthWallImg);
+    private static JLabel mySouthWall = new JLabel(blueSouthWallImg);
+    private static JLabel myEastWall = new JLabel(blueEastWallImg);
+    private static JLabel myWestWall = new JLabel(blueWestWallImg);
+
+
+
+
 
     public TriviaPanel(){
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(Color.white);
-        this.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
-        questionPane = new JTextPane();
-        multipleQuestionGroup = new ButtonGroup();
-        optionA = new JRadioButton();
-        optionB = new JRadioButton();
-        optionC = new JRadioButton();
-        optionD = new JRadioButton();
-        trueFalseQuestionGroup = new ButtonGroup();
-        trueOption = new JRadioButton();
-        falseOption = new JRadioButton();
-        submitButton = new JButton("Submit");
-        getNextTrivia();
+        this.setLayout(new BorderLayout());
+        this.add(myNorthWall,BorderLayout.NORTH);
+        this.add(mySouthWall,BorderLayout.SOUTH);
+        this.add(myEastWall,BorderLayout.EAST);
+        this.add(myWestWall,BorderLayout.WEST);
 
+        //setTriviaDisplayPanel
+        myTriviaDisplayPanel = new JPanel();
+        myTriviaDisplayPanel.setBackground(Color.WHITE);
+        myTriviaDisplayPanel.setLayout(new BorderLayout());
+        myTriviaDisplayPanel.setPreferredSize(new Dimension(100,25));
+        this.add(myTriviaDisplayPanel, BorderLayout.CENTER);
 
-    }
-    public void getNextTrivia(){
-        myTrivia = Database.getQuestionList().get(0);
-        MY_QUESTION = myTrivia.getQuestion();
-        MY_ANSWER = myTrivia.getAnswer();
-        MY_OPTIONS = myTrivia.getOptions();
-        this.add(questionPane);
-        displayQuestion();
-        displayOptions();
-        submitButton.addActionListener(this);
-        this.add(submitButton);
-    }
-    private void displayQuestion() {
-        questionPane.setText(MY_QUESTION);
-        //questionPane.setBounds(70,30,230,75);
-        questionPane.setEditable(false);
-        StyledDocument doc = questionPane.getStyledDocument();
-        SimpleAttributeSet center = new SimpleAttributeSet();
-        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
-        doc.setParagraphAttributes(0, doc.getLength(), center, false);
-        //Resource: //https://pretagteam.com/question/centering-text-in-a-jtextarea-or-jtextpane-horizontal-text-alignment
-    }
-    private void displayOptions(){
+        myQuestionDisplayPanel = new QuestionDisplayPanel();
+        myTriviaDisplayPanel.add(myQuestionDisplayPanel, BorderLayout.CENTER);
 
-        switch (myTrivia.getType()) {
-            case "MULTIPLE_CHOICE" -> {
-                optionA.setText(MY_OPTIONS[0]);
-                optionB.setText(MY_OPTIONS[1]);
-                optionC.setText(MY_OPTIONS[2]);
-                optionD.setText(MY_OPTIONS[3]);
-                optionA.setActionCommand("A");
-                optionB.setActionCommand("B");
-                optionC.setActionCommand("C");
-                optionD.setActionCommand("D");
-                multipleQuestionGroup.add(optionA);
-                multipleQuestionGroup.add(optionB);
-                multipleQuestionGroup.add(optionC);
-                multipleQuestionGroup.add(optionD);
-                this.add(optionA);
-                this.add(optionB);
-                this.add(optionC);
-                this.add(optionD);
-            }
-            case "TRUE_FALSE" -> {
-                trueOption.setText(MY_OPTIONS[0]);
-                falseOption.setText(MY_OPTIONS[1]);
-                trueOption.setActionCommand(MY_OPTIONS[0]);
-                falseOption.setActionCommand(MY_OPTIONS[1]);
-                trueFalseQuestionGroup.add(trueOption);
-                trueFalseQuestionGroup.add(falseOption);
-                this.add(trueOption);
-                this.add(falseOption);
-            }
-        }
+        myOptionDisplayPanel = new OptionDisplayPanel();
+        mySubmitDisplayPanel = new SubmitDisplayPanel();
+        myTriviaDisplayPanel.add(mySubmitDisplayPanel);
+
+        myTriviaDisplayPanel.add(myQuestionDisplayPanel,BorderLayout.NORTH);
+        myTriviaDisplayPanel.add(myOptionDisplayPanel,BorderLayout.CENTER);
+        myTriviaDisplayPanel.add(mySubmitDisplayPanel, BorderLayout.SOUTH);
 
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
-        if(e.getSource() == submitButton) {
-            String currentSelection = null;
-        try {
-            switch (myTrivia.getType()) {
-                case "MULTIPLE_CHOICE" -> currentSelection = multipleQuestionGroup.getSelection().getActionCommand();
-                case "TRUE_FALSE" -> currentSelection = trueFalseQuestionGroup.getSelection().getActionCommand();
-            }
-            if(Objects.equals(currentSelection, MY_ANSWER)){
-                JOptionPane.showMessageDialog(this, "CORRECT!");
-            } else{
-                JOptionPane.showMessageDialog(this, "INCORRECT!");
-            }
+    private void setBorders(){}
+    private void setTriviaDisplayPanel(){}
 
-        } catch (NullPointerException ex){
-            JOptionPane.showMessageDialog(this, "Select one of the following!");
-        }
 
-        }
-
-    }
 }
 
