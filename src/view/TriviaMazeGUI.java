@@ -2,16 +2,12 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -32,7 +28,7 @@ import io.Save;
  * @version Fall 2021
  */
 public class TriviaMazeGUI extends JFrame implements ActionListener {
-	
+
 	/**
 	 * The serial version UID.
 	 */
@@ -41,42 +37,42 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * The width of the frame.
 	 */
-	private static final int MY_WIDTH = 1280;
-	
+	private static final int MY_WIDTH = 400;
+
 	/**
 	 * The height of the frame.
 	 */
-	private static final int MY_HEIGHT = 1360;
+	private static final int MY_HEIGHT = 350;
 
 	/**
 	 * The title of the frame.
 	 */
 	private static final String MY_TITLE = "Trivia Maze 1.0";
-	
+
 	/**
 	 * The basic Frame.
 	 */
 	public static final JFrame myWindow  = new JFrame();
-	
+
 	/**
 	 * The main panel.
 	 */
 	private static final JPanel MY_MAIN_PANEL = new JPanel(new GridLayout(1, 2));
-	
+
 	/**
 	 * The maze panel.
 	 */
-	//private static final MazePanel MY_MAZE_PANEL = new MazePanel(MY_WIDTH, MY_HEIGHT);	
-	private final MazePanel MY_MAZE_PANEL;
+	private static final MazePanel MY_MAZE_PANEL = new MazePanel();
+
 	/**
 	 * The info panel.
 	 */
 	public static final InfoPanel MY_INFO_PANEL = new InfoPanel();
-	
+
 	/**
 	 * The player panel.
 	 */
-	private static PlayerPanel MY_PLAYER_PANEL = new PlayerPanel();
+	private static RoomPanel MY_ROOM_PANEL = new RoomPanel();
 
 
 	/**
@@ -89,49 +85,40 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * The File menu at menu bar.
 	 */
 	private static final JMenu myFileMenu = new JMenu("File");
-	
+
 	/**
 	 * The Help menu at menu bar.
 	 */
 	private static final JMenu helpMenu = new JMenu("Help");
-	
+
 	/**
 	 * The file chooser of loading game.
 	 */
 	private final JFileChooser myFileChooser = new JFileChooser(System.getProperty("user.dir") + "/savedGame");
-	
+
 	/**
 	 * Set a filter that only allow to load .bin file
 	 */
 	final FileNameExtensionFilter fileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
-	
-	String myDir = System.getProperty("user.dir");
-	BufferedImage myHusky = ImageIO.read(new File(myDir + "/src/image/husky.png"));
-	
-	//MazeGraphic mg = new MazeGraphic(1000, 1000);
-	
+
 	/**
 	 * Constructor.
 	 * Constructs a new TriviaMazeGui.
-	 * @throws IOException 
 	 */
-	public TriviaMazeGUI(String theMaze) throws IOException {
-		MY_MAZE_PANEL = new MazePanel(theMaze);
-		basicWindow(theMaze);
+	public TriviaMazeGUI() {
+		basicWindow();
 	}
-	
+
 //	public TriviaMazeGUI(GameData theGameData) {
 //		basicWindow();
 //	}
-	
-	
+
+
 	/**
 	 * Creating the basic frame and panel.
-	 * @throws IOException 
 	 */
-	public void basicWindow(String theMaze) throws IOException {
+	public void basicWindow() {
 
-		
 		//Setting the panels.
 		setMazePanel();
 		setInfoPanel();
@@ -142,90 +129,81 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		//Basic setting of the window.
 		myWindow.add(MY_MAIN_PANEL);
 		myWindow.setSize(MY_HEIGHT, MY_WIDTH);
-		myWindow.setPreferredSize(new Dimension(MY_HEIGHT, MY_WIDTH));
-		//myWindow.setResizable(false);
 		myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		//setting the title of the window.
 		myWindow.setTitle(MY_TITLE);
 
 		//adding menu bar
 		JMenuBar menuBar = new JMenuBar();
 		myWindow.setJMenuBar(menuBar);
-		
+
 		// adding File menu
 		menuBar.add(myFileMenu);
 		addSaveMenu();
 		addLoadMenu();
 		addExitMenu();
-		
-		//adding Help menu 
+
+		//adding Help menu
 		menuBar.add(helpMenu);
 		addAboutMenu();
 		addInstructionMenu();
 		addCheatsMenu();
-		
+
 		//packing and showing the frame
 		myWindow.pack();
 		myWindow.setVisible(true);
 
-
 		//prevent the resizable
 		myWindow.setResizable(false);
+	}
 
-	} 
-	
 	/**
 	 * Setting the main panel.
 	 */
 	private void setMainPanel() {
-		//MY_MAIN_PANEL.setBackground(new Color(255,248,220));
-		MY_MAIN_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
+		MY_MAIN_PANEL.setBackground(Color.black);
 		MY_MAIN_PANEL.add(leftPanel, BorderLayout.EAST);
 		MY_MAIN_PANEL.add(MY_MAZE_PANEL, BorderLayout.CENTER);
-		//mg.setSize(MY_WIDTH/2, MY_HEIGHT/2);
-		//MY_MAIN_PANEL.add(mg, BorderLayout.CENTER);
 	}
-	
+
 	/**
 	 * Setting the maze panel.
-	 * @throws IOException 
 	 */
-	private void setMazePanel() throws IOException {
-//		MY_MAZE_PANEL.setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT/2, MY_WIDTH/2, MY_HEIGHT/2, MY_WIDTH/2));
-//		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
-//		MY_MAZE_PANEL.setLayout(new BorderLayout(1, 1));
-//		//MY_MAZE_PANEL.setBackground(Color.black);
-//		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
-//		//MY_MAZE_PANEL.add(new MazeGraphic(50,50));
+	private void setMazePanel() {
+		MY_MAZE_PANEL.setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT, MY_WIDTH, MY_HEIGHT, MY_WIDTH));
+		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
+		MY_MAZE_PANEL.setLayout(new BorderLayout(1, 1));
+		MY_MAZE_PANEL.setBackground(Color.GRAY);
+		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
 	}
-	
+
 	/**
 	 * Setting the info panel.
 	 */
 	private void setInfoPanel() {
 		MY_INFO_PANEL.setBackground(Color.white);
 	}
-	
+
 	/**
 	 * Setting the room panel.
 	 */
 	private void setRoomPanel() {
-		MY_PLAYER_PANEL.setBackground(Color.pink);
+		MY_ROOM_PANEL.setBackground(Color.pink);
+
 	}
-	
+
 	/**
-<<<<<<< HEAD
+	 <<<<<<< HEAD
 	 * Setting the left panel.
-=======
+	 =======
 	 * Setting the lest panel.
->>>>>>> refs/remotes/origin/main
+	 >>>>>>> refs/remotes/origin/main
 	 */
 	private void setLeftPanel() {
 		leftPanel.setOpaque(false);
 		leftPanel.add(MY_INFO_PANEL);
-		leftPanel.add(MY_PLAYER_PANEL);
-		leftPanel.setSize(MY_WIDTH/2, MY_HEIGHT);
+		leftPanel.add(MY_ROOM_PANEL);
 	}
 
 	/**
@@ -242,7 +220,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 			}
 		});
 	}
-	
+
 	/**
 	 * Adding the save menu and the action listener.
 	 */
@@ -254,34 +232,34 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String userFileName = JOptionPane.showInputDialog("Enter the file name: ");
-					
-					try {
-						new Save(userFileName);
-					} catch (IOException e2) {
-						// TODO Auto-generated catch block
-						e2.printStackTrace();
-					}
+
+				try {
+					new Save(userFileName);
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 
 			}
 		});
 	}
-	
+
 	/**
 	 * Adding the load menu and the action listener.
 	 */
 	private void addLoadMenu() {
 		JMenuItem loadMenu = new JMenuItem("Load Game");
 		myFileMenu.add(loadMenu);
-		
+
 		//Set only allow to load .bin file
 		myFileChooser.addChoosableFileFilter(fileNameFilter);
 		myFileChooser.setAcceptAllFileFilterUsed(false);
-			
+
 		loadMenu.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				final int selection = myFileChooser.showOpenDialog(null);
 				if(selection == JFileChooser.APPROVE_OPTION) {
 					try {
@@ -294,9 +272,9 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (IOException e1) {
-						JOptionPane.showMessageDialog(null, 
-                                "The selected file did not contain an game record!", 
-                                "Error!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null,
+								"The selected file did not contain an game record!",
+								"Error!", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 
@@ -317,9 +295,9 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Trivia Maze\nVersion 1.0\n");
 			}
 		});
-		
+
 	}
-	
+
 	/**
 	 * Adding the instruction menu and the action listener.
 	 */
@@ -335,7 +313,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 			}
 		});
 	}
-	
+
 	/**
 	 * Adding the cheats menu and the action listener.
 	 */
@@ -346,7 +324,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		cheatsMenu.add(doorKeyMenu);
 		cheatsMenu.add(hinsAngelMenu);
 		helpMenu.add(cheatsMenu);
-		
+
 		doorKeyMenu.addActionListener(new ActionListener() {
 
 			@Override
@@ -354,7 +332,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "needs to be edied");
 			}
 		});
-		
+
 		hinsAngelMenu.addActionListener(new ActionListener() {
 
 			@Override
@@ -363,27 +341,18 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 			}
 		});
 	}
-	
+
 	public static void reloadGUI(GameData theGameData) {
 		MY_INFO_PANEL.setSystemTime(theGameData.getSystemTime());
 		MY_INFO_PANEL.setGameTime(theGameData.getGameTime());
 
-
-
 	}
-	
-	public void repaintMaze(String theString) {
-		MY_MAZE_PANEL.setMaze(theString);
-	}
-	
-	
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 
 }
