@@ -72,6 +72,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * The player panel.
 	 */
+	//private static PlayerPanel MY_PLAYER_PANEL = new PlayerPanel();
 	private static RoomPanel MY_ROOM_PANEL = new RoomPanel();
 
 
@@ -189,6 +190,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * Setting the room panel.
 	 */
 	private void setRoomPanel() {
+		//MY_PLAYER_PANEL.setBackground(Color.pink);
 		MY_ROOM_PANEL.setBackground(Color.pink);
 
 	}
@@ -203,6 +205,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	private void setLeftPanel() {
 		leftPanel.setOpaque(false);
 		leftPanel.add(MY_INFO_PANEL);
+		//leftPanel.add(MY_PLAYER_PANEL);
 		leftPanel.add(MY_ROOM_PANEL);
 	}
 

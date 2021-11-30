@@ -53,7 +53,7 @@ public class RoomPanel extends JPanel {
 		add(myLeftPanel, BorderLayout.WEST);
 
 		myLeftPanel.setPreferredSize(new Dimension(300,100));
-		myLeftPanel.setBackground(Color.BLUE);
+		myLeftPanel.setBackground(new Color(255,222,173));
 		myLeftPanel.setBorder(new EmptyBorder(10,10,10,10));
 		myLeftPanel.setLayout(new BorderLayout());
 		myLeftPanel.add(myCurrentRoom, BorderLayout.NORTH);
@@ -74,8 +74,12 @@ public class RoomPanel extends JPanel {
 		myRoomDisplay.add(myAvatar, BorderLayout.CENTER);
 
 
-		add(myRightPanel);
-		myRightPanel.setBackground(Color.GREEN);
+
+		//add(myRightPanel);
+		TriviaPanel triviaPanel = new TriviaPanel();
+		add(triviaPanel);
+
+
 
 
 
