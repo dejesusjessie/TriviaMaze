@@ -204,11 +204,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * Setting the room panel.
 	 */
 	private void setRoomPanel() {
-<<<<<<< HEAD
-		MY_PLAYER_PANEL.setBackground(Color.pink);
-=======
+
 		//MY_ROOM_PANEL.setBackground(Color.pink);
->>>>>>> 4b5c7299fe2e36a0b67813560d41543dac1e24d1
 	}
 	
 	/**
@@ -361,10 +358,6 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	public static void reloadGUI(GameData theGameData) {
 		MY_INFO_PANEL.setSystemTime(theGameData.getSystemTime());
 		MY_INFO_PANEL.setGameTime(theGameData.getGameTime());
-<<<<<<< HEAD
-=======
-		
->>>>>>> 4b5c7299fe2e36a0b67813560d41543dac1e24d1
 	}
 	
 	public void repaintMaze(String theString) {

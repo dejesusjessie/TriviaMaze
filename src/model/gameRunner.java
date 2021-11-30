@@ -1,12 +1,12 @@
 package model;
-<<<<<<< HEAD
-import java.util.Scanner;
-=======
-import java.io.IOException;
+
 import java.util.Scanner;
 
+import java.io.IOException;
+
+
 import view.IniMaze;
->>>>>>> 4b5c7299fe2e36a0b67813560d41543dac1e24d1
+
 import view.TriviaMazeGUI;
 
 /**
@@ -15,27 +15,7 @@ import view.TriviaMazeGUI;
  * @author Codi Chun, Kannika Armstrong
  * @version Fall 2021
  */
-<<<<<<< HEAD
-public class gameRunner {
-    MazeBuilder myBuilder;
-    Maze myMaze;
-    String myMazeString;
-	TriviaMazeGUI myGUI;
-	
-	/**
-	 * Constructor.
-	 * @param theBuilder
-	 * @param theMaze
-	 * @param theMazeString
-	 * @param theGame
-	 */
-	public gameRunner(MazeBuilder theBuilder, Maze theMaze, String theMazeString, TriviaMazeGUI theGame){
-        myBuilder = theBuilder;
-        myMaze = theMaze;
-        myMazeString = theMazeString;
-		myGUI = theGame;
-		runGame();
-=======
+
 public class GameRunner {
 	
 	private static GameRunner myInstance = null;
@@ -94,18 +74,13 @@ public class GameRunner {
 	
 	public TriviaMazeGUI getGUI() {
 		return myGUI;
->>>>>>> 4b5c7299fe2e36a0b67813560d41543dac1e24d1
 	}
 	
 	/**
 	 * Running the a new game.
 	 */
-<<<<<<< HEAD
-	private void runGame(){
-=======
-	public void runGame(){
 
->>>>>>> 4b5c7299fe2e36a0b67813560d41543dac1e24d1
+	public void runGame(){
         Scanner input = new Scanner(System.in);		
         while(!myMaze.reachExit()) {
             System.out.println(myMaze.toString());
@@ -139,8 +114,6 @@ public class GameRunner {
         }
 	}
 	
-<<<<<<< HEAD
-=======
 	
 	/**
 	 * Return the current status of the game.
@@ -156,6 +129,5 @@ public class GameRunner {
 		myMazeString = theString;
 		myGUI.repaintMaze(myMazeString);
 	}
->>>>>>> 4b5c7299fe2e36a0b67813560d41543dac1e24d1
 
 }

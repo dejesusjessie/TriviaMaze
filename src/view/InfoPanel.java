@@ -2,12 +2,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-<<<<<<< HEAD
-=======
-import java.awt.FlowLayout;
->>>>>>> 4b5c7299fe2e36a0b67813560d41543dac1e24d1
 import java.awt.Font;
-import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -163,16 +158,6 @@ public class InfoPanel extends JPanel implements ActionListener{
 		topPanel.setBackground(new Color(255,222,173));
 		
 		//setup the bottom panel
-<<<<<<< HEAD
-		JPanel bottomPanel = new JPanel();
-		bottomPanel.add(myHintButton);
-		bottomPanel.add(myKeyButton);
-		bottomPanel.setBackground(new Color(255,222,173));
-		
-		//add the sub panels to info panel.
-		add(topPanel, BorderLayout.NORTH);
-		add(bottomPanel, BorderLayout.SOUTH);
-=======
 //		JPanel bottomPanel = new JPanel();
 //		bottomPanel.add(myHintButton);
 //		bottomPanel.add(myKeyButton);
@@ -182,19 +167,10 @@ public class InfoPanel extends JPanel implements ActionListener{
 		add(topPanel, BorderLayout.NORTH);
 		//add(bottomPanel, BorderLayout.SOUTH);
 		myWelcomeText.setAlignmentX(100);
->>>>>>> 4b5c7299fe2e36a0b67813560d41543dac1e24d1
 		add(myWelcomeText, BorderLayout.CENTER);
 	}
 	
 	private void setWelcomeText() {
-<<<<<<< HEAD
-		myWelcomeText = new JTextArea("Howooooody!\n\n"
-				+"You are a starving husky looking for num-num in the jungle."
-				+"There are many rivers blocking your way from those paw-licking-good delisiouses."
-				+"Luckly, you have a magic skill learnt from the Woof God, that when you point your paw on a river, the Woof God will ask you a trivia question"
-				+ "If you answer it right, the Woof God will give you a bridge to cross the river."
-				+ "However, if you provide a wrong answer... Muhahahaha...!!", 10,20);
-=======
 		//setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		myWelcomeText = new JTextArea("\nHowooooody! \n\n"
 				+"You are a starving husky looking for num-num in the jungle. "
@@ -202,16 +178,11 @@ public class InfoPanel extends JPanel implements ActionListener{
 				+"Luckly, you have a magic skill learnt from the Woof God, that when you point your paw on a river, the Woof God will ask you a trivia question. "
 				+ "If you answer it right, the Woof God will give you a bridge to cross the river. "
 				+ "However, if you provide a wrong answer... Muhahahaha...!! ", 10,20);
->>>>>>> 4b5c7299fe2e36a0b67813560d41543dac1e24d1
 		myWelcomeText.setForeground(new Color(0,128,0));
 		myWelcomeText.setWrapStyleWord(true);
 		myWelcomeText.setLineWrap(true);
 		myWelcomeText.setBackground(new Color(255,222,173));
-<<<<<<< HEAD
-		myWelcomeText.setFont(new Font("Apple Braille", Font.ITALIC, 20));
-=======
 		myWelcomeText.setFont(new Font("Wawati SC", Font.BOLD, 21));
->>>>>>> 4b5c7299fe2e36a0b67813560d41543dac1e24d1
 		add(myWelcomeText, BorderLayout.CENTER);
 	}
 	

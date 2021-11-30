@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 
-import model.GameRunner;
+
 import model.Maze;
 import model.MazeBuilder;
 import view.InfoPanel;
