@@ -78,6 +78,8 @@ public class RoomPanel extends JPanel {
 		//add(myRightPanel);
 		TriviaPanel triviaPanel = new TriviaPanel();
 		add(triviaPanel);
+		triviaPanel.setBackground(new Color(255,222,173));
+		triviaPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 
 
 
