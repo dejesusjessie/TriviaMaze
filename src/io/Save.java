@@ -8,6 +8,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.URL;
 
+import model.GameRunner;
+
 import view.InfoPanel;
 
 /**
@@ -35,6 +37,11 @@ public class Save implements Serializable{
 	/**
 	 * 
 	 */
+	private String myGameStatus;
+	
+	/**
+	 * 
+	 */
 	GameData myGameData;
 	
 	/**
@@ -47,6 +54,8 @@ public class Save implements Serializable{
 	 */
 	File mySaveFolder = new File(myDir + "/savedGame");
 	
+	GameRunner myGameRunner;
+	
 	/**
 	 * The constructor.
 	 * @param theFileName
@@ -56,7 +65,9 @@ public class Save implements Serializable{
 	public Save(String theFileName) throws FileNotFoundException, IOException {
 		this.myGameTime = InfoPanel.getGameTime();
 		this.mySystemTime = InfoPanel.getSystemTime();
-		myGameData = new GameData(mySystemTime, myGameTime);
+		this.myGameStatus = GameRunner.getStatus();
+		this.myGameRunner = GameRunner.getInstance();
+		myGameData = new GameData(mySystemTime, myGameTime, myGameStatus, myGameRunner);
 		generateFile(theFileName);
 
 	}

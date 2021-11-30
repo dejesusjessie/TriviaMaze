@@ -7,7 +7,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 
+import model.GameRunner;
+import model.Maze;
+import model.MazeBuilder;
 import view.InfoPanel;
+import view.IniMaze;
 import view.TriviaMazeGUI;
 
 /**
@@ -61,9 +65,18 @@ public class Load implements Serializable {
 //		Object loadGame = loadGameStream.readObject();
 //		System.out.println(loadGame);
 		GameData myGameData = (GameData) loadGameStream.readObject();
-		TriviaMazeGUI.reloadGUI(myGameData);
+//		TriviaMazeGUI.reloadGUI(myGameData);
+//		
+//        IniMaze myIniMaze = IniMaze.getInstance();
 		
-		
+//        gameRunner myGameRunner = gameRunner.getInstance();
+//        myGameRunner.loadGame(myGameData.getGameStatus());
+        //myGameRunner.runGame();
+		IniMaze myIniMaze = IniMaze.getInstance();
+		//TriviaMazeGUI myGUI = myIniMaze.getGUI();
+		myIniMaze.setMazeString(myGameData.myGameStatus);
+		myIniMaze.getGUI().repaintMaze(myGameData.myGameStatus);
+	
 		
 		System.out.println(myGameData.myGameTime);
 		

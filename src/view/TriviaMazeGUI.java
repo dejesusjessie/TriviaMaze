@@ -197,14 +197,18 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * Setting the info panel.
 	 */
 	private void setInfoPanel() {
-		MY_INFO_PANEL.setBackground(Color.white);
+		//MY_INFO_PANEL.setBackground(Color.white);
 	}
 	
 	/**
 	 * Setting the room panel.
 	 */
 	private void setRoomPanel() {
+<<<<<<< HEAD
 		MY_PLAYER_PANEL.setBackground(Color.pink);
+=======
+		//MY_ROOM_PANEL.setBackground(Color.pink);
+>>>>>>> 4b5c7299fe2e36a0b67813560d41543dac1e24d1
 	}
 	
 	/**
@@ -331,8 +335,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	private void addCheatsMenu() {
 		JMenu cheatsMenu = new JMenu("Cheats");
-		JMenuItem doorKeyMenu = new JMenuItem("Door Key");
-		JMenuItem hinsAngelMenu = new JMenuItem("Hins Angel");
+		JMenuItem doorKeyMenu = new JMenuItem("Bridge");
+		JMenuItem hinsAngelMenu = new JMenuItem("Hins");
 		cheatsMenu.add(doorKeyMenu);
 		cheatsMenu.add(hinsAngelMenu);
 		helpMenu.add(cheatsMenu);
@@ -357,6 +361,10 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	public static void reloadGUI(GameData theGameData) {
 		MY_INFO_PANEL.setSystemTime(theGameData.getSystemTime());
 		MY_INFO_PANEL.setGameTime(theGameData.getGameTime());
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 4b5c7299fe2e36a0b67813560d41543dac1e24d1
 	}
 	
 	public void repaintMaze(String theString) {
