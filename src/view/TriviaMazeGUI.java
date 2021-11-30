@@ -108,7 +108,6 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	String myDir = System.getProperty("user.dir");
 	BufferedImage myHusky = ImageIO.read(new File(myDir + "/src/image/husky.png"));
 	
-	//MazeGraphic mg = new MazeGraphic(1000, 1000);
 	
 	/**
 	 * Constructor.
@@ -133,7 +132,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 
 		
 		//Setting the panels.
-		setMazePanel();
+		//setMazePanel();
 		setInfoPanel();
 		setRoomPanel();
 		setLeftPanel();
@@ -192,12 +191,6 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * @throws IOException 
 	 */
 	private void setMazePanel() throws IOException {
-//		MY_MAZE_PANEL.setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT/2, MY_WIDTH/2, MY_HEIGHT/2, MY_WIDTH/2));
-//		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
-//		MY_MAZE_PANEL.setLayout(new BorderLayout(1, 1));
-//		//MY_MAZE_PANEL.setBackground(Color.black);
-//		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
-//		//MY_MAZE_PANEL.add(new MazeGraphic(50,50));
 	}
 	
 	/**
@@ -215,11 +208,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	}
 	
 	/**
-<<<<<<< HEAD
-	 * Setting the left panel.
-=======
-	 * Setting the lest panel.
->>>>>>> refs/remotes/origin/main
+	 * 
 	 */
 	private void setLeftPanel() {
 		leftPanel.setOpaque(false);
@@ -330,7 +319,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "1. For moving to another room, you need to open a door."
+				JOptionPane.showMessageDialog(null, ","
+						+"\n1. For moving to another room, you need to open a door."
 						+"\n2. You need to selecte the correct answer to open a door, otherwise, the door closes forever.");
 			}
 		});
@@ -367,9 +357,6 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	public static void reloadGUI(GameData theGameData) {
 		MY_INFO_PANEL.setSystemTime(theGameData.getSystemTime());
 		MY_INFO_PANEL.setGameTime(theGameData.getGameTime());
-
-
-
 	}
 	
 	public void repaintMaze(String theString) {

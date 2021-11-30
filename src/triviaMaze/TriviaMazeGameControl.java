@@ -2,8 +2,8 @@ package triviaMaze;
 
 // Not finished yet
 import io.Trivia;
-import maze.Maze;
-import maze.Room;
+import model.Maze;
+import model.Room;
 
 public class TriviaMazeGameControl {
 
