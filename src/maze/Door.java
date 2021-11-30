@@ -48,4 +48,8 @@ public class Door {
         }
         return !this.locked;
     }
+
+    public boolean isWall() {
+        return this.locked;
+    }
 }

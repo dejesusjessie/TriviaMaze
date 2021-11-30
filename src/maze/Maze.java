@@ -103,8 +103,9 @@ public class Maze {
         if(currentRoom.getNorthDoor().canEnter()) { // If canEnter to the north room
             this.row--;
             if(this.row < 0) {
-                this.row = 0; // make sure that the player cannot move through the wall
-                System.out.println("This is the wall! Please try the other way.");
+                this.row = this.rooms.length - 1;
+                //this.row = 0; // make sure that the player cannot move through the wall
+                //System.out.println("This is the wall! Please try the other way.");
             }
             //currentRoom.getNorthDoor().lock();
         } else {
@@ -118,8 +119,9 @@ public class Maze {
         if(currentRoom.getSouthDoor().canEnter()) { // If canEnter to the south room
             this.row++;
             if (this.row >= this.rooms.length) {
-                this.row = this.rooms.length - 1; // make sure that the player cannot move through the wall
-                System.out.println("This is the wall! Please try the other way.");
+                this.row = 0;
+                //this.row = this.rooms.length - 1; // make sure that the player cannot move through the wall
+                //System.out.println("This is the wall! Please try the other way.");
             }
             //currentRoom.getSouthDoor().lock();
         } else {
@@ -133,8 +135,9 @@ public class Maze {
         if(currentRoom.getEastDoor().canEnter()) { // If canEnter to the east room
             this.column++;
             if(this.column >= this.rooms.length) {
-                this.column = this.rooms.length - 1; // make sure that the player cannot move through the wall
-                System.out.println("This is the wall! Please try the other way.");
+                this.column = 0;
+                //this.column = this.rooms.length - 1; // make sure that the player cannot move through the wall
+                //System.out.println("This is the wall! Please try the other way.");
             }
             //currentRoom.getEastDoor().lock();
         } else {
@@ -148,8 +151,9 @@ public class Maze {
         if(curRoom.getWestDoor().canEnter()) { // If canEnter to the west room
             this.column--;
             if (this.column <= 0) {
-                this.column = 0; // make sure that the player cannot move through the wall
-                System.out.println("This is the wall! Please try the other way.");
+                this.column = this.rooms.length - 1;
+                //this.column = 0; // make sure that the player cannot move through the wall
+                //System.out.println("This is the wall! Please try the other way.");
             }
             //curRoom.getWestDoor().lock();
         }else {
@@ -194,10 +198,19 @@ public class Maze {
             return;
         }
         // set all direction around current position
-        int northRow = row - 1;
-        int southRow = row + 1;
-        int eastColumn = column + 1;
-        int westColumn = column - 1;
+        int northRow = row - 1, northColumn = column,
+                southRow = row + 1, southColumn = column,
+                eastRow = row, eastColumn = column + 1,
+                westRow = row, westColumn = column - 1;
+
+        if(northRow < 0)
+            northRow = this.dimension -1;
+        if(southRow >= this.dimension)
+            southRow = 0;
+        if(eastColumn >= this.dimension)
+            eastColumn = 0;
+        if(westColumn < 0)
+            westColumn = this.dimension -1;
 
         // Traversal helper
         if(!currentRoom.getNorthDoor().isLocked() && !mazeGrid[northRow][column]) {
