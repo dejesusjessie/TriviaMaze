@@ -10,6 +10,7 @@ public class Room {
     private Door westDoor;
     boolean exitRoom = false;
 
+
     // Getter and setter of the door on the North
     public Door getNorthDoor() {
         return northDoor;
@@ -66,5 +67,57 @@ public class Room {
     }
     public void lockEast() {
         this.eastDoor.lock();
+    }
+
+    // Create the walls of 4 direction
+    private Door northWall;
+    private Door southWall;
+    private Door eastWall;
+    private Door westWall;
+
+    public Door getNorthWall() {
+        return northWall;
+    }
+
+    public void setNorthWall(Door northWall) {
+        this.northWall = northWall;
+    }
+
+    public Door getSouthWall() {
+        return southWall;
+    }
+
+    public void setSouthWall(Door southWall) {
+        this.southWall = southWall;
+    }
+
+    public Door getEastWall() {
+        return eastWall;
+    }
+
+    public void setEastWall(Door eastWall) {
+        this.eastWall = eastWall;
+    }
+
+    public Door getWestWall() {
+        return westWall;
+    }
+
+    public void setWestWall(Door westWall) {
+        this.westWall = westWall;
+    }
+
+    // lock the wall
+    public void lockNorthWall() {
+        this.northWall.lock();
+    }
+    public void lockSouthWall() {
+        this.southWall.lock();
+    }
+    public void lockWestWall() {
+        this.westWall.lock();
+    }
+    public void lockEastWall() {
+        this.eastWall.lock();
     }
 }

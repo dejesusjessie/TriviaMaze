@@ -18,6 +18,8 @@ public class PromptPanel extends JPanel implements ActionListener {
 
     private JFrame promptFrame = new JFrame("Husky Trivia Maze Game");
     private JButton loginBtn = new JButton("Start Game");
+    private JButton loadBtn = new JButton("Load Game");
+    private JButton exitBtn = new JButton("Exit Game");
     private JPanel promptHeader = new JPanel();
     private JLabel promptHeaderLabel = new JLabel("HUSKY   TRIVIA   MAZE   GAME");
     private JPanel graphicPanel = new JPanel();
@@ -52,19 +54,30 @@ public class PromptPanel extends JPanel implements ActionListener {
         graphicPanel.setBackground(Color.WHITE);
         //btnPanel.setBackground(Color.WHITE);
         btnPanel.setBackground(new Color(255,222,173));
+        btnPanel.setLayout(new GridLayout(1,3));
 
         promptHeader.setPreferredSize(new Dimension(100, 80));
         btnPanel.setPreferredSize(new Dimension(100,80));
+        btnPanel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 
         headerPanel();
         graphicPanle();
 
 
         btnPanel.add(loginBtn);
-        loginBtn.setPreferredSize(new Dimension(200,40));
+        btnPanel.add(loadBtn);
+        btnPanel.add(exitBtn);
+        loginBtn.setPreferredSize(new Dimension(100,20));
+        loadBtn.setPreferredSize(new Dimension(100,20));
+        exitBtn.setPreferredSize(new Dimension(100,20));
         //loginBtn.setBounds(20,20,200,40);
         loginBtn.setFocusable(false);
+        loadBtn.setFocusable(false);
+        exitBtn.setFocusable(false);
         loginBtn.setFont(new Font("Serif", Font.PLAIN, 24));
+        loadBtn.setFont(new Font("Serif", Font.PLAIN, 24));
+        exitBtn.setFont(new Font("Serif", Font.PLAIN, 24));
+
         loginBtn.addActionListener(this);
     }
 

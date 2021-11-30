@@ -102,7 +102,7 @@ public class Maze {
         Room currentRoom = this.rooms[this.row][this.column];
         if(currentRoom.getNorthDoor().canEnter()) { // If canEnter to the north room
             this.row--;
-            if(this.row <= 0) {
+            if(this.row < 0) {
                 this.row = 0; // make sure that the player cannot move through the wall
                 System.out.println("This is the wall! Please try the other way.");
             }

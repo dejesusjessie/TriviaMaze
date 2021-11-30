@@ -95,6 +95,18 @@ public class TriviaMazeGameControl {
         }
     }
 
+    private static void wallLocked(String direction, Room currentRoom) {
+        if (direction.equalsIgnoreCase("N")) {
+            currentRoom.lockNorth();
+        } else if (direction.equalsIgnoreCase("S")) {
+            currentRoom.lockSouth();
+        } else if (direction.equalsIgnoreCase("E")) {
+            currentRoom.lockEast();
+        } else {
+            currentRoom.lockWest();
+        }
+    }
+
     private static boolean doorController (String direction, Room currentRoom) {
         if (direction.equalsIgnoreCase("N")) {
             return currentRoom.getNorthDoor().canEnter();
