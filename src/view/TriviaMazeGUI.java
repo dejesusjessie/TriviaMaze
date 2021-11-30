@@ -331,8 +331,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	private void addCheatsMenu() {
 		JMenu cheatsMenu = new JMenu("Cheats");
-		JMenuItem doorKeyMenu = new JMenuItem("Door Key");
-		JMenuItem hinsAngelMenu = new JMenuItem("Hins Angel");
+		JMenuItem doorKeyMenu = new JMenuItem("Bridge");
+		JMenuItem hinsAngelMenu = new JMenuItem("Hins");
 		cheatsMenu.add(doorKeyMenu);
 		cheatsMenu.add(hinsAngelMenu);
 		helpMenu.add(cheatsMenu);
@@ -357,6 +357,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	public static void reloadGUI(GameData theGameData) {
 		MY_INFO_PANEL.setSystemTime(theGameData.getSystemTime());
 		MY_INFO_PANEL.setGameTime(theGameData.getGameTime());
+		
 	}
 	
 	public void repaintMaze(String theString) {

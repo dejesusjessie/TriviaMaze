@@ -1,5 +1,8 @@
 package model;
+import java.io.IOException;
 import java.util.Scanner;
+
+import view.IniMaze;
 import view.TriviaMazeGUI;
 
 /**
@@ -8,25 +11,64 @@ import view.TriviaMazeGUI;
  * @author Codi Chun, Kannika Armstrong
  * @version Fall 2021
  */
-public class gameRunner {
+public class GameRunner {
+	
+	private static GameRunner myInstance = null;
+	IniMaze myIniMaze = IniMaze.getInstance();
+	
     MazeBuilder myBuilder;
     Maze myMaze;
     static String myMazeString;
 	TriviaMazeGUI myGUI;
 	
-	/**
-	 * Constructor.
-	 * @param theBuilder
-	 * @param theMaze
-	 * @param theMazeString
-	 * @param theGame
-	 */
-	public gameRunner(MazeBuilder theBuilder, Maze theMaze, String theMazeString, TriviaMazeGUI theGame){
-        myBuilder = theBuilder;
-        myMaze = theMaze;
-        myMazeString = theMazeString;
-		myGUI = theGame;
+//	/**
+//	 * Constructor.
+//	 * @param theBuilder
+//	 * @param theMaze
+//	 * @param theMazeString
+//	 * @param theGame
+//	 */
+//	private gameRunner(MazeBuilder theBuilder, Maze theMaze, String theMazeString, TriviaMazeGUI theGame) throws IOException{
+//        myBuilder = theBuilder;
+//        myMaze = theMaze;
+//        myMazeString = theMazeString;
+//		myGUI = theGame;
+//		runGame();
+//	}
+	
+	private GameRunner() throws IOException{
+        myBuilder = myIniMaze.getBuilder();
+        myMaze = myIniMaze.getMaze();
+		myGUI = myIniMaze.getGUI();
+		myMazeString = myIniMaze.getString();
 		runGame();
+
+	}
+	
+	
+	public static GameRunner getInstance() throws IOException {
+		if(myInstance == null) {
+			synchronized(IniMaze.class) {
+				if(myInstance == null) {
+					myInstance = new GameRunner();
+				}
+			}
+		}
+		
+		return myInstance;
+	}
+	
+	public void setNewGame() {
+        myMazeString = myIniMaze.getString();
+	}
+	
+	public void loadGame(String theGameStatus) {
+		myMazeString = theGameStatus;
+		myGUI.repaintMaze(myMazeString);
+	}
+	
+	public TriviaMazeGUI getGUI() {
+		return myGUI;
 	}
 	
 	/**
@@ -73,6 +115,14 @@ public class gameRunner {
 	 */
 	public static String getStatus() {
 		return myMazeString;
+	}
+	
+	/**
+	 * 
+	 */
+	public void SetMazeString(String theString) {
+		myMazeString = theString;
+		myGUI.repaintMaze(myMazeString);
 	}
 
 }

@@ -2,7 +2,8 @@ package application;
 
 
 import java.io.IOException;
-import model.gameRunner;
+
+import model.GameRunner;
 import view.IniMaze;
 import view.TriviaMazeGUI;
 
@@ -11,7 +12,7 @@ import view.TriviaMazeGUI;
  * @author Codi Chun
  * @version Fall 2021
  */
-public class TriviaMaze {
+public class TriviaMazeMain {
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		
@@ -24,8 +25,10 @@ public class TriviaMaze {
 		
         //Version 2
         IniMaze myIniMaze = IniMaze.getInstance();
-		new gameRunner(myIniMaze.getBuilder(), myIniMaze.getMaze(), 
-				myIniMaze.getString(), myIniMaze.getGUI());
+        GameRunner myGameRunner = GameRunner.getInstance();
+//		new gameRunner(myIniMaze.getBuilder(), myIniMaze.getMaze(), 
+//				myIniMaze.getString(), myIniMaze.getGUI());
+        //gameRunner myGameRunner = gameRunner.getInstance();
 
 		
 //		javax.swing.SwingUtilities.invokeLater(new Runnable() {

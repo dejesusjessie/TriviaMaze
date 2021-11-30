@@ -38,6 +38,7 @@ public class IniMaze {
 	}
 	
 	public Maze getMaze() {
+		
 		return myMaze;
 		
 	}
@@ -50,6 +51,10 @@ public class IniMaze {
 	public TriviaMazeGUI getGUI() {
 		return myGUI;
 		
+	}
+	
+	public void setMazeString(String theMazeString) {
+		myMazeString = theMazeString;
 	}
 
 }

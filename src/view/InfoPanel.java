@@ -7,12 +7,18 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+
+import model.GameRunner;
+
+
 
 /**
  * The information panel.
@@ -194,6 +200,13 @@ public class InfoPanel extends JPanel implements ActionListener{
 					myStarted = true;
 					myStartButton.setText("STOP");
 					myStopwatch.start();
+//					try {
+//
+//						GameRunner.getInstance();
+//					} catch (IOException e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					}
 				} else {
 					myStarted = false;
 					myStartButton.setText("START");
@@ -246,6 +259,7 @@ public class InfoPanel extends JPanel implements ActionListener{
 	private void setStopwatchLabel() {
 		// Setting the action listener.
 		//myStopwatchLabel.setVisible(true);
+
 		myStopwatch = new Timer(1000, new ActionListener() {
 			  
 			  public void actionPerformed(ActionEvent e) {
@@ -284,12 +298,12 @@ public class InfoPanel extends JPanel implements ActionListener{
 		
 		// Setting the layout.
 		myStopwatchLabel = new JLabel();
-		myStopwatchLabel.setBackground(Color.orange);
+		myStopwatchLabel.setBackground(new Color(255,222,173));
 		//myStopwatchLabel.setBounds(500, 500, 500, 500);
 		//myStopwatchLabel.setFont(new Font("Verdana",Font.PLAIN,20));
 		//myStopwatchLabel.setBorder(BorderFactory.createEmptyBorder(10, 50, 30, 50));
 		//myStopwatchLabel.setSize(50, 80);
-		myStopwatchLabel.setOpaque(true);
+		//myStopwatchLabel.setOpaque(true);
 		//myStopwatchLabel.setHorizontalAlignment(JTextField.CENTER);
 		myStopwatchLabel.setVisible(true);
 	}
