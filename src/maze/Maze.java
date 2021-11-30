@@ -75,7 +75,13 @@ public class Maze {
                     maze.append(" "); // Empty room
                 }
             }
-            maze.append("|");
+            if(this.rooms[i][j-1].getEastDoor().isLocked()) {
+                maze.append("x");
+            } else if (this.rooms[i][j-1].getEastDoor().isOpen()) {
+                maze.append(" ");
+            } else {
+                maze.append("|");
+            }
             //maze.append("W"); // print the east door
             maze.append("\n"); // go to the next line after print the last east door
         }
