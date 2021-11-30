@@ -50,7 +50,7 @@ public class TriviaMazeGameControl {
                 if (myAnswer.equals("Correct")){
                     movePlayer(myMazeGame,myDirection);
                     openDoor(myCurrentRoom, myDirection);
-                    System.out.println("Welcome to the next room!");
+                    //System.out.println("Welcome to the next room!");
                 } else {
                     lockDoor(myMazeGame, myDirection);
                 }
@@ -59,6 +59,12 @@ public class TriviaMazeGameControl {
             }
 
         } while (myMazeGame.mazeTraversal() && !myMazeGame.reachExit());
+
+        if (myMazeGame.reachExit()){
+            promptUser.displayWinningMessage();
+        } else {
+            promptUser.displayLosingMessage();
+        }
     }
 
     private static void openDoor(Room currentRoom, String direction) {
