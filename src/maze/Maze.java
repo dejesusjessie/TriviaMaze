@@ -46,29 +46,25 @@ public class Maze {
             // build north doors
             for (j = 0; j < this.rooms[i].length; j++) {
                 maze.append("+"); // the corner of the room
-                if (i == 0){
-                    maze.append("W"); // build the wall
-                } else {
-                    if(this.rooms[i][j].getNorthDoor().isLocked()) {
+                    if (this.rooms[i][j].getNorthDoor().isLocked()) {
                         maze.append("x"); // print x when the door is locked on the north
-                    } else {
+                    } else if (this.rooms[i][j].getNorthDoor().isOpen()) {
+                        maze.append(" ");
+                    } else{
                         maze.append("-"); // print the door on the north
                     }
-                }
             }
             maze.append("+\n"); // the right corner
 
             // build west doors
             for (j = 0; j < this.rooms[i].length; j++) {
-                if (j == 0){
-                    maze.append("W"); // build the wall
-                } else {
                     if(this.rooms[i][j].getWestDoor().isLocked()) {
                         maze.append("x"); // print x when the door is locked on the west
+                    } else if (this.rooms[i][j].getWestDoor().isOpen()){
+                        maze.append(" ");
                     } else {
                         maze.append("|"); // print the west door
                     }
-                }
 
                 // in the room space
                 if(this.rooms[i][j].isExitRoom()) {
@@ -79,15 +75,21 @@ public class Maze {
                     maze.append(" "); // Empty room
                 }
             }
-
-            maze.append("W"); // print the east door
+            maze.append("|");
+            //maze.append("W"); // print the east door
             maze.append("\n"); // go to the next line after print the last east door
         }
 
-        // build south wall
+        // build south door
         for (j = 0; j < this.rooms[0].length; j++){
             maze.append("+"); // the corner of the room
-            maze.append("W"); // print the door on the south
+            if(this.rooms[this.rooms.length-1][j].getSouthDoor().isLocked()) {
+                maze.append("x");
+            } else if (this.rooms[this.rooms.length-1][j].getSouthDoor().isOpen()) {
+                maze.append(" ");
+            } else {
+                maze.append("-");
+            }
         }
         maze.append("+\n"); // the corner on the bottom right of the maze
         return maze.toString();

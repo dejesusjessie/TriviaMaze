@@ -54,6 +54,8 @@ public class TriviaMazeGameControl {
                 } else {
                     lockDoor(myMazeGame, myDirection);
                 }
+            } else {
+                movePlayer(myMazeGame,myDirection);
             }
 
         } while (myMazeGame.mazeTraversal() && !myMazeGame.reachExit());
