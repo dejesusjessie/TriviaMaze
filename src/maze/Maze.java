@@ -211,14 +211,14 @@ public class Maze {
                 eastRow = row, eastColumn = column + 1,
                 westRow = row, westColumn = column - 1;
 
-        if(northRow < 0)
-            northRow = this.dimension -1;
-        if(southRow >= this.dimension)
-            southRow = 0;
-        if(eastColumn >= this.dimension)
-            eastColumn = 0;
-        if(westColumn < 0)
-            westColumn = this.dimension -1;
+//        if(northRow < 0)
+//            northRow = this.dimension -1;
+//        if(southRow >= this.dimension)
+//            southRow = 0;
+//        if(eastColumn >= this.dimension)
+//            eastColumn = 0;
+//        if(westColumn < 0)
+//            westColumn = this.dimension -1;
 
         // Traversal helper
         if(!currentRoom.getNorthDoor().isLocked() && !mazeGrid[northRow][column]) {
