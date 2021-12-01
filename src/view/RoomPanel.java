@@ -3,6 +3,8 @@ package view;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RoomPanel extends JPanel {
 
@@ -42,7 +44,16 @@ public class RoomPanel extends JPanel {
 	private static JButton myDoorEW = new JButton(myDoorEWImg); // Use to display the east wall
 	private static JLabel myAvatar = new JLabel(myAvatarImg); // Use to display the Avatar in the room
 
+	private static JLabel myNorthWallLabel = new JLabel(blueNorthWallImg); // Use to display the north wall
+	private static JLabel mySouthWallLabel = new JLabel(blueSouthWallImg); // Use to display the south wall
+	private static JLabel myWestWallLabel = new JLabel(blueWestWallImg); // Use to display the west wall
+	private static JLabel myEastWallLabel = new JLabel(blueEastWallImg); // Use to display the east wall
+
 	private static JLabel currentRoom = new JLabel("✵ Current Room ✵" );
+
+	// Panels to show in text panel
+
+
 
 
 
@@ -52,6 +63,7 @@ public class RoomPanel extends JPanel {
 		setLayout(new BorderLayout());
 		add(myLeftPanel, BorderLayout.WEST);
 
+		// Setting the graphic in the left panel of room panel
 		myLeftPanel.setPreferredSize(new Dimension(300,100));
 		myLeftPanel.setBackground(new Color(255,222,173));
 		myLeftPanel.setBorder(new EmptyBorder(10,10,10,10));
@@ -73,13 +85,67 @@ public class RoomPanel extends JPanel {
 		//myAvatar.setIcon(myAvatarImg);
 		myRoomDisplay.add(myAvatar, BorderLayout.CENTER);
 
+		// add listener to the current room button
+		myNorthWall.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+
+		mySouthWall.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+
+		myWestWall.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+
+		myEastWall.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
 
 
-		//add(myRightPanel);
-		TriviaPanel triviaPanel = new TriviaPanel();
-		add(triviaPanel);
-		triviaPanel.setBackground(new Color(255,222,173));
-		triviaPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+
+		// Setting the graphic in the right panel
+		add(myRightPanel);
+		myRightPanel.setPreferredSize(new Dimension(300,100));
+		myRightPanel.setBackground(new Color(255,222,173));
+		myRightPanel.setBorder(new EmptyBorder(10,10,10,10));
+		myRightPanel.setLayout(new BorderLayout());
+		myRightPanel.add(myNorthWallLabel,BorderLayout.NORTH);
+		myRightPanel.add(mySouthWallLabel,BorderLayout.SOUTH);
+		myRightPanel.add(myEastWallLabel,BorderLayout.EAST);
+		myRightPanel.add(myWestWallLabel,BorderLayout.WEST);
+		myRightPanel.add(myTextDisplay, BorderLayout.CENTER);
+		myTextDisplay.setBackground(Color.WHITE);
+
+		// the first welcome panel
+		JLabel welcomeLabel = new JLabel("<html><center>Let's Go Hunting!!" +
+				"<br><br>Click the wall in the current room" +
+				"<br><br>to select your direction.</center></html>");
+		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		welcomeLabel.setVerticalAlignment(SwingConstants.CENTER);
+		myTextDisplay.add(welcomeLabel, SwingConstants.CENTER);
+		myTextDisplay.setLayout(new GridLayout());
+		welcomeLabel.setForeground(Color.blue);
+		welcomeLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+
+
+		//add(myRightPanel); add the trivia panel on the right panel
+//		TriviaPanel triviaPanel = new TriviaPanel();
+//		add(triviaPanel);
+//		triviaPanel.setBackground(new Color(255,222,173));
+//		triviaPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 
 
 

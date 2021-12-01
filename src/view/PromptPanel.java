@@ -1,7 +1,6 @@
 package view;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -61,7 +60,7 @@ public class PromptPanel extends JPanel implements ActionListener {
         btnPanel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 
         headerPanel();
-        graphicPanle();
+        graphicPanel();
 
 
         btnPanel.add(loginBtn);
@@ -81,7 +80,7 @@ public class PromptPanel extends JPanel implements ActionListener {
         loginBtn.addActionListener(this);
     }
 
-    private void graphicPanle() {
+    private void graphicPanel() {
         JLabel graphicLabel = new JLabel();
         Image grpImg = graphicImage.getImage().getScaledInstance
                 (promptFrame.getWidth(), promptFrame.getHeight()*2/3, Image.SCALE_SMOOTH);
