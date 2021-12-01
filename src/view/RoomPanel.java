@@ -141,6 +141,8 @@ public class RoomPanel extends JPanel {
 		welcomeLabel.setFont(new Font("Serif", Font.PLAIN, 20));
 
 
+
+
 		//add(myRightPanel); add the trivia panel on the right panel
 //		TriviaPanel triviaPanel = new TriviaPanel();
 //		add(triviaPanel);
@@ -148,12 +150,7 @@ public class RoomPanel extends JPanel {
 //		triviaPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 
 
-
-
-
-
+		
 
 	}
-
-
 }
