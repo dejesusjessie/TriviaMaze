@@ -111,7 +111,7 @@ public class PromptPanel extends JPanel implements ActionListener {
         if (e.getSource() == loginBtn) {
             promptFrame.dispose();
 
-            TriviaMazeGUI triviaMazeGUI = new TriviaMazeGUI();
+            //TriviaMazeGUI triviaMazeGUI = new TriviaMazeGUI();
 
         }
 

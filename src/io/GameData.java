@@ -2,6 +2,8 @@ package io;
 
 import java.io.Serializable;
 
+import model.GameRunner;
+
 /**
  * 
  * @author Codi Chun
@@ -24,19 +26,33 @@ public class GameData implements Serializable{
 	 */
 	String myGameTime;
 	
+//	/**
+//	 * 
+//	 */
+//	String SystemTime;
+	
 	/**
 	 * 
 	 */
-	String theSystemTime;
+	String myGameStatus;
+	
+	/**
+	 * 
+	 */
+	GameRunner myGameRunner;
+	
 	
 	/**
 	 * 
 	 * @param theSystemTime
 	 * @param theGameTime
 	 */
-	public GameData(int theSystemTime, String theGameTime) {
+	public GameData(int theSystemTime, String theGameTime, String theGameStatus, GameRunner theGameRunner) {
 		this.mySystemTime = theSystemTime;
 		this.myGameTime = theGameTime;
+		this.myGameStatus = theGameStatus;
+		this.myGameRunner = theGameRunner;
+	
 	}
 	
 	/**
@@ -55,6 +71,22 @@ public class GameData implements Serializable{
 	public String getGameTime() {
 		return myGameTime;
 		
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String getGameStatus() {
+		return myGameStatus;
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public GameRunner getGameRunner() {
+		return myGameRunner;
 	}
 
 }

@@ -1,4 +1,4 @@
-package maze;
+package model;
 
 public class MazeBuilder {
     private final int dimension;

@@ -2,12 +2,16 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -37,12 +41,12 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * The width of the frame.
 	 */
-	private static final int MY_WIDTH = 400;
+	private static final int MY_WIDTH = 1280;
 
 	/**
 	 * The height of the frame.
 	 */
-	private static final int MY_HEIGHT = 350;
+	private static final int MY_HEIGHT = 1360;
 
 	/**
 	 * The title of the frame.
@@ -62,8 +66,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * The maze panel.
 	 */
-	private static final MazePanel MY_MAZE_PANEL = new MazePanel();
-
+	//private static final MazePanel MY_MAZE_PANEL = new MazePanel(MY_WIDTH, MY_HEIGHT);
+	private final MazePanel MY_MAZE_PANEL;
 	/**
 	 * The info panel.
 	 */
@@ -72,8 +76,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * The player panel.
 	 */
-	//private static PlayerPanel MY_PLAYER_PANEL = new PlayerPanel();
-	private static RoomPanel MY_ROOM_PANEL = new RoomPanel();
+	private static PlayerPanel MY_PLAYER_PANEL = new PlayerPanel();
 
 
 	/**
@@ -102,12 +105,18 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	final FileNameExtensionFilter fileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
 
+	String myDir = System.getProperty("user.dir");
+	BufferedImage myHusky = ImageIO.read(new File(myDir + "/src/image/husky.png"));
+
+
 	/**
 	 * Constructor.
 	 * Constructs a new TriviaMazeGui.
+	 * @throws IOException
 	 */
-	public TriviaMazeGUI() {
-		basicWindow();
+	public TriviaMazeGUI(String theMaze) throws IOException {
+		MY_MAZE_PANEL = new MazePanel(theMaze);
+		basicWindow(theMaze);
 	}
 
 //	public TriviaMazeGUI(GameData theGameData) {
@@ -117,11 +126,13 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 
 	/**
 	 * Creating the basic frame and panel.
+	 * @throws IOException
 	 */
-	public void basicWindow() {
+	public void basicWindow(String theMaze) throws IOException {
+
 
 		//Setting the panels.
-		setMazePanel();
+		//setMazePanel();
 		setInfoPanel();
 		setRoomPanel();
 		setLeftPanel();
@@ -130,6 +141,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		//Basic setting of the window.
 		myWindow.add(MY_MAIN_PANEL);
 		myWindow.setSize(MY_HEIGHT, MY_WIDTH);
+		myWindow.setPreferredSize(new Dimension(MY_HEIGHT, MY_WIDTH));
+		//myWindow.setResizable(false);
 		myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//setting the title of the window.
@@ -155,58 +168,54 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		myWindow.pack();
 		myWindow.setVisible(true);
 
+
 		//prevent the resizable
 		myWindow.setResizable(false);
+
 	}
 
 	/**
 	 * Setting the main panel.
 	 */
 	private void setMainPanel() {
-		MY_MAIN_PANEL.setBackground(Color.black);
+		//MY_MAIN_PANEL.setBackground(new Color(255,248,220));
+		MY_MAIN_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
 		MY_MAIN_PANEL.add(leftPanel, BorderLayout.EAST);
 		MY_MAIN_PANEL.add(MY_MAZE_PANEL, BorderLayout.CENTER);
+		//mg.setSize(MY_WIDTH/2, MY_HEIGHT/2);
+		//MY_MAIN_PANEL.add(mg, BorderLayout.CENTER);
 	}
 
 	/**
 	 * Setting the maze panel.
+	 * @throws IOException
 	 */
-	private void setMazePanel() {
-		MY_MAZE_PANEL.setBorder(BorderFactory.createEmptyBorder(MY_HEIGHT, MY_WIDTH, MY_HEIGHT, MY_WIDTH));
-		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
-		MY_MAZE_PANEL.setLayout(new BorderLayout(1, 1));
-		MY_MAZE_PANEL.setBackground(Color.GRAY);
-		MY_MAZE_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
+	private void setMazePanel() throws IOException {
 	}
 
 	/**
 	 * Setting the info panel.
 	 */
 	private void setInfoPanel() {
-		MY_INFO_PANEL.setBackground(Color.white);
+		//MY_INFO_PANEL.setBackground(Color.white);
 	}
 
 	/**
 	 * Setting the room panel.
 	 */
 	private void setRoomPanel() {
-		//MY_PLAYER_PANEL.setBackground(Color.pink);
-		MY_ROOM_PANEL.setBackground(Color.pink);
 
+		//MY_ROOM_PANEL.setBackground(Color.pink);
 	}
 
 	/**
-	 <<<<<<< HEAD
-	 * Setting the left panel.
-	 =======
-	 * Setting the lest panel.
-	 >>>>>>> refs/remotes/origin/main
+	 *
 	 */
 	private void setLeftPanel() {
 		leftPanel.setOpaque(false);
 		leftPanel.add(MY_INFO_PANEL);
-		//leftPanel.add(MY_PLAYER_PANEL);
-		leftPanel.add(MY_ROOM_PANEL);
+		leftPanel.add(MY_PLAYER_PANEL);
+		leftPanel.setSize(MY_WIDTH/2, MY_HEIGHT);
 	}
 
 	/**
@@ -311,7 +320,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "1. For moving to another room, you need to open a door."
+				JOptionPane.showMessageDialog(null, ","
+						+"\n1. For moving to another room, you need to open a door."
 						+"\n2. You need to selecte the correct answer to open a door, otherwise, the door closes forever.");
 			}
 		});
@@ -322,8 +332,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	private void addCheatsMenu() {
 		JMenu cheatsMenu = new JMenu("Cheats");
-		JMenuItem doorKeyMenu = new JMenuItem("Door Key");
-		JMenuItem hinsAngelMenu = new JMenuItem("Hins Angel");
+		JMenuItem doorKeyMenu = new JMenuItem("Bridge");
+		JMenuItem hinsAngelMenu = new JMenuItem("Hins");
 		cheatsMenu.add(doorKeyMenu);
 		cheatsMenu.add(hinsAngelMenu);
 		helpMenu.add(cheatsMenu);
@@ -348,8 +358,14 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	public static void reloadGUI(GameData theGameData) {
 		MY_INFO_PANEL.setSystemTime(theGameData.getSystemTime());
 		MY_INFO_PANEL.setGameTime(theGameData.getGameTime());
-
 	}
+
+	public void repaintMaze(String theString) {
+		MY_MAZE_PANEL.setMaze(theString);
+	}
+
+
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

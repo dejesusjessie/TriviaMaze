@@ -15,6 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.Timer;
 
 
+import model.GameRunner;
+
+
+
 
 /**
  * The information panel.
@@ -113,11 +117,9 @@ public class InfoPanel extends JPanel implements ActionListener{
 	/**
 	 * Preset the button size.
 	 */
-	Dimension myButtonSize = new Dimension(100, 50);
 
+	Dimension myButtonSize = new Dimension(100, 50); 
 
-
-	//	String formatted = text.replace("\n", "<br>");
 //	formatted = "<html><font size='9'>" + formatted + "</font></html>";
 //	JLabel label = new JLabel(formatted);
 //	JLabel myWelcomeLabel = new JLabel("Welcome!"
@@ -127,7 +129,6 @@ public class InfoPanel extends JPanel implements ActionListener{
 //			+ "\nif you select the correct answer, you will get a bridge to cross the river,"
 //			+ "\nbut if you select the wrong answer, ahhhhhhhhhh...");
 	JTextArea myWelcomeText;
-
 
 	/**
 	 * The constructor.
@@ -145,6 +146,7 @@ public class InfoPanel extends JPanel implements ActionListener{
 		setResetButton();
 		layoutResetButton();
 
+		
 		setWelcomeText();
 
 		//setup the top panel
@@ -166,8 +168,9 @@ public class InfoPanel extends JPanel implements ActionListener{
 		//add(bottomPanel, BorderLayout.SOUTH);
 		myWelcomeText.setAlignmentX(100);
 		add(myWelcomeText, BorderLayout.CENTER);
-	}
 
+	}
+	
 	private void setWelcomeText() {
 		//setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		myWelcomeText = new JTextArea("\nHowooooody! \n\n"

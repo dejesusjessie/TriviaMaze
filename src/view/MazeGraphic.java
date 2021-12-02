@@ -11,8 +11,8 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import maze.Maze;
-import maze.MazeBuilder;
+import model.Maze;
+import model.MazeBuilder;
 
 
 public class MazeGraphic extends JComponent {

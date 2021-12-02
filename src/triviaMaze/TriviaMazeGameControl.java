@@ -3,9 +3,10 @@ package triviaMaze;
 // Not finished yet
 import io.Database;
 import io.Trivia;
-import maze.Maze;
-import maze.MazeBuilder;
-import maze.Room;
+
+import model.Maze;
+import model.MazeBuilder;
+import model.Room;
 
 public class TriviaMazeGameControl {
 

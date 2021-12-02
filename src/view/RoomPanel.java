@@ -116,29 +116,32 @@ public class RoomPanel extends JPanel {
 
 
 
-		// Setting the graphic in the right panel
+//		// Setting the graphic in the right panel
 		add(myRightPanel);
-		myRightPanel.setPreferredSize(new Dimension(300,100));
+//
+//		myRightPanel.setPreferredSize(new Dimension(300,100));
+//		myRightPanel.setBackground(new Color(255,222,173));
+//		myRightPanel.setBorder(new EmptyBorder(10,10,10,10));
+//		myRightPanel.setLayout(new BorderLayout());
+//		myRightPanel.add(myNorthWallLabel,BorderLayout.NORTH);
+//		myRightPanel.add(mySouthWallLabel,BorderLayout.SOUTH);
+//		myRightPanel.add(myEastWallLabel,BorderLayout.EAST);
+//		myRightPanel.add(myWestWallLabel,BorderLayout.WEST);
+//		myRightPanel.add(myTextDisplay, BorderLayout.CENTER);
+//		myTextDisplay.setBackground(Color.WHITE);
 		myRightPanel.setBackground(new Color(255,222,173));
-		myRightPanel.setBorder(new EmptyBorder(10,10,10,10));
-		myRightPanel.setLayout(new BorderLayout());
-		myRightPanel.add(myNorthWallLabel,BorderLayout.NORTH);
-		myRightPanel.add(mySouthWallLabel,BorderLayout.SOUTH);
-		myRightPanel.add(myEastWallLabel,BorderLayout.EAST);
-		myRightPanel.add(myWestWallLabel,BorderLayout.WEST);
-		myRightPanel.add(myTextDisplay, BorderLayout.CENTER);
-		myTextDisplay.setBackground(Color.WHITE);
-
-		// the first welcome panel
-		JLabel welcomeLabel = new JLabel("<html><center>Let's Go Hunting!!" +
-				"<br><br>Click the wall in the current room" +
-				"<br><br>to select your direction.</center></html>");
-		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		welcomeLabel.setVerticalAlignment(SwingConstants.CENTER);
-		myTextDisplay.add(welcomeLabel, SwingConstants.CENTER);
-		myTextDisplay.setLayout(new GridLayout());
-		welcomeLabel.setForeground(Color.blue);
-		welcomeLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+//
+//
+//		// the first welcome panel
+//		JLabel welcomeLabel = new JLabel("<html><center>Let's Go Hunting!!" +
+//				"<br><br>Click the wall in the current room" +
+//				"<br><br>to select your direction.</center></html>");
+//		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+//		welcomeLabel.setVerticalAlignment(SwingConstants.CENTER);
+//		myTextDisplay.add(welcomeLabel, SwingConstants.CENTER);
+//		myTextDisplay.setLayout(new GridLayout());
+//		welcomeLabel.setForeground(Color.blue);
+//		welcomeLabel.setFont(new Font("Serif", Font.PLAIN, 20));
 
 
 
