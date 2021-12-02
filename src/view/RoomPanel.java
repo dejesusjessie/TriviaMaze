@@ -150,7 +150,7 @@ public class RoomPanel extends JPanel {
 //		triviaPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 
 
-		
+
 
 	}
 }

@@ -137,6 +137,4 @@ public class TriviaMazeGameControl {
         else
             myMazeGame.moveWest();
     }
-
-
 }
