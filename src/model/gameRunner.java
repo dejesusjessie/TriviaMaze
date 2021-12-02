@@ -1,6 +1,12 @@
 package model;
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import java.io.IOException;
 
@@ -46,7 +52,7 @@ public class GameRunner {
         myMaze = myIniMaze.getMaze();
 		myGUI = myIniMaze.getGUI();
 		myMazeString = myIniMaze.getString();
-		runGame();
+		//runGame();
 
 	}
 	
@@ -113,7 +119,29 @@ public class GameRunner {
             }
         }
 	}
-	
+	 public void moveE() {
+		 myMaze.moveEast();
+		 update();
+		 isExit();
+	 }
+	 
+	 public void moveN() {
+		 myMaze.moveNorth();
+		 update();
+		 isExit();
+	 }
+	 
+	 public void moveS() {
+		 myMaze.moveSouth();
+		 update();
+		 isExit();
+	 }
+	 
+	 public void moveW() {
+		 myMaze.moveWest();
+		 update();
+		 isExit();
+	 }
 	
 	/**
 	 * Return the current status of the game.
@@ -129,5 +157,20 @@ public class GameRunner {
 		myMazeString = theString;
 		myGUI.repaintMaze(myMazeString);
 	}
+
+	public void update() {
+		 myMazeString = myMaze.toGUI();
+		 myGUI.repaintMaze(myMazeString);
+	}
+	
+	public void isExit() {
+		if(myMaze.reachExit()) {
+			//JOptionPane.showOptionDialog(null, "You win!! Exit the game and ask Tom for the award!",null,JOptionPane.OK_OPTION,0,null,null,null);
+			JOptionPane.showMessageDialog(null, "You win!! Exit the game and ask Tom for the award!");
+
+		} 
+	}
+
+
 
 }

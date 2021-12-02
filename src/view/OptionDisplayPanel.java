@@ -50,10 +50,13 @@ public class OptionDisplayPanel extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 3;
         this.add(optionD,gbc);
-        optionA.setActionCommand("A");
-        optionB.setActionCommand("B");
-        optionC.setActionCommand("C");
-        optionD.setActionCommand("D");
+//        optionA.setActionCommand("A");
+//        optionB.setActionCommand("B");
+//        optionC.setActionCommand("C");
+//        optionD.setActionCommand("D");
+        
+        
+        
         multipleQuestionGroup.add(optionA);
         multipleQuestionGroup.add(optionB);
         multipleQuestionGroup.add(optionC);
