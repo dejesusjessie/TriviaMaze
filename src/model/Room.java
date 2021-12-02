@@ -1,6 +1,10 @@
 package model;
 
-// Create the room for the Maze
+/**
+ * 
+ * @author Kannika Armstrong, Codi Chun
+ *
+ */
 public class Room {
 
     // Create the doors of 4 direction
@@ -67,4 +71,58 @@ public class Room {
     public void lockEast() {
         this.eastDoor.lock();
     }
+    
+    public void openEast() {
+        this.eastDoor.open();
+    }
+    
+    public void openSouth() {
+        this.southDoor.open();
+    }
+    
+    public void openWest() {
+        this.westDoor.open();
+    }
+    
+    public void openNorth() {
+        this.northDoor.open();
+    }
+    
+
+    
+    boolean NIsWall = false;
+    public void setNIsWall() {
+    	NIsWall = true;
+    }
+    public boolean getNIsWall() {
+    	return NIsWall;
+    }
+    
+    
+    
+    boolean WIsWall = false;
+    public void setWIsWall() {
+    	WIsWall = true;
+    }
+    public boolean getWIsWall() {
+    	return WIsWall;
+    }
+    
+    
+    boolean SIsWall = false;
+    public void setSIsWall() {
+    	SIsWall = true;
+    }
+    public boolean getSIsWall() {
+    	return SIsWall;
+    }
+    
+    boolean EIsWall = false;
+    public void setEIsWall() {
+    	EIsWall = true;
+    }
+    public boolean getEIsWall() {
+    	return EIsWall;
+    }
+    
 }

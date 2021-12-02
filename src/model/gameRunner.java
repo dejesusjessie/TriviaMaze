@@ -1,24 +1,15 @@
 package model;
 
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import java.io.IOException;
-
-
+import javax.swing.JOptionPane;
 import view.IniMaze;
-
 import view.TriviaMazeGUI;
 
 /**
  * The new game runner.
  * Runs a new game. 
- * @author Codi Chun, Kannika Armstrong
+ * @author Codi Chun
  * @version Fall 2021
  */
 
@@ -50,9 +41,10 @@ public class GameRunner {
 	private GameRunner() throws IOException{
         myBuilder = myIniMaze.getBuilder();
         myMaze = myIniMaze.getMaze();
+        myMaze.setWalls();
 		myGUI = myIniMaze.getGUI();
 		myMazeString = myIniMaze.getString();
-		//runGame();
+		
 
 	}
 	
@@ -82,43 +74,6 @@ public class GameRunner {
 		return myGUI;
 	}
 	
-	/**
-	 * Running the a new game.
-	 */
-
-	public void runGame(){
-        Scanner input = new Scanner(System.in);		
-        while(!myMaze.reachExit()) {
-            System.out.println(myMaze.toString());
-            
-            //maze panel repaint;
-            myMazeString = myMaze.toGUI();
-            myGUI.repaintMaze(myMazeString);
-
-            
-            System.out.println("Select your option: \nn --> Move North\ns --> Move South" +
-                    "\nw --> Move West\ne --> Move East");
-
-            char dir = input.next().charAt(0);
-            switch(dir) {
-                case('n'):
-                    myMaze.moveNorth();
-                    break;
-                case('s'):
-                    myMaze.moveSouth();
-                    break;
-                case('w'):
-                    myMaze.moveWest();
-                    break;
-                case('e'):
-                    myMaze.moveEast();
-                	myGUI.repaint();
-                    break;
-                default:
-                    System.out.println("Wrong option");
-            }
-        }
-	}
 	 public void moveE() {
 		 myMaze.moveEast();
 		 update();
@@ -142,7 +97,63 @@ public class GameRunner {
 		 update();
 		 isExit();
 	 }
+	 
+	 public void lockE() {
+		 myMaze.getCurrentRoom().lockEast();
+		 update();
+	 }
+	 
+	 public void lockS() {
+		 myMaze.getCurrentRoom().lockSouth();
+		 update();
+	 }
+	 
+	 public void lockN() {
+		 myMaze.getCurrentRoom().lockNorth();
+		 update();
+	 }
 	
+	 public void lockW() {
+		 myMaze.getCurrentRoom().lockWest();
+		 update();
+	 }
+	 
+	 public void openE() {
+		 myMaze.getCurrentRoom().openEast();;
+		 update();
+	 }
+	 
+	 public void openS() {
+		 myMaze.getCurrentRoom().openSouth();;
+		 update();
+	 }
+	 
+	 public void openN() {
+		 myMaze.getCurrentRoom().openNorth();;
+		 update();
+	 }
+	 
+	 public void openW() {
+		 myMaze.getCurrentRoom().openWest();;
+		 update();
+	 }
+	 
+	 public Boolean EIsLock() {
+		 return myMaze.getCurrentRoom().getEastDoor().canEnter();
+	 }
+	 
+	 public Boolean WIsLock() {
+		 return myMaze.getCurrentRoom().getWestDoor().canEnter();
+	 }
+	 
+	 public Boolean NIsLock() {
+		 return myMaze.getCurrentRoom().getNorthDoor().canEnter();
+	 }
+	 
+	 public Boolean SIsLock() {
+		 return myMaze.getCurrentRoom().getSouthDoor().canEnter();
+	 }
+	 
 	/**
 	 * Return the current status of the game.
 	 */
@@ -166,9 +177,14 @@ public class GameRunner {
 	public void isExit() {
 		if(myMaze.reachExit()) {
 			//JOptionPane.showOptionDialog(null, "You win!! Exit the game and ask Tom for the award!",null,JOptionPane.OK_OPTION,0,null,null,null);
-			JOptionPane.showMessageDialog(null, "You win!! Exit the game and ask Tom for the award!");
+			JOptionPane.showMessageDialog(null, "You win!! Exit the game and ask Tom for the num-num!");
 
 		} 
+	}
+	
+	public Room getCurrentRoom() {
+		return myMaze.getCurrentRoom();
+		
 	}
 
 

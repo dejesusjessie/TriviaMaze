@@ -124,13 +124,26 @@ public class MazePanel extends JPanel {
 			} else if(myMaze.charAt(i) == 'P') {
 				myHusky.paintIcon(this, g, x-50, y+30);
 			} else if (myMaze.charAt(i) == 'x') {
-				myDoorH.paintIcon(this, g, x, y);
+				myDoorV.paintIcon(this, g, x, y);
 				myBlokerH.paintIcon(this, g, x+50, y+50);
 				x+=wallSize;
 			} else if (myMaze.charAt(i) == 'e') {
 
 				myFruit.paintIcon(this, g, x-50, y+30);
+			} else if (myMaze.charAt(i) == 'b') {
+				myDoorH.paintIcon(this, g, x, y);
+				myBlokerH.paintIcon(this, g, x+50, y+50);
+				x+=wallSize;
+			} else if (myMaze.charAt(i) == 'o') {
+				myDoorV.paintIcon(this, g, x, y);
+				myBridgeV.paintIcon(this, g, x+50, y+50);
+				x+=wallSize;
+			} else if (myMaze.charAt(i) == 'k') {
+				myDoorH.paintIcon(this, g, x, y);
+				myBridgeH.paintIcon(this, g, x+50, y+50);
+				x+=wallSize;
 			}
+			
 			
 // 			//***********************************************************************************		
 //			// Don't delete
