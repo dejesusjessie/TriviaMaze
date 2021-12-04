@@ -30,29 +30,29 @@ public class InfoPanel extends JPanel implements ActionListener{
 	 */
 	private static final long serialVersionUID = -7574118521223544552L;
 
-	/**
-	 * The START/STOP button.
-	 * For starting and stopping the game and the stopwatch.
-	 */
-	private static JButton myStartButton  = new JButton("START");
-	
-	/**
-	 * The RESET button.
-	 * For reseting the game and the stopwatch. 
-	 */
-	private static final JButton myResetButton = new JButton("RESET");
-	
-	/**
-	 * The Hint button.
-	 * For using the tool "hint".
-	 */
-	private static JButton myHintButton  = new JButton("Hints");
-	
-	/**
-	 * The Key button.
-	 * For using the tool "key".
-	 */
-	private static JButton myKeyButton  = new JButton("Keys");
+//	/**
+//	 * The START/STOP button.
+//	 * For starting and stopping the game and the stopwatch.
+//	 */
+//	private static JButton myStartButton  = new JButton("START");
+//	
+//	/**
+//	 * The RESET button.
+//	 * For reseting the game and the stopwatch. 
+//	 */
+//	private static final JButton myResetButton = new JButton("RESET");
+//	
+//	/**
+//	 * The Hint button.
+//	 * For using the tool "hint".
+//	 */
+//	private static JButton myHintButton  = new JButton("Hints");
+//	
+//	/**
+//	 * The Key button.
+//	 * For using the tool "key".
+//	 */
+//	private static JButton myKeyButton  = new JButton("Keys");
     
 	/**
 	 * The stopwatch label.
@@ -141,18 +141,18 @@ public class InfoPanel extends JPanel implements ActionListener{
 		setStopwatchLabel();
 		layoutStopwatch();
 		
-		setStartButton();
-		layoutStartButton(); 
-		
-		setResetButton();
-		layoutResetButton();
+//		setStartButton();
+//		layoutStartButton(); 
+//		
+//		setResetButton();
+//		layoutResetButton();
 		
 		setWelcomeText();
 		
 		//setup the top panel
 		JPanel topPanel = new JPanel();
-		topPanel.add(myStartButton);
-		topPanel.add(myResetButton);
+		//topPanel.add(myStartButton);
+		//topPanel.add(myResetButton);
 		topPanel.add(myStopwatchLabel);
 		//myStopwatchLabel.setVisible(true);
 		topPanel.setBackground(new Color(255,222,173));
@@ -186,56 +186,56 @@ public class InfoPanel extends JPanel implements ActionListener{
 		add(myWelcomeText, BorderLayout.CENTER);
 	}
 	
-	/**
-	 * Setting the START button.
-	 */
-	private void setStartButton() {	
-		myStartButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(myStarted == false) {
-					myStarted = true;
-					myStartButton.setText("STOP");
-					myStopwatch.start();
-//					try {
+//	/**
+//	 * Setting the START button.
+//	 */
+//	private void setStartButton() {	
+//		myStartButton.addActionListener(new ActionListener() {
 //
-//						GameRunner.getInstance();
-//					} catch (IOException e1) {
-//						// TODO Auto-generated catch block
-//						e1.printStackTrace();
-//					}
-				} else {
-					myStarted = false;
-					myStartButton.setText("START");
-					myStopwatch.stop();
-				}
-			}
-		});
-	}
-	
-	/**
-	 * Setting the Reset button.
-	 */
-	private void setResetButton() {
-		myResetButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-			myStarted = false;
-			myStopwatch.stop();
-			myTime = 0;
-			mySeconds = 0;
-			myMinutes = 0;
-			myHours = 0;
-			mySecondString = String.format("%02d", mySeconds);
-			myMinuteString = String.format("%02d", myMinutes);
-			myHourString = String.format("%02d", myHours); 
-			myGameTime = myHourString + ":" + myMinuteString + ":" + mySecondString;
-			myStopwatchLabel.setText(myGameTime);
-			}
-		});		
-	}
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				if(myStarted == false) {
+//					myStarted = true;
+//					myStartButton.setText("STOP");
+//					myStopwatch.start();
+////					try {
+////
+////						GameRunner.getInstance();
+////					} catch (IOException e1) {
+////						// TODO Auto-generated catch block
+////						e1.printStackTrace();
+////					}
+//				} else {
+//					myStarted = false;
+//					myStartButton.setText("START");
+//					myStopwatch.stop();
+//				}
+//			}
+//		});
+//	}
+//	
+//	/**
+//	 * Setting the Reset button.
+//	 */
+//	private void setResetButton() {
+//		myResetButton.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//			myStarted = false;
+//			myStopwatch.stop();
+//			myTime = 0;
+//			mySeconds = 0;
+//			myMinutes = 0;
+//			myHours = 0;
+//			mySecondString = String.format("%02d", mySeconds);
+//			myMinuteString = String.format("%02d", myMinutes);
+//			myHourString = String.format("%02d", myHours); 
+//			myGameTime = myHourString + ":" + myMinuteString + ":" + mySecondString;
+//			myStopwatchLabel.setText(myGameTime);
+//			}
+//		});		
+//	}
 	
 	/**
 	 * Setting the hint button.
@@ -274,20 +274,20 @@ public class InfoPanel extends JPanel implements ActionListener{
 			 });
 	}
 	
-	/**
-	 * The design of the START button.
-	 */
-	private void layoutStartButton() {
-		myStartButton.setPreferredSize(myButtonSize);
-
-	}
-	
-	/**
-	 * The design of the RESET button.
-	 */
-	private void layoutResetButton() {
-		myResetButton.setPreferredSize(myButtonSize);
-	}
+//	/**
+//	 * The design of the START button.
+//	 */
+//	private void layoutStartButton() {
+//		myStartButton.setPreferredSize(myButtonSize);
+//
+//	}
+//	
+//	/**
+//	 * The design of the RESET button.
+//	 */
+//	private void layoutResetButton() {
+//		myResetButton.setPreferredSize(myButtonSize);
+//	}
 	
 	/**
 	 * The design of the Stopwatch label.
