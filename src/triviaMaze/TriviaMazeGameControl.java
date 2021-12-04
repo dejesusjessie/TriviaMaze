@@ -1,23 +1,37 @@
 package triviaMaze;
 
 // Not finished yet
+import io.Database;
 import io.Trivia;
+
 import model.Maze;
+import model.MazeBuilder;
 import model.Room;
 
 public class TriviaMazeGameControl {
 
-    private Maze myMazeGame;
-    private PromptUser myPromptUser;
-    private Trivia myCurrentQuestion;
+    public TriviaMazeGameControl(){
+        gameRunner();
+    }
 
+    private void gameRunner(){
+        PromptUser promptUser = new PromptUser();
+        String username = promptUser.userName(); // create username
+        int myMazeSize = promptUser.userMazeSize(); // get the maze size
+        //
+        MazeBuilder mazeBuilder = new MazeBuilder(myMazeSize);
+        Maze myMazeGame = mazeBuilder.buildRoom();
+
+        gameStartController(myMazeGame, promptUser);
+
+        promptUser.closeScanner();
+    }
 
     // Game start controller
-    public void gameStartController() {
+    private void gameStartController(Maze myMazeGame, PromptUser promptUser) {
         Room myCurrentRoom; // create the current room
         String myDirection; //
         String myAnswer;
-        String myCorrectAnswer;
 
         //If the player still can move and does not reach the exit
         do {
@@ -26,17 +40,57 @@ public class TriviaMazeGameControl {
 
             // When the player
             do {
-                myDirection = myPromptUser.userSelectedDirection();
-                System.out.println("This door is locked. Please try the other way.");
+                myDirection = promptUser.userSelectedDirection();
+                if (!doorController(myDirection, myCurrentRoom)) {
+                    System.out.println("This door is locked. Please try the other way.");
+                }
             } while(!doorController( myDirection, myCurrentRoom));
 
             if (!doorOpened(myDirection, myCurrentRoom)) {
-                myCorrectAnswer = this.myCurrentQuestion.getAnswer();
+                myAnswer = promptUser.displayTrivia();
+                if (myAnswer.equals("Correct")){
+                    movePlayer(myMazeGame,myDirection);
+                    openDoor(myCurrentRoom, myDirection);
+                    //System.out.println("Welcome to the next room!");
+                } else {
+                    lockDoor(myMazeGame, myDirection);
+                }
+            } else {
+                movePlayer(myMazeGame,myDirection);
             }
 
         } while (myMazeGame.mazeTraversal() && !myMazeGame.reachExit());
+
+        if (myMazeGame.reachExit()){
+            promptUser.displayWinningMessage();
+        } else {
+            promptUser.displayLosingMessage();
+        }
     }
 
+    private static void openDoor(Room currentRoom, String direction) {
+        if(direction.equalsIgnoreCase("N"))
+            currentRoom.getNorthDoor().open();
+        else if(direction.equalsIgnoreCase("S"))
+            currentRoom.getSouthDoor().open();
+        else if(direction.equalsIgnoreCase("E"))
+            currentRoom.getEastDoor().open();
+        else
+            currentRoom.getWestDoor().open();
+    }
+
+    private static void lockDoor(Maze myMazeGame, String direction) {
+        Room currentRoom = myMazeGame.getCurrentRoom();
+
+        if (direction.equalsIgnoreCase("N"))
+            currentRoom.lockNorth();
+        else if (direction.equalsIgnoreCase("S"))
+            currentRoom.lockSouth();
+        else if (direction.equalsIgnoreCase("E"))
+            currentRoom.lockEast();
+        else
+            currentRoom.lockWest();
+    }
 
     private static boolean doorOpened(String direction, Room currentRoom) {
         if (direction.equalsIgnoreCase("N")) {
@@ -47,6 +101,18 @@ public class TriviaMazeGameControl {
             return currentRoom.getEastDoor().isOpen();
         } else {
             return currentRoom.getWestDoor().isOpen();
+        }
+    }
+
+    private static void wallLocked(String direction, Room currentRoom) {
+        if (direction.equalsIgnoreCase("N")) {
+            currentRoom.lockNorth();
+        } else if (direction.equalsIgnoreCase("S")) {
+            currentRoom.lockSouth();
+        } else if (direction.equalsIgnoreCase("E")) {
+            currentRoom.lockEast();
+        } else {
+            currentRoom.lockWest();
         }
     }
 
@@ -62,5 +128,14 @@ public class TriviaMazeGameControl {
         }
     }
 
-
+    private static void movePlayer(Maze myMazeGame, String direction) {
+        if (direction.equalsIgnoreCase("N"))
+            myMazeGame.moveNorth();
+        else if (direction.equalsIgnoreCase("S"))
+            myMazeGame.moveSouth();
+        else if (direction.equalsIgnoreCase("E"))
+            myMazeGame.moveEast();
+        else
+            myMazeGame.moveWest();
+    }
 }

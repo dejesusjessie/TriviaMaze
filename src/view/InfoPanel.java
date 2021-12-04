@@ -14,7 +14,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
+
 import model.GameRunner;
+
 
 
 
@@ -24,11 +26,12 @@ import model.GameRunner;
  * @version Fall 2021
  */
 public class InfoPanel extends JPanel implements ActionListener{
-	
+
 	/**
 	 * The serial version UID.
 	 */
 	private static final long serialVersionUID = -7574118521223544552L;
+
 
 //	/**
 //	 * The START/STOP button.
@@ -54,72 +57,71 @@ public class InfoPanel extends JPanel implements ActionListener{
 //	 */
 //	private static JButton myKeyButton  = new JButton("Keys");
     
+
 	/**
 	 * The stopwatch label.
 	 * Showing how much time the game has taken.
 	 */
 	private static JLabel myStopwatchLabel;
-	
+
 	/**
 	 * The stopwatch.
 	 * For calculating the time that the game has taken.
 	 */
 	private static Timer myStopwatch;
-	
+
 	/**
 	 * The status of the game.
 	 * Show the game is staring or stopping.
 	 */
 	private static Boolean myStarted;
-	
+
 	/**
 	 * Total game time that has taken.
 	 */
 	private static int myTime;
-	
+
 	/**
 	 * Seconds that has taken.
 	 */
 	private static int mySeconds;
-	
+
 	/**
 	 * Minutes that has taken.
 	 */
 	private static int myMinutes;
-	
+
 	/**
 	 * Hours that has taken.
 	 */
 	private static int myHours;
-	
+
 	/**
 	 * The string shows seconds.
 	 */
 	private String mySecondString;
-	
+
 	/**
 	 * The string shows minutes.
 	 */
 	private String myMinuteString;
-	
+
 	/**
 	 * Ths string shows hours.
 	 */
 	private String myHourString;
-	
+
 	/**
 	 * The string that shows total game time.
 	 */
 	private static String myGameTime;
-	
+
 	/**
 	 * Preset the button size.
 	 */
-	Dimension myButtonSize = new Dimension(100, 50); 
-	
 
-	
-//	String formatted = text.replace("\n", "<br>");
+	Dimension myButtonSize = new Dimension(100, 50); 
+
 //	formatted = "<html><font size='9'>" + formatted + "</font></html>";
 //	JLabel label = new JLabel(formatted);
 //	JLabel myWelcomeLabel = new JLabel("Welcome!"
@@ -129,26 +131,27 @@ public class InfoPanel extends JPanel implements ActionListener{
 //			+ "\nif you select the correct answer, you will get a bridge to cross the river,"
 //			+ "\nbut if you select the wrong answer, ahhhhhhhhhh...");
 	JTextArea myWelcomeText;
-	
-	
+
 	/**
 	 * The constructor.
 	 */
 	public InfoPanel() {
 		setLayout(new BorderLayout(0, 0));
 		myStarted = false;
-		
+
 		setStopwatchLabel();
 		layoutStopwatch();
+
 		
 //		setStartButton();
 //		layoutStartButton(); 
 //		
 //		setResetButton();
 //		layoutResetButton();
+
 		
 		setWelcomeText();
-		
+
 		//setup the top panel
 		JPanel topPanel = new JPanel();
 		//topPanel.add(myStartButton);
@@ -156,18 +159,19 @@ public class InfoPanel extends JPanel implements ActionListener{
 		topPanel.add(myStopwatchLabel);
 		//myStopwatchLabel.setVisible(true);
 		topPanel.setBackground(new Color(255,222,173));
-		
+
 		//setup the bottom panel
 //		JPanel bottomPanel = new JPanel();
 //		bottomPanel.add(myHintButton);
 //		bottomPanel.add(myKeyButton);
 //		bottomPanel.setBackground(new Color(255,222,173));
-		
+
 		//add the sub panels to info panel.
 		add(topPanel, BorderLayout.NORTH);
 		//add(bottomPanel, BorderLayout.SOUTH);
 		myWelcomeText.setAlignmentX(100);
 		add(myWelcomeText, BorderLayout.CENTER);
+
 	}
 	
 	private void setWelcomeText() {
@@ -185,6 +189,7 @@ public class InfoPanel extends JPanel implements ActionListener{
 		myWelcomeText.setFont(new Font("Wawati SC", Font.BOLD, 21));
 		add(myWelcomeText, BorderLayout.CENTER);
 	}
+
 	
 //	/**
 //	 * Setting the START button.
@@ -237,20 +242,21 @@ public class InfoPanel extends JPanel implements ActionListener{
 //		});		
 //	}
 	
+
 	/**
 	 * Setting the hint button.
 	 */
 	private void setHintButton() {
-		
+
 	}
-	
+
 	/**
 	 * Setting the key button.
 	 */
 	private void setKeyButton() {
-		
+
 	}
-	
+
 	/**
 	 * Setting the Stopwatch Label.
 	 */
@@ -259,20 +265,21 @@ public class InfoPanel extends JPanel implements ActionListener{
 		//myStopwatchLabel.setVisible(true);
 
 		myStopwatch = new Timer(1000, new ActionListener() {
-			  
-			  public void actionPerformed(ActionEvent e) {
-			   myTime += 1000;
-			   myHours = (myTime / 3600000);
-			   myMinutes = (myTime / 60000) % 60;
-			   mySeconds = (myTime / 1000) % 60;
-			   mySecondString = String.format("%02d", mySeconds);
-			   myMinuteString = String.format("%02d", myMinutes);
-			   myHourString = String.format("%02d", myHours);
-			   myGameTime = myHourString + ":" + myMinuteString + ":" + mySecondString;
-			   myStopwatchLabel.setText(myGameTime);
-			  }
-			 });
+
+			public void actionPerformed(ActionEvent e) {
+				myTime += 1000;
+				myHours = (myTime / 3600000);
+				myMinutes = (myTime / 60000) % 60;
+				mySeconds = (myTime / 1000) % 60;
+				mySecondString = String.format("%02d", mySeconds);
+				myMinuteString = String.format("%02d", myMinutes);
+				myHourString = String.format("%02d", myHours);
+				myGameTime = myHourString + ":" + myMinuteString + ":" + mySecondString;
+				myStopwatchLabel.setText(myGameTime);
+			}
+		});
 	}
+
 	
 //	/**
 //	 * The design of the START button.
@@ -289,11 +296,12 @@ public class InfoPanel extends JPanel implements ActionListener{
 //		myResetButton.setPreferredSize(myButtonSize);
 //	}
 	
+
 	/**
 	 * The design of the Stopwatch label.
 	 */
 	private void layoutStopwatch() {
-		
+
 		// Setting the layout.
 		myStopwatchLabel = new JLabel();
 		myStopwatchLabel.setBackground(new Color(255,222,173));
@@ -305,7 +313,7 @@ public class InfoPanel extends JPanel implements ActionListener{
 		//myStopwatchLabel.setHorizontalAlignment(JTextField.CENTER);
 		myStopwatchLabel.setVisible(true);
 	}
-	
+
 	/**
 	 * Getter of the time calculated by the system.
 	 * @return The total time.
@@ -313,7 +321,7 @@ public class InfoPanel extends JPanel implements ActionListener{
 	public static int getSystemTime() {
 		return myTime;
 	}
-	
+
 	/**
 	 * Getter of the game time that show on the GUI.
 	 * @return The total game time.
@@ -321,11 +329,11 @@ public class InfoPanel extends JPanel implements ActionListener{
 	public static String getGameTime() {
 		return myGameTime;
 	}
-	
+
 	public void setSystemTime(int theSystemTime) {
 		myTime = theSystemTime;
 	}
-	
+
 	public void setGameTime(String theGameTime) {
 		myGameTime = theGameTime;
 	}
@@ -333,6 +341,6 @@ public class InfoPanel extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

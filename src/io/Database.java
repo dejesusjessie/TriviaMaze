@@ -59,7 +59,7 @@ public class Database {
         while (theSet.next()) {
             String question = theSet.getString(queryQuestion);
             String answer = theSet.getString(queryAnswer);
-            TRIVIA_LIST.add(TriviaFactory.createQuestion(question, answer,null,TF));
+            TRIVIA_LIST.add(Trivia.createQuestion(question, answer,null,TF));
 
         }
     }
@@ -73,7 +73,7 @@ public class Database {
             String question = theSet.getString(queryQuestion);
             String answer = theSet.getString(queryAnswer);
             String[] options = splitOptions(theSet.getString( queryOptions));
-            TRIVIA_LIST.add(TriviaFactory.createQuestion(question, answer,options,MC));
+            TRIVIA_LIST.add(Trivia.createQuestion(question, answer,options,MC));
         }
 
     }

@@ -65,6 +65,7 @@ public class Load implements Serializable {
 //		Object loadGame = loadGameStream.readObject();
 //		System.out.println(loadGame);
 		GameData myGameData = (GameData) loadGameStream.readObject();
+
 //		TriviaMazeGUI.reloadGUI(myGameData);
 //		
 //        IniMaze myIniMaze = IniMaze.getInstance();
@@ -78,6 +79,7 @@ public class Load implements Serializable {
 		myIniMaze.getGUI().repaintMaze(myGameData.myGameStatus);
 	
 		
+
 		System.out.println(myGameData.myGameTime);
 		
 	}

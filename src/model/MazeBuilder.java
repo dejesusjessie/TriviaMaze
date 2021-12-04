@@ -43,6 +43,8 @@ public class MazeBuilder {
 
         // connect the west door and the east door (shared door)
         for (i = 0; i < this.dimension; i++) {
+//            rooms[i][0].setWestWall(new Door());
+//            rooms[i][0].setEastWall(new Door());
             rooms[i][0].setWestDoor(new Door());
             rooms[i][0].setEastDoor(new Door());
         }
@@ -58,6 +60,8 @@ public class MazeBuilder {
 
         // connect the north door and the south door (shared door)
         for (i = 0; i < this.dimension; i++) {
+//            rooms[0][i].setNorthWall(new Door());
+//            rooms[0][i].setSouthWall(new Door());
             rooms[0][i].setNorthDoor(new Door());
             rooms[0][i].setSouthDoor(new Door());
         }

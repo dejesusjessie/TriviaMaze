@@ -15,10 +15,10 @@ public class TriviaPanel extends JPanel {
     protected static final String[] MY_OPTIONS = myTrivia.getOptions();
 
     private final JPanel myTriviaDisplayPanel;
-
     private final QuestionDisplayPanel myQuestionDisplayPanel;
     private final OptionDisplayPanel myOptionDisplayPanel;
     private final SubmitDisplayPanel mySubmitDisplayPanel;
+
 
     private static ImageIcon blueNorthWallImg = new ImageIcon("src/image/blueWallNorth.png");
     private static ImageIcon blueSouthWallImg = new ImageIcon("src/image/blueWallSouth.png");
@@ -48,6 +48,7 @@ public class TriviaPanel extends JPanel {
         myTriviaDisplayPanel.setPreferredSize(new Dimension(100,25));
         this.add(myTriviaDisplayPanel, BorderLayout.CENTER);
 
+
         myQuestionDisplayPanel = new QuestionDisplayPanel();
         myTriviaDisplayPanel.add(myQuestionDisplayPanel, BorderLayout.CENTER);
 
@@ -64,6 +65,4 @@ public class TriviaPanel extends JPanel {
     private void setBorders(){}
     private void setTriviaDisplayPanel(){}
 
-
 }
-
