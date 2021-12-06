@@ -14,12 +14,6 @@ public class TriviaPanel extends JPanel {
     protected static final String MY_ANSWER = myTrivia.getAnswer();
     protected static final String[] MY_OPTIONS = myTrivia.getOptions();
 
-    private final JPanel myTriviaDisplayPanel;
-    private final QuestionDisplayPanel myQuestionDisplayPanel;
-    private final OptionDisplayPanel myOptionDisplayPanel;
-    private final SubmitDisplayPanel mySubmitDisplayPanel;
-
-
     private static ImageIcon blueNorthWallImg = new ImageIcon("src/image/blueWallNorth.png");
     private static ImageIcon blueSouthWallImg = new ImageIcon("src/image/blueWallSouth.png");
     private static ImageIcon blueEastWallImg = new ImageIcon("src/image/blueWallEast.png");
@@ -36,33 +30,49 @@ public class TriviaPanel extends JPanel {
 
     public TriviaPanel(){
         this.setLayout(new BorderLayout());
+        this.setBackground(Color.WHITE);
         this.add(myNorthWall,BorderLayout.NORTH);
         this.add(mySouthWall,BorderLayout.SOUTH);
         this.add(myEastWall,BorderLayout.EAST);
         this.add(myWestWall,BorderLayout.WEST);
+        displayWelcomeLabel();
+        //displayTriviaDisplayPanel();
+
+
+    }
+
+    private void displayWelcomeLabel(){
+         //the first welcome panel
+		JLabel welcomeLabel = new JLabel("<html><center>Let's Go Hunting!!" +
+				"<br><br>Click the wall in the current room to select" +
+				" your direction.</center></html>");
+		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		welcomeLabel.setVerticalAlignment(SwingConstants.CENTER);
+		welcomeLabel.setForeground(Color.blue);
+		welcomeLabel.setFont(new Font("Serif", Font.PLAIN, 16));
+        this.add(welcomeLabel, BorderLayout.CENTER);
+    }
+
+    public void displayTriviaDisplayPanel(){
 
         //setTriviaDisplayPanel
-        myTriviaDisplayPanel = new JPanel();
+        final JPanel myTriviaDisplayPanel = new JPanel();
         myTriviaDisplayPanel.setBackground(Color.WHITE);
         myTriviaDisplayPanel.setLayout(new BorderLayout());
         myTriviaDisplayPanel.setPreferredSize(new Dimension(100,25));
         this.add(myTriviaDisplayPanel, BorderLayout.CENTER);
 
 
-        myQuestionDisplayPanel = new QuestionDisplayPanel();
+        final JPanel myQuestionDisplayPanel = new QuestionDisplayPanel();
         myTriviaDisplayPanel.add(myQuestionDisplayPanel, BorderLayout.CENTER);
 
-        myOptionDisplayPanel = new OptionDisplayPanel();
-        mySubmitDisplayPanel = new SubmitDisplayPanel();
+        final JPanel myOptionDisplayPanel = new OptionDisplayPanel();
+        final JPanel mySubmitDisplayPanel = new SubmitDisplayPanel();
         myTriviaDisplayPanel.add(mySubmitDisplayPanel);
 
         myTriviaDisplayPanel.add(myQuestionDisplayPanel,BorderLayout.NORTH);
         myTriviaDisplayPanel.add(myOptionDisplayPanel,BorderLayout.CENTER);
         myTriviaDisplayPanel.add(mySubmitDisplayPanel, BorderLayout.SOUTH);
-
     }
-
-    private void setBorders(){}
-    private void setTriviaDisplayPanel(){}
 
 }

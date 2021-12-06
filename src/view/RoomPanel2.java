@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
@@ -42,8 +44,8 @@ public class RoomPanel2 extends JPanel {
 	/**
 	 *  JPanel for all images
 	 */
-	private JPanel myRoomDisplay = new JPanel(); // Use to display the room
-	private JPanel myCurrentRoom = new JPanel(); // Use to Label my current room
+	private JPanel myRoomDisplay = new JPanel(); // Used to display the room
+	private JPanel myCurrentRoom = new JPanel(); // Used to Label my current room
 	private JPanel myTextDisplay = new JPanel(); // Use for the text section
 	private JPanel myLeftPanel = new JPanel();
 	private JPanel myRightPanel = new JPanel();
@@ -57,6 +59,7 @@ public class RoomPanel2 extends JPanel {
 	private static JLabel myAvatar = new JLabel(myAvatarImg); // Use to display the Avatar in the room
 
 	private static JLabel currentRoom = new JLabel("✵ Current Room ✵" );
+	private TriviaPanel myTriviaPanel = new TriviaPanel();
 
 
 
@@ -70,7 +73,7 @@ public class RoomPanel2 extends JPanel {
 		setSouthButton();
 		setWestButton();
 		setEastButton();
-		myLeftPanel.setPreferredSize(new Dimension(300,100));
+		myLeftPanel.setPreferredSize(new Dimension(340,100));
 		myLeftPanel.setBackground(Color.BLUE);
 		myLeftPanel.setBorder(new EmptyBorder(10,10,10,10));
 		myLeftPanel.setLayout(new BorderLayout());
@@ -354,8 +357,6 @@ public class RoomPanel2 extends JPanel {
 		return result;
 	}
 
-
-
 	private Boolean canTryS() {
 		Boolean result = true;
 		try {
@@ -475,6 +476,5 @@ public class RoomPanel2 extends JPanel {
 		}
 		return result;
 	}
-
 
 }

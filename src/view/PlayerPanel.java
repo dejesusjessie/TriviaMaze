@@ -10,6 +10,6 @@ public class PlayerPanel extends JPanel {
     public PlayerPanel() {
         this.setLayout(new GridLayout(1, 2));
         this.add(MY_ROOM_PANEL);
-        //this.add(MY_TRIVIA_PANEL);
+        this.add(MY_TRIVIA_PANEL);
     }
 }
