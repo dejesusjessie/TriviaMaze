@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import javax.swing.border.EmptyBorder;
 
 
 import model.GameRunner;
@@ -160,6 +161,7 @@ public class InfoPanel extends JPanel implements ActionListener{
 		//myStopwatchLabel.setVisible(true);
 		topPanel.setBackground(new Color(255,222,173));
 
+
 		//setup the bottom panel
 //		JPanel bottomPanel = new JPanel();
 //		bottomPanel.add(myHintButton);
@@ -187,7 +189,11 @@ public class InfoPanel extends JPanel implements ActionListener{
 		myWelcomeText.setLineWrap(true);
 		myWelcomeText.setBackground(new Color(255,222,173));
 		myWelcomeText.setFont(new Font("Wawati SC", Font.BOLD, 21));
+		myWelcomeText.setEnabled(false);
+		myWelcomeText.setDisabledTextColor(Color.BLUE);
+		myWelcomeText.setBorder(new EmptyBorder(20,20,20,20));
 		add(myWelcomeText, BorderLayout.CENTER);
+
 	}
 
 	

@@ -64,6 +64,8 @@ public class RoomPanel2 extends JPanel {
 
 		//add all pictures on JPanel
 		setLayout(new BorderLayout());
+		setBorder(new EmptyBorder(20,20,20,20));
+		setBackground(new Color(255,222,173));
 		add(myLeftPanel, BorderLayout.WEST);
 
 		setNorthButton();
