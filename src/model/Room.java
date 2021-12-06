@@ -94,7 +94,8 @@ public class Room {
     
     boolean NIsWall = false;
     public void setNIsWall() {
-    	NIsWall = true;
+        this.northDoor.lock();
+        NIsWall = true;
     }
     public boolean getNIsWall() {
     	return NIsWall;
@@ -104,7 +105,8 @@ public class Room {
     
     boolean WIsWall = false;
     public void setWIsWall() {
-    	WIsWall = true;
+        this.westDoor.lock();
+        WIsWall = true;
     }
     public boolean getWIsWall() {
     	return WIsWall;
@@ -113,7 +115,8 @@ public class Room {
     
     boolean SIsWall = false;
     public void setSIsWall() {
-    	SIsWall = true;
+    	this.southDoor.lock();
+        SIsWall = true;
     }
     public boolean getSIsWall() {
     	return SIsWall;
@@ -121,7 +124,8 @@ public class Room {
     
     boolean EIsWall = false;
     public void setEIsWall() {
-    	EIsWall = true;
+    	this.eastDoor.lock();
+        EIsWall = true;
     }
     public boolean getEIsWall() {
     	return EIsWall;
