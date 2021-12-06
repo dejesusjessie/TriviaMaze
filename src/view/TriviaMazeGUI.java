@@ -144,7 +144,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		myWindow.setPreferredSize(new Dimension(MY_HEIGHT, MY_WIDTH));
 		//myWindow.setResizable(false);
 		myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		myWindow.setLocationRelativeTo(null);
 		//setting the title of the window.
 		myWindow.setTitle(MY_TITLE);
 

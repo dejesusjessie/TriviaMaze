@@ -64,6 +64,8 @@ public class RoomPanel2 extends JPanel {
 
 		//add all pictures on JPanel
 		setLayout(new BorderLayout());
+		setBorder(new EmptyBorder(20,20,50,20));
+		setBackground(new Color(255,222,173));
 		add(myLeftPanel, BorderLayout.WEST);
 
 		setNorthButton();
@@ -134,8 +136,12 @@ public class RoomPanel2 extends JPanel {
 				else {
 					blockerSays();
 				}
-				if (isLost()) {
-					lostGameText();
+				try {
+					if (isLost()) {
+						lostGameText();
+					}
+				} catch (IOException ioException) {
+					ioException.printStackTrace();
 				}
 			}
 
@@ -179,9 +185,13 @@ public class RoomPanel2 extends JPanel {
 				else {
 					blockerSays();
 				}
-				
-				if (isLost()) {
-					lostGameText();
+
+				try {
+					if (isLost()) {
+						lostGameText();
+					}
+				} catch (IOException ioException) {
+					ioException.printStackTrace();
 				}
 
 
@@ -227,8 +237,12 @@ public class RoomPanel2 extends JPanel {
 				else {
 					blockerSays();
 				}
-				if (isLost()) {
-					lostGameText();
+				try {
+					if (isLost()) {
+						lostGameText();
+					}
+				} catch (IOException ioException) {
+					ioException.printStackTrace();
 				}
 			}
 		});
@@ -271,10 +285,14 @@ public class RoomPanel2 extends JPanel {
 				else {
 						blockerSays();
 					}
-				if (isLost()) {
-					lostGameText();
+				try {
+					if (isLost()) {
+						lostGameText();
+					}
+				} catch (IOException ioException) {
+					ioException.printStackTrace();
 				}
-				}
+			}
 
 		});
 	}
@@ -423,11 +441,11 @@ public class RoomPanel2 extends JPanel {
 		JOptionPane.showMessageDialog(null, "You are lost!! Exit and restart to try again!");
 	}
 	
-	private boolean isLost() {
-		boolean s = !canTryS() || SIsWall();
-		boolean w = !canTryW() || WIsWall();
-		boolean n = !canTryN() || NIsWall();
-		boolean e = !canTryE() || EIsWall();
+	private boolean isLost() throws IOException {
+		boolean s = !GameRunner.getInstance().canTraverse() || (!canTryS() || SIsWall());
+		boolean w = !GameRunner.getInstance().canTraverse() || (!canTryW() || WIsWall());
+		boolean n = !GameRunner.getInstance().canTraverse() || (!canTryN() || NIsWall());
+		boolean e = !GameRunner.getInstance().canTraverse() || (!canTryE() || EIsWall());
 
 		return s && w && n && e;
 	}

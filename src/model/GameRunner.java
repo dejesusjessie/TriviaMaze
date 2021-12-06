@@ -187,6 +187,10 @@ public class GameRunner {
 		
 	}
 
+	public boolean canTraverse(){
+		return myMaze.mazeTraversal();
+	}
+
 
 
 }
