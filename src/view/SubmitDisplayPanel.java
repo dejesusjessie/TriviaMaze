@@ -2,14 +2,12 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class SubmitDisplayPanel extends JPanel{
 
     protected final JButton submitButton = new JButton();
-
+    protected boolean isCorrect;
 
     protected SubmitDisplayPanel(){
         this.setBackground(Color.WHITE);
@@ -32,8 +30,10 @@ public class SubmitDisplayPanel extends JPanel{
                 }
                 if(Objects.equals(currentSelection, TriviaPanel.MY_ANSWER)){
                     JOptionPane.showMessageDialog( myTriviaPanel,"CORRECT!");
+                    isCorrect = true;
                 } else{
                     JOptionPane.showMessageDialog(myTriviaPanel, "INCORRECT!");
+                    isCorrect = false;
                 }
             } catch (NullPointerException ex){
                 JOptionPane.showMessageDialog(myTriviaPanel, "Select one of the following!");

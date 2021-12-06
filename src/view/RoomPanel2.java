@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 /**
- * 
+ *
  * @author Codi Chun, Kannika Armstrong
  *
  */
@@ -58,7 +58,7 @@ public class RoomPanel2 extends JPanel {
 
 	private static JLabel currentRoom = new JLabel("✵ Current Room ✵" );
 
- 
+
 
 	public RoomPanel2(){
 
@@ -96,8 +96,8 @@ public class RoomPanel2 extends JPanel {
 		myRightPanel.setBackground(new Color(255,222,173));
 
 	}
-	
-	private void setNorthButton() {	
+
+	private void setNorthButton() {
 		myNorthButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -107,10 +107,10 @@ public class RoomPanel2 extends JPanel {
 					if(moveN) {
 						try {
 							GameRunner.getInstance().openN();
-						GameRunner.getInstance().moveN();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+							GameRunner.getInstance().moveN();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
 					}else {
 						try {
 							GameRunner.getInstance().lockN();
@@ -141,8 +141,8 @@ public class RoomPanel2 extends JPanel {
 
 		});
 	}
-	
-	private void setSouthButton() {	
+
+	private void setSouthButton() {
 		mySouthButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -151,11 +151,11 @@ public class RoomPanel2 extends JPanel {
 					Boolean moveS = showQA();
 					if(moveS) {
 						try {
-						GameRunner.getInstance().openS();
-						GameRunner.getInstance().moveS();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+							GameRunner.getInstance().openS();
+							GameRunner.getInstance().moveS();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
 					}else {
 						try {
 							GameRunner.getInstance().lockS();
@@ -175,11 +175,11 @@ public class RoomPanel2 extends JPanel {
 						e1.printStackTrace();
 					}
 				}
-				
+
 				else {
 					blockerSays();
 				}
-				
+
 				if (isLost()) {
 					lostGameText();
 				}
@@ -188,22 +188,22 @@ public class RoomPanel2 extends JPanel {
 			}
 		});
 	}
-	
-	private void setEastButton() {	
+
+	private void setEastButton() {
 		myEastButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if( canTryE()&& !EIsWall() &&!hasBridgeE()) {
 					Boolean moveE = showQA();
 					if(moveE) {
 						try {
-						GameRunner.getInstance().openE();
-						GameRunner.getInstance().moveE();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+							GameRunner.getInstance().openE();
+							GameRunner.getInstance().moveE();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
 					} else {
 						try {
 							GameRunner.getInstance().lockE();
@@ -212,7 +212,7 @@ public class RoomPanel2 extends JPanel {
 							e1.printStackTrace();
 						}
 					}
-				} 
+				}
 				else if (EIsWall()) {
 					wallSays();
 				}
@@ -232,10 +232,10 @@ public class RoomPanel2 extends JPanel {
 				}
 			}
 		});
-		
+
 	}
-	
-	private void setWestButton() {	
+
+	private void setWestButton() {
 		myWestButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -245,10 +245,10 @@ public class RoomPanel2 extends JPanel {
 					if(moveW) {
 						try {
 							GameRunner.getInstance().openW();
-						GameRunner.getInstance().moveW();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+							GameRunner.getInstance().moveW();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
 					}else {
 						try {
 							GameRunner.getInstance().lockW();
@@ -269,42 +269,42 @@ public class RoomPanel2 extends JPanel {
 					}
 				}
 				else {
-						blockerSays();
-					}
+					blockerSays();
+				}
 				if (isLost()) {
 					lostGameText();
 				}
-				}
+			}
 
 		});
 	}
-	
+
 	private Boolean showQA() {
-	    Trivia trivia = Database.getQuestionList().get(0);
-	    String question = trivia.getQuestion();
-	    String answerLetter = trivia.getAnswer();
-	    String[] options = trivia.getOptions();
-	    
-	    //Showing answer for developer mode. 
-	    //TODO Should delete when turn in. 
+		Trivia trivia = Database.getQuestionList().get(0);
+		String question = trivia.getQuestion();
+		String answerLetter = trivia.getAnswer();
+		String[] options = trivia.getOptions();
+
+		//Showing answer for developer mode.
+		//TODO Should delete when turn in.
 		System.out.println("Deverloper mode message: the answer is : " + answerLetter);
-		
+
 		int x = JOptionPane.showOptionDialog(null, question,
-                "Trivia Question", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,null, options, options[0]);
+				"Trivia Question", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,null, options, options[0]);
 
 		String myAnswer = checkAnswer(answerLetter, options);
 
 		if(options[x].equals(myAnswer)) {
 			JOptionPane.showMessageDialog(null, "Correct!");
 			return true;
-			
+
 		} else {
 			JOptionPane.showMessageDialog(null, "Wrong.");
 			return false;
 		}
-		
+
 	}
-	
+
 	private String checkAnswer(String theLetter, String[] theOptions) {
 		String Answer;
 		if(theLetter.equals("A")) {
@@ -320,7 +320,7 @@ public class RoomPanel2 extends JPanel {
 		}
 		return Answer;
 	}
-	
+
 	private Boolean canTryE() {
 		Boolean result = true;
 		try {
@@ -342,7 +342,7 @@ public class RoomPanel2 extends JPanel {
 		}
 		return result;
 	}
-	
+
 	private Boolean canTryN() {
 		Boolean result = true;
 		try {
@@ -353,9 +353,9 @@ public class RoomPanel2 extends JPanel {
 		}
 		return result;
 	}
-	
 
-	
+
+
 	private Boolean canTryS() {
 		Boolean result = true;
 		try {
@@ -366,7 +366,7 @@ public class RoomPanel2 extends JPanel {
 		}
 		return result;
 	}
-	
+
 	private boolean NIsWall() {
 		boolean result = false;
 		try {
@@ -377,7 +377,7 @@ public class RoomPanel2 extends JPanel {
 		}
 		return result;
 	}
-	
+
 	private boolean SIsWall() {
 		boolean result = false;
 		try {
@@ -388,7 +388,7 @@ public class RoomPanel2 extends JPanel {
 		}
 		return result;
 	}
-	
+
 	private boolean WIsWall() {
 		boolean result = false;
 		try {
@@ -399,7 +399,7 @@ public class RoomPanel2 extends JPanel {
 		}
 		return result;
 	}
-	
+
 	private boolean EIsWall() {
 		boolean result = false;
 		try {
@@ -410,19 +410,19 @@ public class RoomPanel2 extends JPanel {
 		}
 		return result;
 	}
-	
+
 	private void blockerSays() {
 		JOptionPane.showMessageDialog(null, "You are going to be eaten!! Muhahaha");
 	}
-	
+
 	private void wallSays() {
 		JOptionPane.showMessageDialog(null, "You are hitting the wall!!");
 	}
-	
+
 	private void lostGameText() {
 		JOptionPane.showMessageDialog(null, "You are lost!! Exit and restart to try again!");
 	}
-	
+
 	private boolean isLost() {
 		boolean s = !canTryS() || SIsWall();
 		boolean w = !canTryW() || WIsWall();
@@ -431,7 +431,7 @@ public class RoomPanel2 extends JPanel {
 
 		return s && w && n && e;
 	}
-	
+
 	private boolean hasBridgeN() {
 		boolean result = false;
 		try {
@@ -442,7 +442,7 @@ public class RoomPanel2 extends JPanel {
 		}
 		return result;
 	}
-	
+
 	private boolean hasBridgeS() {
 		boolean result = false;
 		try {
@@ -453,7 +453,7 @@ public class RoomPanel2 extends JPanel {
 		}
 		return result;
 	}
-	
+
 	private boolean hasBridgeE() {
 		boolean result = false;
 		try {
@@ -464,7 +464,7 @@ public class RoomPanel2 extends JPanel {
 		}
 		return result;
 	}
-	
+
 	private boolean hasBridgeW() {
 		boolean result = false;
 		try {
@@ -478,4 +478,3 @@ public class RoomPanel2 extends JPanel {
 
 
 }
-
