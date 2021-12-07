@@ -4,16 +4,16 @@ public class Player {
 
     private String myUserName;
 
-    public Player (String userName){
-        this.myUserName = userName;
+    public Player (String theUserName){
+        this.myUserName = theUserName;
     }
 
     public String getUserName() {
         return this.myUserName;
     }
 
-    public void setUserName(String userName) {
-        this.myUserName = userName;
+    public void setUserName(String theUserName) {
+        this.myUserName = theUserName;
     }
 
     @Override

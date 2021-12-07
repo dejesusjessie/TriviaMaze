@@ -9,7 +9,7 @@ public class triviaMazeTester {
 
     public static void main(String[] args) {
         //======= Uncomment to test each method =======//
-        // new TriviaMazeBuilder();
+         new TriviaMazeBuilder();
         // userNameTest();
         // userMazeSizeTest();
         // userSelectedDirectionTest();

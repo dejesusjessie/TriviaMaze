@@ -35,7 +35,14 @@ public class TriviaMazeBuilder {
         String myDirection; //
         String myAnswer;
 
-        //If the player still can move and does not reach the exit
+        playGame(myMazeGame, promptUser);
+        endGame(myMazeGame, promptUser);
+    }
+
+    private void playGame(Maze myMazeGame, PromptUser promptUser) {
+        String myDirection;
+        String myAnswer;
+        Room myCurrentRoom;
         do {
             myCurrentRoom = myMazeGame.getCurrentRoom();
             System.out.println(myMazeGame.toString()); // print out the maze
@@ -62,7 +69,9 @@ public class TriviaMazeBuilder {
             }
 
         } while (myMazeGame.mazeTraversal() && !myMazeGame.reachExit());
+    }
 
+    private void endGame(Maze myMazeGame, PromptUser promptUser) {
         if (myMazeGame.reachExit()){
             promptUser.displayWinningMessage();
         } else {
