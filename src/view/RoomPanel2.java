@@ -11,8 +11,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  *
@@ -44,8 +42,8 @@ public class RoomPanel2 extends JPanel {
 	/**
 	 *  JPanel for all images
 	 */
-	private JPanel myRoomDisplay = new JPanel(); // Used to display the room
-	private JPanel myCurrentRoom = new JPanel(); // Used to Label my current room
+	private JPanel myRoomDisplay = new JPanel(); // Use to display the room
+	private JPanel myCurrentRoom = new JPanel(); // Use to Label my current room
 	private JPanel myTextDisplay = new JPanel(); // Use for the text section
 	private JPanel myLeftPanel = new JPanel();
 	private JPanel myRightPanel = new JPanel();
@@ -59,16 +57,11 @@ public class RoomPanel2 extends JPanel {
 	private static JLabel myAvatar = new JLabel(myAvatarImg); // Use to display the Avatar in the room
 
 	private static JLabel currentRoom = new JLabel("✵ Current Room ✵" );
-	private TriviaPanel myTriviaPanel = new TriviaPanel();
 
-
-<<<<<<< HEAD
-=======
 	// JOption image
 	private static ImageIcon huskyCryImg = new ImageIcon("src/image/huskyCry.gif");
 
- 
->>>>>>> 344e9cb4747c31e1bd8acdfc8f47bfc1ee39275d
+
 
 	public RoomPanel2(){
 
@@ -82,7 +75,7 @@ public class RoomPanel2 extends JPanel {
 		setSouthButton();
 		setWestButton();
 		setEastButton();
-		myLeftPanel.setPreferredSize(new Dimension(340,100));
+		myLeftPanel.setPreferredSize(new Dimension(300,100));
 		myLeftPanel.setBackground(Color.BLUE);
 		myLeftPanel.setBorder(new EmptyBorder(10,10,10,10));
 		myLeftPanel.setLayout(new BorderLayout());
@@ -196,17 +189,12 @@ public class RoomPanel2 extends JPanel {
 					blockerSays();
 				}
 
-<<<<<<< HEAD
-				if (isLost()) {
-					lostGameText();
-=======
 				try {
 					if (isLost()) {
 						lostGameText();
 					}
 				} catch (IOException ioException) {
 					ioException.printStackTrace();
->>>>>>> 778bc772d9db2978c46c593ecca47bb9a744b441
 				}
 
 
@@ -298,21 +286,14 @@ public class RoomPanel2 extends JPanel {
 					}
 				}
 				else {
-<<<<<<< HEAD
 					blockerSays();
 				}
-				if (isLost()) {
-					lostGameText();
-=======
-						blockerSays();
-					}
 				try {
 					if (isLost()) {
 						lostGameText();
 					}
 				} catch (IOException ioException) {
 					ioException.printStackTrace();
->>>>>>> 778bc772d9db2978c46c593ecca47bb9a744b441
 				}
 			}
 
@@ -394,6 +375,8 @@ public class RoomPanel2 extends JPanel {
 		return result;
 	}
 
+
+
 	private Boolean canTryS() {
 		Boolean result = true;
 		try {
@@ -456,12 +439,7 @@ public class RoomPanel2 extends JPanel {
 	private void wallSays() {
 		JOptionPane.showMessageDialog(null, "You are hitting the wall!!");
 	}
-<<<<<<< HEAD
 
-	private void lostGameText() {
-		JOptionPane.showMessageDialog(null, "You are lost!! Exit and restart to try again!");
-=======
-	
 	private void lostGameText() throws IOException {
 
 		Object[] options = {"Restart", "Exit"};
@@ -482,23 +460,13 @@ public class RoomPanel2 extends JPanel {
 		}
 
 		//JOptionPane.showMessageDialog(null, "You are lost!! Exit and restart to try again!");
->>>>>>> 344e9cb4747c31e1bd8acdfc8f47bfc1ee39275d
 	}
-<<<<<<< HEAD
 
-	private boolean isLost() {
-		boolean s = !canTryS() || SIsWall();
-		boolean w = !canTryW() || WIsWall();
-		boolean n = !canTryN() || NIsWall();
-		boolean e = !canTryE() || EIsWall();
-=======
-	
 	private boolean isLost() throws IOException {
 		boolean s = !GameRunner.getInstance().canTraverse() || (!canTryS() || SIsWall());
 		boolean w = !GameRunner.getInstance().canTraverse() || (!canTryW() || WIsWall());
 		boolean n = !GameRunner.getInstance().canTraverse() || (!canTryN() || NIsWall());
 		boolean e = !GameRunner.getInstance().canTraverse() || (!canTryE() || EIsWall());
->>>>>>> 778bc772d9db2978c46c593ecca47bb9a744b441
 
 		return s && w && n && e;
 	}
@@ -546,5 +514,6 @@ public class RoomPanel2 extends JPanel {
 		}
 		return result;
 	}
+
 
 }
