@@ -3,7 +3,6 @@ package view;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import application.TriviaMazeMain;
 import io.Database;
 import io.Trivia;
 import model.GameRunner;
@@ -475,7 +474,7 @@ public class RoomPanel2 extends JPanel {
 	private boolean hasBridgeN() {
 		boolean result = false;
 		try {
-			result = GameRunner.getInstance().getCurrentRoom().getNorthDoor().isOpen();
+			result = GameRunner.getInstance().getCurrentRoom().getMyNorthDoor().isOpen();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -486,7 +485,7 @@ public class RoomPanel2 extends JPanel {
 	private boolean hasBridgeS() {
 		boolean result = false;
 		try {
-			result = GameRunner.getInstance().getCurrentRoom().getSouthDoor().isOpen();
+			result = GameRunner.getInstance().getCurrentRoom().getMySouthDoor().isOpen();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -497,7 +496,7 @@ public class RoomPanel2 extends JPanel {
 	private boolean hasBridgeE() {
 		boolean result = false;
 		try {
-			result = GameRunner.getInstance().getCurrentRoom().getEastDoor().isOpen();
+			result = GameRunner.getInstance().getCurrentRoom().getMyEastDoor().isOpen();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -508,7 +507,7 @@ public class RoomPanel2 extends JPanel {
 	private boolean hasBridgeW() {
 		boolean result = false;
 		try {
-			result = GameRunner.getInstance().getCurrentRoom().getWestDoor().isOpen();
+			result = GameRunner.getInstance().getCurrentRoom().getMyWestDoor().isOpen();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

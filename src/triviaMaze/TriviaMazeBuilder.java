@@ -72,13 +72,13 @@ public class TriviaMazeBuilder {
 
     private static void openDoor(Room currentRoom, String direction) {
         if(direction.equalsIgnoreCase("N"))
-            currentRoom.getNorthDoor().open();
+            currentRoom.getMyNorthDoor().open();
         else if(direction.equalsIgnoreCase("S"))
-            currentRoom.getSouthDoor().open();
+            currentRoom.getMySouthDoor().open();
         else if(direction.equalsIgnoreCase("E"))
-            currentRoom.getEastDoor().open();
+            currentRoom.getMyEastDoor().open();
         else
-            currentRoom.getWestDoor().open();
+            currentRoom.getMyWestDoor().open();
     }
 
     private static void lockDoor(Maze myMazeGame, String direction) {
@@ -96,25 +96,25 @@ public class TriviaMazeBuilder {
 
     private static boolean doorOpened(String direction, Room currentRoom) {
         if (direction.equalsIgnoreCase("N")) {
-            return currentRoom.getNorthDoor().isOpen();
+            return currentRoom.getMyNorthDoor().isOpen();
         } else if (direction.equalsIgnoreCase("S")) {
-            return currentRoom.getSouthDoor().isOpen();
+            return currentRoom.getMySouthDoor().isOpen();
         } else if (direction.equalsIgnoreCase("E")) {
-            return currentRoom.getEastDoor().isOpen();
+            return currentRoom.getMyEastDoor().isOpen();
         } else {
-            return currentRoom.getWestDoor().isOpen();
+            return currentRoom.getMyWestDoor().isOpen();
         }
     }
 
     private static boolean doorController (String direction, Room currentRoom) {
         if (direction.equalsIgnoreCase("N")) {
-            return currentRoom.getNorthDoor().canEnter();
+            return currentRoom.getMyNorthDoor().canEnter();
         } else if (direction.equalsIgnoreCase("S")) {
-            return currentRoom.getSouthDoor().canEnter();
+            return currentRoom.getMySouthDoor().canEnter();
         } else if (direction.equalsIgnoreCase("E")) {
-            return currentRoom.getEastDoor().canEnter();
+            return currentRoom.getMyEastDoor().canEnter();
         } else {
-            return currentRoom.getWestDoor().canEnter();
+            return currentRoom.getMyWestDoor().canEnter();
         }
     }
 

@@ -8,47 +8,47 @@ package model;
 public class Room {
 
     // Create the doors of 4 direction
-    private Door northDoor;
-    private Door southDoor;
-    private Door eastDoor;
-    private Door westDoor;
-    boolean exitRoom = false;
+    private Door myNorthDoor;
+    private Door mySouthDoor;
+    private Door myEastDoor;
+    private Door myWestDoor;
+    private boolean exitRoom = false;
 
 
     // Getter and setter of the door on the North
-    public Door getNorthDoor() {
-        return northDoor;
+    public Door getMyNorthDoor() {
+        return myNorthDoor;
     }
 
-    public void setNorthDoor(Door northDoor) {
-        this.northDoor = northDoor;
+    public void setMyNorthDoor(Door myNorthDoor) {
+        this.myNorthDoor = myNorthDoor;
     }
 
     // Getter and setter of the door on the South
-    public Door getSouthDoor() {
-        return southDoor;
+    public Door getMySouthDoor() {
+        return mySouthDoor;
     }
 
-    public void setSouthDoor(Door southDoor) {
-        this.southDoor = southDoor;
+    public void setMySouthDoor(Door mySouthDoor) {
+        this.mySouthDoor = mySouthDoor;
     }
 
     // Getter and setter of the door on the East
-    public Door getEastDoor() {
-        return eastDoor;
+    public Door getMyEastDoor() {
+        return myEastDoor;
     }
 
-    public void setEastDoor(Door eastDoor) {
-        this.eastDoor = eastDoor;
+    public void setMyEastDoor(Door myEastDoor) {
+        this.myEastDoor = myEastDoor;
     }
 
     // Getter and setter of the door on the West
-    public Door getWestDoor() {
-        return westDoor;
+    public Door getMyWestDoor() {
+        return myWestDoor;
     }
 
-    public void setWestDoor(Door westDoor) {
-        this.westDoor = westDoor;
+    public void setMyWestDoor(Door myWestDoor) {
+        this.myWestDoor = myWestDoor;
     }
 
     // Set exit room --> Win the game if can enter to this room
@@ -61,39 +61,39 @@ public class Room {
 
     // lock the door
     public void lockNorth() {
-        this.northDoor.lock();
+        this.myNorthDoor.lock();
     }
     public void lockSouth() {
-        this.southDoor.lock();
+        this.mySouthDoor.lock();
     }
     public void lockWest() {
-        this.westDoor.lock();
+        this.myWestDoor.lock();
     }
     public void lockEast() {
-        this.eastDoor.lock();
+        this.myEastDoor.lock();
     }
 
     
     public void openEast() {
-        this.eastDoor.open();
+        this.myEastDoor.open();
     }
     
     public void openSouth() {
-        this.southDoor.open();
+        this.mySouthDoor.open();
     }
     
     public void openWest() {
-        this.westDoor.open();
+        this.myWestDoor.open();
     }
     
     public void openNorth() {
-        this.northDoor.open();
+        this.myNorthDoor.open();
     }
     
     // Set of the walls
     boolean NIsWall = false;
     public void setNIsWall() {
-        this.northDoor.lock();
+        this.myNorthDoor.lock();
         NIsWall = true;
     }
     public boolean getNIsWall() {
@@ -102,7 +102,7 @@ public class Room {
 
     boolean WIsWall = false;
     public void setWIsWall() {
-        this.westDoor.lock();
+        this.myWestDoor.lock();
         WIsWall = true;
     }
     public boolean getWIsWall() {
@@ -111,7 +111,7 @@ public class Room {
 
     boolean SIsWall = false;
     public void setSIsWall() {
-    	this.southDoor.lock();
+    	this.mySouthDoor.lock();
         SIsWall = true;
     }
     public boolean getSIsWall() {
@@ -120,7 +120,7 @@ public class Room {
     
     boolean EIsWall = false;
     public void setEIsWall() {
-    	this.eastDoor.lock();
+    	this.myEastDoor.lock();
         EIsWall = true;
     }
 
