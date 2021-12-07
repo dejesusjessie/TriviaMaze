@@ -1,5 +1,11 @@
 package triviaMaze;
 
+/**
+ * The prompt panel.
+ * @author Kannika Armstrong
+ * @version Fall 2021
+ */
+
 public class Player {
 
     private String myUserName;
