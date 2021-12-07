@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import application.TriviaMazeMain;
 import io.Database;
 import io.Trivia;
 import model.GameRunner;
@@ -57,6 +58,9 @@ public class RoomPanel2 extends JPanel {
 	private static JLabel myAvatar = new JLabel(myAvatarImg); // Use to display the Avatar in the room
 
 	private static JLabel currentRoom = new JLabel("✵ Current Room ✵" );
+
+	// JOption image
+	private static ImageIcon huskyCryImg = new ImageIcon("src/image/huskyCry.gif");
 
  
 
@@ -437,8 +441,26 @@ public class RoomPanel2 extends JPanel {
 		JOptionPane.showMessageDialog(null, "You are hitting the wall!!");
 	}
 	
-	private void lostGameText() {
-		JOptionPane.showMessageDialog(null, "You are lost!! Exit and restart to try again!");
+	private void lostGameText() throws IOException {
+
+		Object[] options = {"Restart", "Exit"};
+		int response = JOptionPane.showOptionDialog(null,
+				"You lose!! Let's try it again!!",
+				"Husky Lose",
+				JOptionPane.YES_NO_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				huskyCryImg,
+				options,  //the titles of buttons
+				options[0]); //default button title
+		if (response == JOptionPane.YES_OPTION){
+			IniMaze.getInstance();
+			GameRunner.getInstance();
+		}
+		if (response == JOptionPane.NO_OPTION){
+			System.exit(0);
+		}
+
+		//JOptionPane.showMessageDialog(null, "You are lost!! Exit and restart to try again!");
 	}
 	
 	private boolean isLost() throws IOException {

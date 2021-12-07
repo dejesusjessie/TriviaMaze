@@ -9,7 +9,7 @@ public class triviaMazeTester {
 //        displayTriviaQuestionTest();
 //        displayWinningMessageTest();
 //        displayLosingMessageTest();
-        new TriviaMazeGameControl();
+        new TriviaMazeBuilder();
     }
 
     private static void displayLosingMessageTest() {

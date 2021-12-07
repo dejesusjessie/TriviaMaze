@@ -8,9 +8,9 @@ import model.Maze;
 import model.MazeBuilder;
 import model.Room;
 
-public class TriviaMazeGameControl {
+public class TriviaMazeBuilder {
 
-    public TriviaMazeGameControl(){
+    public TriviaMazeBuilder(){
         gameRunner();
     }
 

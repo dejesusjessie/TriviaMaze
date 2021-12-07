@@ -8,7 +8,7 @@ import model.MazeBuilder;
 public class IniMaze {
 	
 	private static IniMaze myInstance = null;
-	
+
 	MazeBuilder myBuilder;
     Maze myMaze;
     String myMazeString;
@@ -29,8 +29,13 @@ public class IniMaze {
 				}
 			}
 		}
-		
 		return myInstance;
+	}
+
+
+	public void setNewIniMaze() throws IOException {
+		myGUI.resetWindow();
+		myInstance = null;
 	}
 	
 	public MazeBuilder getBuilder(){

@@ -47,22 +47,20 @@ public class GameRunner {
 		
 
 	}
-	
-	
+
 	public static GameRunner getInstance() throws IOException {
 		if(myInstance == null) {
-			synchronized(IniMaze.class) {
+			synchronized(GameRunner.class) {
 				if(myInstance == null) {
 					myInstance = new GameRunner();
 				}
 			}
 		}
-		
 		return myInstance;
 	}
-	
-	public void setNewGame() {
-        myMazeString = myIniMaze.getString();
+
+	public void setNewGame() throws IOException {
+		myInstance = null;
 	}
 	
 	public void loadGame(String theGameStatus) {
@@ -190,7 +188,5 @@ public class GameRunner {
 	public boolean canTraverse(){
 		return myMaze.mazeTraversal();
 	}
-
-
 
 }
