@@ -1,15 +1,21 @@
 package triviaMaze;
 
+/**
+ *
+ * @author Kannika Armstrong
+ *
+ */
 public class triviaMazeTester {
 
     public static void main(String[] args) {
-//        userNameTest();
-//        userMazeSizeTest();
-//        userSelectedDirectionTest();
-//        displayTriviaQuestionTest();
-//        displayWinningMessageTest();
-//        displayLosingMessageTest();
-        new TriviaMazeBuilder();
+        //======= Uncomment to test each method =======//
+        // new TriviaMazeBuilder();
+        // userNameTest();
+        // userMazeSizeTest();
+        // userSelectedDirectionTest();
+        // displayTriviaQuestionTest();
+        // displayWinningMessageTest();
+        // displayLosingMessageTest();
     }
 
     private static void displayLosingMessageTest() {

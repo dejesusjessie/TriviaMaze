@@ -1,8 +1,10 @@
 package triviaMaze;
 
-// Not finished yet
-import io.Database;
-import io.Trivia;
+/**
+ *
+ * @author Kannika Armstrong
+ *
+ */
 
 import model.Maze;
 import model.MazeBuilder;
@@ -101,18 +103,6 @@ public class TriviaMazeBuilder {
             return currentRoom.getEastDoor().isOpen();
         } else {
             return currentRoom.getWestDoor().isOpen();
-        }
-    }
-
-    private static void wallLocked(String direction, Room currentRoom) {
-        if (direction.equalsIgnoreCase("N")) {
-            currentRoom.lockNorth();
-        } else if (direction.equalsIgnoreCase("S")) {
-            currentRoom.lockSouth();
-        } else if (direction.equalsIgnoreCase("E")) {
-            currentRoom.lockEast();
-        } else {
-            currentRoom.lockWest();
         }
     }
 
