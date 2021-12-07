@@ -15,8 +15,8 @@ public class MazeBuilder {
     }
 
     // The MazeBuilder constructor ->the dimension/size of the maze
-    public MazeBuilder(int dimension) {
-        this.myMazeDimension = dimension;
+    public MazeBuilder(int theDimension) {
+        this.myMazeDimension = theDimension;
     }
 
     // Create the build function to build the room
@@ -44,37 +44,37 @@ public class MazeBuilder {
     }
 
     // set up the door to help to set up the room
-    private void doorSetup(Room[][] rooms) {
+    private void doorSetup(Room[][] theRooms) {
         int i, j;
 
         // connect the west door and the east door
         for (i = 0; i < this.myMazeDimension; i++) {
-            rooms[i][0].setWestDoor(new Door());
-            rooms[i][0].setEastDoor(new Door());
+            theRooms[i][0].setMyWestDoor(new Door());
+            theRooms[i][0].setMyEastDoor(new Door());
         }
         for (i = 0; i < this.myMazeDimension; i++)
             for (j = 1; j < this.myMazeDimension; j++) {
-                rooms[i][j].setWestDoor(rooms[i][j - 1].getEastDoor());
+                theRooms[i][j].setMyWestDoor(theRooms[i][j - 1].getMyEastDoor());
 
                 if (j == this.myMazeDimension - 1)
-                    rooms[i][j].setEastDoor(rooms[i][0].getWestDoor());
+                    theRooms[i][j].setMyEastDoor(theRooms[i][0].getMyWestDoor());
                 else
-                    rooms[i][j].setEastDoor(new Door());
+                    theRooms[i][j].setMyEastDoor(new Door());
             }
 
         // connect the north door and the south door
         for (i = 0; i < this.myMazeDimension; i++) {
-            rooms[0][i].setNorthDoor(new Door());
-            rooms[0][i].setSouthDoor(new Door());
+            theRooms[0][i].setMyNorthDoor(new Door());
+            theRooms[0][i].setMySouthDoor(new Door());
         }
         for (i = 1; i < this.myMazeDimension; i++)
             for (j = 0; j < this.myMazeDimension; j++) {
-                rooms[i][j].setNorthDoor(rooms[i - 1][j].getSouthDoor());
+                theRooms[i][j].setMyNorthDoor(theRooms[i - 1][j].getMySouthDoor());
 
                 if (i == this.myMazeDimension - 1)
-                    rooms[i][j].setSouthDoor(rooms[0][j].getNorthDoor());
+                    theRooms[i][j].setMySouthDoor(theRooms[0][j].getMyNorthDoor());
                 else
-                    rooms[i][j].setSouthDoor(new Door());
+                    theRooms[i][j].setMySouthDoor(new Door());
             }
     }
 }

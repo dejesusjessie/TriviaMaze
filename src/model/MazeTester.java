@@ -1,5 +1,11 @@
 package model;
 
+/**
+ *
+ * @author Kannika Armstrong
+ *
+ */
+
 import java.util.Scanner;
 
 public class MazeTester {

@@ -137,19 +137,19 @@ public class GameRunner {
 	 }
 	 
 	 public Boolean EIsLock() {
-		 return myMaze.getCurrentRoom().getEastDoor().canEnter();
+		 return myMaze.getCurrentRoom().getMyEastDoor().canEnter();
 	 }
 	 
 	 public Boolean WIsLock() {
-		 return myMaze.getCurrentRoom().getWestDoor().canEnter();
+		 return myMaze.getCurrentRoom().getMyWestDoor().canEnter();
 	 }
 	 
 	 public Boolean NIsLock() {
-		 return myMaze.getCurrentRoom().getNorthDoor().canEnter();
+		 return myMaze.getCurrentRoom().getMyNorthDoor().canEnter();
 	 }
 	 
 	 public Boolean SIsLock() {
-		 return myMaze.getCurrentRoom().getSouthDoor().canEnter();
+		 return myMaze.getCurrentRoom().getMySouthDoor().canEnter();
 	 }
 	 
 	/**
