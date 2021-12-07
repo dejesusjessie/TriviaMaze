@@ -123,6 +123,10 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 //		basicWindow();
 //	}
 
+	public void resetWindow(){
+		myWindow.dispose();
+	}
+
 
 	/**
 	 * Creating the basic frame and panel.

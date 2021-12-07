@@ -24,8 +24,10 @@ public class TriviaMazeMain {
 //		new gameRunner(myBuilder, myMaze, myMazeString, myGUI);
 		
         //Version 2
-        IniMaze myIniMaze = IniMaze.getInstance();
-        GameRunner myGameRunner = GameRunner.getInstance();
+        IniMaze.getInstance();
+        GameRunner.getInstance();
+//        IniMaze myIniMaze = IniMaze.getInstance();
+//        GameRunner myGameRunner = GameRunner.getInstance();
 //		new gameRunner(myIniMaze.getBuilder(), myIniMaze.getMaze(), 
 //				myIniMaze.getString(), myIniMaze.getGUI());
         //gameRunner myGameRunner = gameRunner.getInstance();
