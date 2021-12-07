@@ -47,22 +47,20 @@ public class GameRunner {
 		
 
 	}
-	
-	
+
 	public static GameRunner getInstance() throws IOException {
 		if(myInstance == null) {
-			synchronized(IniMaze.class) {
+			synchronized(GameRunner.class) {
 				if(myInstance == null) {
 					myInstance = new GameRunner();
 				}
 			}
 		}
-		
 		return myInstance;
 	}
-	
-	public void setNewGame() {
-        myMazeString = myIniMaze.getString();
+
+	public void setNewGame() throws IOException {
+		myInstance = null;
 	}
 	
 	public void loadGame(String theGameStatus) {
@@ -139,19 +137,19 @@ public class GameRunner {
 	 }
 	 
 	 public Boolean EIsLock() {
-		 return myMaze.getCurrentRoom().getEastDoor().canEnter();
+		 return myMaze.getCurrentRoom().getMyEastDoor().canEnter();
 	 }
 	 
 	 public Boolean WIsLock() {
-		 return myMaze.getCurrentRoom().getWestDoor().canEnter();
+		 return myMaze.getCurrentRoom().getMyWestDoor().canEnter();
 	 }
 	 
 	 public Boolean NIsLock() {
-		 return myMaze.getCurrentRoom().getNorthDoor().canEnter();
+		 return myMaze.getCurrentRoom().getMyNorthDoor().canEnter();
 	 }
 	 
 	 public Boolean SIsLock() {
-		 return myMaze.getCurrentRoom().getSouthDoor().canEnter();
+		 return myMaze.getCurrentRoom().getMySouthDoor().canEnter();
 	 }
 	 
 	/**
@@ -190,7 +188,5 @@ public class GameRunner {
 	public boolean canTraverse(){
 		return myMaze.mazeTraversal();
 	}
-
-
 
 }

@@ -62,6 +62,13 @@ public class RoomPanel2 extends JPanel {
 	private TriviaPanel myTriviaPanel = new TriviaPanel();
 
 
+<<<<<<< HEAD
+=======
+	// JOption image
+	private static ImageIcon huskyCryImg = new ImageIcon("src/image/huskyCry.gif");
+
+ 
+>>>>>>> 344e9cb4747c31e1bd8acdfc8f47bfc1ee39275d
 
 	public RoomPanel2(){
 
@@ -449,9 +456,33 @@ public class RoomPanel2 extends JPanel {
 	private void wallSays() {
 		JOptionPane.showMessageDialog(null, "You are hitting the wall!!");
 	}
+<<<<<<< HEAD
 
 	private void lostGameText() {
 		JOptionPane.showMessageDialog(null, "You are lost!! Exit and restart to try again!");
+=======
+	
+	private void lostGameText() throws IOException {
+
+		Object[] options = {"Restart", "Exit"};
+		int response = JOptionPane.showOptionDialog(null,
+				"You lose!! Let's try it again!!",
+				"Husky Lose",
+				JOptionPane.YES_NO_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				huskyCryImg,
+				options,  //the titles of buttons
+				options[0]); //default button title
+		if (response == JOptionPane.YES_OPTION){
+			IniMaze.getInstance();
+			GameRunner.getInstance();
+		}
+		if (response == JOptionPane.NO_OPTION){
+			System.exit(0);
+		}
+
+		//JOptionPane.showMessageDialog(null, "You are lost!! Exit and restart to try again!");
+>>>>>>> 344e9cb4747c31e1bd8acdfc8f47bfc1ee39275d
 	}
 <<<<<<< HEAD
 
@@ -475,7 +506,7 @@ public class RoomPanel2 extends JPanel {
 	private boolean hasBridgeN() {
 		boolean result = false;
 		try {
-			result = GameRunner.getInstance().getCurrentRoom().getNorthDoor().isOpen();
+			result = GameRunner.getInstance().getCurrentRoom().getMyNorthDoor().isOpen();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -486,7 +517,7 @@ public class RoomPanel2 extends JPanel {
 	private boolean hasBridgeS() {
 		boolean result = false;
 		try {
-			result = GameRunner.getInstance().getCurrentRoom().getSouthDoor().isOpen();
+			result = GameRunner.getInstance().getCurrentRoom().getMySouthDoor().isOpen();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -497,7 +528,7 @@ public class RoomPanel2 extends JPanel {
 	private boolean hasBridgeE() {
 		boolean result = false;
 		try {
-			result = GameRunner.getInstance().getCurrentRoom().getEastDoor().isOpen();
+			result = GameRunner.getInstance().getCurrentRoom().getMyEastDoor().isOpen();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -508,7 +539,7 @@ public class RoomPanel2 extends JPanel {
 	private boolean hasBridgeW() {
 		boolean result = false;
 		try {
-			result = GameRunner.getInstance().getCurrentRoom().getWestDoor().isOpen();
+			result = GameRunner.getInstance().getCurrentRoom().getMyWestDoor().isOpen();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
