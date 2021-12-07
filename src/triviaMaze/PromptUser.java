@@ -3,30 +3,33 @@ package triviaMaze;
 import io.Database;
 import io.Trivia;
 
-import java.awt.*;
-import java.util.Arrays;
-import java.util.Locale;
 import java.util.Scanner;
+
+/**
+ * The prompt panel.
+ * @author Kannika Armstrong
+ * @version Fall 2021
+ */
 
 public class PromptUser {
 
-    private Scanner myUserInput; // use to take all input from the user
+    private final Scanner myUserInput; // use to take all input from the user
     private String myUserName; // the username
 
     // The PromptUser constructor
     public PromptUser(){
-        this.myUserInput = new Scanner(System.in); //get the input from the user
-        this.myUserName = ""; //Initial to empty string
+        this.myUserInput = new Scanner(System.in); // get the input from the user
+        this.myUserName = ""; // Initial to empty string
     }
 
-    //Return the username
-    //Take username from the player input and return it
+    // Return the username
+    // Take username from the player input and return it
     public String userName() {
 
         System.out.println("Please enter your username: ");
         this.myUserName = myUserInput.nextLine();
 
-        //The player have to create the username.
+        // The player have to create the username.
         while (this.myUserName.isEmpty()){
             System.out.println("You did not enter your username, please enter your username:");
             this.myUserName = myUserInput.nextLine();
@@ -37,10 +40,10 @@ public class PromptUser {
         return this.myUserName;
     }
     
-    //There are three three difficulty level for the game:
-    //B for Beginner game: 4x4 maze
-    //M for Medium game: 8x8 maze
-    //H for Hard game: 15x15 maze
+    // There are three three difficulty level for the game:
+    // B for Beginner game: 4x4 maze
+    // M for Medium game: 8x8 maze
+    // H for Hard game: 15x15 maze
     // return the maze size for each level
     public int userMazeSize(){
         char myLevel = '\0';
@@ -52,7 +55,7 @@ public class PromptUser {
                 "Type H for Hard level: 15x15 maze game.\n" +
                 "Please select the level:");
         myUserLevel = myUserInput.nextLine();
-        myLevel = myUserLevel.toUpperCase().charAt(0); //For the case that the user input the lower case
+        myLevel = myUserLevel.toUpperCase().charAt(0); // For the case that the user input the lower case
 
         while( myLevel != 'B' && myLevel != 'M' && myLevel != 'H') {
             System.out.println(myLevel + " is invalid option, please select the level (B, M, H):");
@@ -72,11 +75,11 @@ public class PromptUser {
         }
     }
 
-    //Select the direction to move
-    //N for moving north
-    //S for moving south
-    //E for moving East
-    //W for moving West
+    // Select the direction to move
+    // N for moving north
+    // S for moving south
+    // E for moving East
+    // W for moving West
     public String userSelectedDirection(){
         char myDirection = '\0';
         String myUserDirection = "";
@@ -88,7 +91,7 @@ public class PromptUser {
                 "Type W for moving West\n" +
                 "Please select the direction that you want to move:");
         myUserDirection = myUserInput.nextLine();
-        myDirection = myUserDirection.toUpperCase().charAt(0); //For the case that the user input the lower case
+        myDirection = myUserDirection.toUpperCase().charAt(0); // For the case that the user input the lower case
 
         while( myDirection != 'N' && myDirection != 'S' && myDirection != 'E' && myDirection != 'W') {
             System.out.println(myDirection + " is invalid option, please select the direction (N, S, E, W):");
@@ -98,17 +101,16 @@ public class PromptUser {
         return String.valueOf(myDirection);
     }
 
-    //Display the trivia question form the database and return the user answer
+    // Display the trivia question form the database and return the user answer
     public String displayTrivia() {
         Trivia currentQuestion = Database.getQuestionList().get(0);
 
-        //Display the randomly question form database
+        // Display the randomly question form database
         System.out.println(currentQuestion.getQuestion());
 
-        //Create the option of the random question
-        //There are 2 kinds of question sets: Multiple choices and True/False question
-        //To display in the console for the multiple choice question
-        // System.out.println("Options: " + Arrays.toString(currentQuestion.getOptions()));
+        // Create the option of the random question
+        // There are 2 kinds of question sets: Multiple choices and True/False question
+        // To display in the console for the multiple choice question
         String[] answerOption = currentQuestion.getOptions();
         if (answerOption.length == 4){
             System.out.println("A. " + answerOption[0]);
@@ -116,46 +118,52 @@ public class PromptUser {
             System.out.println("C. " + answerOption[2]);
             System.out.println("D. " + answerOption[3]);
         } else {
-            System.out.println(answerOption[0]);
+            System.out.print(answerOption[0]);
+            System.out.print(" or ");
             System.out.println(answerOption[1]);
         }
 
-        //Checking the answer
-        //We will using GUI to display this so we can avoid the invalid answer
-        //char myAnswer = '\0';
-        String myUserAnswer = "";
+        // Checking the answer
+        String userAnswer = ""; // take the user input
+        String myUserAnswer = ""; // convert to uppercase to check answer
+        String myResult = "";
         System.out.println("Please select your answer ");
-        myUserAnswer = myUserInput.nextLine();
+        userAnswer = myUserInput.nextLine();
+        myUserAnswer = userAnswer.toUpperCase();
 
-
-
-        //myAnswer = myUserAnswer.toUpperCase().charAt(0);
-        if ( myUserAnswer.equals(currentQuestion.getAnswer())) {
+        while(!myUserAnswer.equals("A") && !myUserAnswer.equals("B") && !myUserAnswer.equals("C") && !myUserAnswer.equals("D")
+                && !myUserAnswer.equals("TRUE") && !myUserAnswer.equals("FALSE")) {
+            if (answerOption.length == 4) {
+                System.out.println(userAnswer + " is invalid option, please select the direction (A, B, C, or D):");
+                userAnswer = myUserInput.nextLine();
+                myUserAnswer = userAnswer.toUpperCase();
+            } else {
+                System.out.println(userAnswer + " is invalid option, please select the direction (True or False):");
+                userAnswer = myUserInput.nextLine();
+                myUserAnswer = userAnswer.toUpperCase();
+            }
+        }
+        if (myUserAnswer.equals(currentQuestion.getAnswer().toUpperCase())) {
             System.out.println("Your answer is RIGHT!!!");
-            return "Correct";
-            //open the door
+            myResult = "Correct";
         } else {
             System.out.println("Your answer is WRONG!! The right answer is " + currentQuestion.getAnswer());
-            return "Wrong";
-            //close the door
+            myResult = "Wrong";
         }
-        //System.out.println("Answer: " + currentQuestion.getAnswer());
+        return myResult;
     }
 
     // The message for the winning player
     public void displayWinningMessage() {
         System.out.println("Congratulation " + myUserName + ", You Win!!");
-        //display the playing time
-        //button to close or start the new game
     }
 
     // The message when losing the same
     public void displayLosingMessage() {
         System.out.println("Sorry " + myUserName + ", You lose!! Let's try it again!!");
-        //button to close or start the new game
     }
 
-    //close the Scanner after use it
+    // Close the Scanner after use it
     public void closeScanner() {
         this.myUserInput.close();
     }

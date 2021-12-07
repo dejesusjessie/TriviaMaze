@@ -72,7 +72,7 @@ public class Room {
     public void lockEast() {
         this.eastDoor.lock();
     }
-//<<<<<<< HEAD
+
     
     public void openEast() {
         this.eastDoor.open();
@@ -90,8 +90,7 @@ public class Room {
         this.northDoor.open();
     }
     
-
-    
+    // Set of the walls
     boolean NIsWall = false;
     public void setNIsWall() {
         this.northDoor.lock();
@@ -100,9 +99,7 @@ public class Room {
     public boolean getNIsWall() {
     	return NIsWall;
     }
-    
-    
-    
+
     boolean WIsWall = false;
     public void setWIsWall() {
         this.westDoor.lock();
@@ -111,8 +108,7 @@ public class Room {
     public boolean getWIsWall() {
     	return WIsWall;
     }
-    
-    
+
     boolean SIsWall = false;
     public void setSIsWall() {
     	this.southDoor.lock();
@@ -127,62 +123,8 @@ public class Room {
     	this.eastDoor.lock();
         EIsWall = true;
     }
+
     public boolean getEIsWall() {
     	return EIsWall;
     }
-    
-//=======
-//
-//    // Create the walls of 4 direction
-//    private Door northWall;
-//    private Door southWall;
-//    private Door eastWall;
-//    private Door westWall;
-//
-//    public Door getNorthWall() {
-//        return northWall;
-//    }
-//
-//    public void setNorthWall(Door northWall) {
-//        this.northWall = northWall;
-//    }
-//
-//    public Door getSouthWall() {
-//        return southWall;
-//    }
-//
-//    public void setSouthWall(Door southWall) {
-//        this.southWall = southWall;
-//    }
-//
-//    public Door getEastWall() {
-//        return eastWall;
-//    }
-//
-//    public void setEastWall(Door eastWall) {
-//        this.eastWall = eastWall;
-//    }
-//
-//    public Door getWestWall() {
-//        return westWall;
-//    }
-//
-//    public void setWestWall(Door westWall) {
-//        this.westWall = westWall;
-//    }
-//
-//    // lock the wall
-//    public void lockNorthWall() {
-//        this.northWall.lock();
-//    }
-//    public void lockSouthWall() {
-//        this.southWall.lock();
-//    }
-//    public void lockWestWall() {
-//        this.westWall.lock();
-//    }
-//    public void lockEastWall() {
-//        this.eastWall.lock();
-//    }
-//>>>>>>> a399629c79fecac35e9d70c373ae106703ca20f3
 }
