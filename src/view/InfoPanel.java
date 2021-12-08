@@ -5,18 +5,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.Timer;
-
-
-import model.GameRunner;
-
 
 
 
@@ -120,17 +112,9 @@ public class InfoPanel extends JPanel implements ActionListener{
 	 * Preset the button size.
 	 */
 
-	Dimension myButtonSize = new Dimension(100, 50); 
+	private final Dimension myButtonSize = new Dimension(100, 50); 
 
-//	formatted = "<html><font size='9'>" + formatted + "</font></html>";
-//	JLabel label = new JLabel(formatted);
-//	JLabel myWelcomeLabel = new JLabel("Welcome!"
-//			+"\nYou are a husky and looking for food in the jungle."
-//			+"\nThere are many rivers block your way during the serching."
-//			+"\nBut luckly, if when you click the river, there will be a trivia question,"
-//			+ "\nif you select the correct answer, you will get a bridge to cross the river,"
-//			+ "\nbut if you select the wrong answer, ahhhhhhhhhh...");
-	JTextArea myWelcomeText;
+	private JTextArea myWelcomeText;
 
 	/**
 	 * The constructor.
@@ -301,16 +285,8 @@ public class InfoPanel extends JPanel implements ActionListener{
 	 * The design of the Stopwatch label.
 	 */
 	private void layoutStopwatch() {
-
-		// Setting the layout.
 		myStopwatchLabel = new JLabel();
 		myStopwatchLabel.setBackground(new Color(255,222,173));
-		//myStopwatchLabel.setBounds(500, 500, 500, 500);
-		//myStopwatchLabel.setFont(new Font("Verdana",Font.PLAIN,20));
-		//myStopwatchLabel.setBorder(BorderFactory.createEmptyBorder(10, 50, 30, 50));
-		//myStopwatchLabel.setSize(50, 80);
-		//myStopwatchLabel.setOpaque(true);
-		//myStopwatchLabel.setHorizontalAlignment(JTextField.CENTER);
 		myStopwatchLabel.setVisible(true);
 	}
 

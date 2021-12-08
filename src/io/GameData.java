@@ -1,7 +1,6 @@
 package io;
 
 import java.io.Serializable;
-
 import model.GameRunner;
 import model.Maze;
 import model.MazeBuilder;
@@ -9,50 +8,42 @@ import view.IniMaze;
 import view.TriviaMazeGUI;
 
 /**
- * 
+ * The game data that use for serialization.
  * @author Codi Chun
- *
+ * @version Fall 2021
  */
 public class GameData implements Serializable{
 
 	/**
-	 * 
+	 * The UID number.
 	 */
 	private static final long serialVersionUID = -8478785890219058860L;
 	
 	/**
-	 * 
+	 * Data that we might use on next version.
 	 */
-	int mySystemTime;
+	private int mySystemTime;
+	private String myGameTime;
+	private String SystemTime;
 	
 	/**
-	 * 
+	 * The game status string that generates the maze GUI.
 	 */
-	String myGameTime;
-	
-//	/**
-//	 * 
-//	 */
-//	String SystemTime;
+	private String myGameStatus;
 	
 	/**
-	 * 
+	 * The maze that we use for serialization. 
 	 */
-	String myGameStatus;
+	private Maze myMaze;
 	
 	/**
-	 * 
+	 * The initial maze that we use for serialization. 
 	 */
-	GameRunner myGameRunner;
-	
-	MazeBuilder myBuilder; 
-	Maze myMaze;
-	TriviaMazeGUI myGUI;
-	IniMaze myIniMaze;
+	private IniMaze myIniMaze;
 	
 	
 	/**
-	 * 
+	 * The constructor.
 	 * @param theSystemTime
 	 * @param theGameTime
 	 */
@@ -61,35 +52,40 @@ public class GameData implements Serializable{
 		//this.myGameRunner = theGameRunner;
 		//this.myBuilder = theBuilder;
 		this.myMaze = theMaze;
-		//this.myGUI = theGUI;
 		this.myGameStatus = theGameStatus;
 		this.myIniMaze = theIniMaze;
 	
 	}
 	
-	
+	/**
+	 * The getter.
+	 * @return myIniMaze
+	 */
 	public IniMaze getIniMaze() {
 		return myIniMaze;
 	}
 	
-	public MazeBuilder getBuilder() {
-		return myBuilder;
-		
-	}
-	
+	/**
+	 * The getter.
+	 * @return myMaze
+	 */
 	public Maze getMaze() {
 		return myMaze;
 		
 	}
 	
+	/**
+	 * The getter.
+	 * @return myGameStatus
+	 */
 	public String getMazeString() {
 		return myGameStatus;
 		
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * The getter.
+	 * @return mySystemTime
 	 */
 	public int getSystemTime(){
 		return mySystemTime;
@@ -97,8 +93,8 @@ public class GameData implements Serializable{
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * The getter.
+	 * @return myGameTime
 	 */
 	public String getGameTime() {
 		return myGameTime;
@@ -106,19 +102,13 @@ public class GameData implements Serializable{
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * The getter.
+	 * @return myGameStatus
 	 */
 	public String getGameStatus() {
 		return myGameStatus;
 		
 	}
 	
-	/**
-	 * 
-	 */
-	public GameRunner getGameRunner() {
-		return myGameRunner;
-	}
 
 }

@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -10,9 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -105,8 +102,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	final FileNameExtensionFilter fileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
 
-	String myDir = System.getProperty("user.dir");
-	BufferedImage myHusky = ImageIO.read(new File(myDir + "/src/image/husky.png"));
+	//String myDir = System.getProperty("user.dir");
+	//BufferedImage myHusky = ImageIO.read(new File(myDir + "/src/image/husky.png"));
 
 
 	/**
@@ -119,10 +116,6 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		basicWindow(theMaze);
 	}
 
-//	public TriviaMazeGUI(GameData theGameData) {
-//		basicWindow();
-//	}
-
 
 	/**
 	 * Creating the basic frame and panel.
@@ -133,8 +126,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 
 		//Setting the panels.
 		//setMazePanel();
-		setInfoPanel();
-		setRoomPanel();
+//		setInfoPanel();
+//		setRoomPanel();
 		setLeftPanel();
 		setMainPanel();
 
@@ -186,27 +179,27 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		//MY_MAIN_PANEL.add(mg, BorderLayout.CENTER);
 	}
 
-	/**
-	 * Setting the maze panel.
-	 * @throws IOException
-	 */
-	private void setMazePanel() throws IOException {
-	}
-
-	/**
-	 * Setting the info panel.
-	 */
-	private void setInfoPanel() {
-		//MY_INFO_PANEL.setBackground(Color.white);
-	}
-
-	/**
-	 * Setting the room panel.
-	 */
-	private void setRoomPanel() {
-
-		//MY_ROOM_PANEL.setBackground(Color.pink);
-	}
+//	/**
+//	 * Setting the maze panel.
+//	 * @throws IOException
+//	 */
+//	private void setMazePanel() throws IOException {
+//	}
+//
+//	/**
+//	 * Setting the info panel.
+//	 */
+//	private void setInfoPanel() {
+//		//MY_INFO_PANEL.setBackground(Color.white);
+//	}
+//
+//	/**
+//	 * Setting the room panel.
+//	 */
+//	private void setRoomPanel() {
+//
+//		//MY_ROOM_PANEL.setBackground(Color.pink);
+//	}
 
 	/**
 	 *

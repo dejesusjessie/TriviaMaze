@@ -1,14 +1,13 @@
 package model;
 
-
-import java.io.IOException;
 import javax.swing.JOptionPane;
 import view.IniMaze;
 import view.TriviaMazeGUI;
 
 /**
  * The new game runner.
- * Runs a new game. 
+ * Runs a new game.
+ * Singleton pattern.
  * @author Codi Chun
  * @version Fall 2021
  */
@@ -16,76 +15,12 @@ import view.TriviaMazeGUI;
 public enum GameRunner {
 	
 	INSTANCE;
-	//private static GameRunner myInstance = null;
-	//IniMaze myIniMaze = IniMaze.getInstance();
 	
     public static MazeBuilder myBuilder;
     public static Maze myMaze;
     public static String myMazeString;
 	public static TriviaMazeGUI myGUI;
 	
-	/**
-	 * Constructor.
-	 * @param theBuilder
-	 * @param theMaze
-	 * @param theMazeString
-	 * @param theGame
-	 */
-//	private GameRunner() throws IOException{
-//        myBuilder = myIniMaze.getBuilder();
-//        myMaze = myIniMaze.getMaze();
-//        myMaze.setWalls();
-//		myGUI = myIniMaze.getGUI();
-//		myMazeString = myIniMaze.getString();
-//		
-//
-//	}
-	
-
-	
-//	/**
-//	 * Constructor.
-//	 * @param theBuilder
-//	 * @param theMaze
-//	 * @param theMazeString
-//	 * @param theGame
-//	 */
-//	private GameRunner(MazeBuilder theBuilder, Maze theMaze, TriviaMazeGUI theGUI, String theString) throws IOException{
-//        myBuilder = theBuilder;
-//        myMaze = theMaze;
-//        myMaze.setWalls();
-//		myGUI = theGUI;
-//		myMazeString =theString;
-//		
-//
-//	}
-	
-	
-	
-	
-//	public static GameRunner getInstance() throws IOException {
-//		if(myInstance == null) {
-//			synchronized(IniMaze.class) {
-//				if(myInstance == null) {
-//					myInstance = new GameRunner();
-//				}
-//			}
-//		}
-//		
-//		return myInstance;
-//	}
-//	
-//	public GameRunner getInstance(MazeBuilder theBuilder, Maze theMaze, TriviaMazeGUI theGUI, String theString) throws IOException {
-//		if(myInstance == null) {
-//			synchronized(IniMaze.class) {
-//				if(myInstance == null) {
-//					myInstance = new GameRunner(theBuilder, theMaze, theGUI, theString);
-//				}
-//			}
-//		}
-//		
-//		return myInstance;
-//	}
 	
 	public void setData(IniMaze theIniMaze) {
         myBuilder = theIniMaze.getBuilder();
@@ -222,9 +157,7 @@ public enum GameRunner {
 	
 	public void isExit() {
 		if(myMaze.reachExit()) {
-			//JOptionPane.showOptionDialog(null, "You win!! Exit the game and ask Tom for the award!",null,JOptionPane.OK_OPTION,0,null,null,null);
 			JOptionPane.showMessageDialog(null, "You win!! Exit the game and ask Tom for the num-num!");
-
 		} 
 	}
 	

@@ -6,13 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
-
 import model.GameRunner;
-import model.Maze;
-import model.MazeBuilder;
-import view.InfoPanel;
 import view.IniMaze;
-import view.TriviaMazeGUI;
 
 /**
  * The Load function.
@@ -29,17 +24,22 @@ public class Load implements Serializable {
 	/**
 	 * The name of the file which needs to be load.
 	 */
-	String myFileName;
+	private String myFileName;
 	
 	/**
 	 * The dir of the project.
 	 */
-	String myDir = System.getProperty("user.dir");
+	private final String myDir = System.getProperty("user.dir");
 	
 	/**
 	 * The folder which stores the saved game.
 	 */
-	File myLoadFolder = new File(myDir + "/savedGame");
+	private final File myLoadFolder = new File(myDir + "/savedGame");
+	
+	/**
+	 * The game data that loads.
+	 */
+	private GameData myGameData;
 
 	/**
 	 * The constructor.
@@ -51,6 +51,7 @@ public class Load implements Serializable {
 	public Load(String theFileName) throws FileNotFoundException, ClassNotFoundException, IOException {
 		this.myFileName = theFileName;
 		readFile(theFileName);
+		showLoadedGame();
 	}
 	
 	/**
@@ -60,40 +61,19 @@ public class Load implements Serializable {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public void readFile(String theFileName) throws FileNotFoundException, IOException, ClassNotFoundException {
+	public void readFile(String theFileName) throws FileNotFoundException, IOException, ClassNotFoundException, NullPointerException {
 		ObjectInputStream loadGameStream = new ObjectInputStream(new FileInputStream(myLoadFolder +"/" + theFileName));
-//		Object loadGame = loadGameStream.readObject();
-//		System.out.println(loadGame);
-		GameData myGameData = (GameData) loadGameStream.readObject();
-
-//		TriviaMazeGUI.reloadGUI(myGameData);
-//		
-//        IniMaze myIniMaze = IniMaze.getInstance();
-		
-//        gameRunner myGameRunner = gameRunner.getInstance();
-//        myGameRunner.loadGame(myGameData.getGameStatus());
-        //myGameRunner.runGame();
-		
-		IniMaze myIniMaze = IniMaze.getInstance();
-		//IniMaze myIniMaze = myGameData.myIniMaze;
-		myIniMaze.setData(myGameData);
-		
-	
-		//TriviaMazeGUI myGUI = myIniMaze.getGUI();
-//		myIniMaze.setMazeString(myGameData.myGameStatus);
-//        GameRunner.myBuilder = myIniMaze.getBuilder();
-//        GameRunner.myMaze = myIniMaze.getMaze();
-//        GameRunner.myMaze.setWalls();
-//        GameRunner.myGUI = myIniMaze.getGUI();
-//        GameRunner.myMazeString = myIniMaze.getString();
-        GameRunner.INSTANCE.setData(myIniMaze);
-		
-		myIniMaze.getGUI().repaintMaze(myGameData.myGameStatus);
-	
-		
-
-		//System.out.println(myGameData.myGameTime);
-		
+		myGameData = (GameData) loadGameStream.readObject();
 	}
 	
+	/**
+	 * Show the loaded game on GUI.
+	 * @throws IOException
+	 */
+	public void showLoadedGame() throws IOException {
+		IniMaze myIniMaze = IniMaze.getInstance();
+		myIniMaze.setData(myGameData);
+        GameRunner.INSTANCE.setData(myIniMaze);
+		myIniMaze.getGUI().repaintMaze(myGameData.getGameStatus());
+	}
 }

@@ -18,7 +18,6 @@ import java.io.IOException;
  *
  */
 public class RoomPanel2 extends JPanel {
-	//GameRunner game = GameRunner.getInstance();
 
 	/**
 	 * The serial version UID.
@@ -229,8 +228,7 @@ GameRunner.INSTANCE.moveW();
 	    String answerLetter = trivia.getAnswer();
 	    String[] options = trivia.getOptions();
 	    
-	    //Showing answer for developer mode. 
-	    //TODO Should delete when turn in. 
+	    //Showing answer for developer mode.  
 		System.out.println("Deverloper mode message: the answer is : " + answerLetter);
 		
 		int x = JOptionPane.showOptionDialog(null, question,

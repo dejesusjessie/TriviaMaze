@@ -6,14 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.net.URL;
-
 import model.GameRunner;
 import model.Maze;
-import model.MazeBuilder;
-import view.InfoPanel;
 import view.IniMaze;
-import view.TriviaMazeGUI;
 
 /**
  * The save function.
@@ -38,30 +33,35 @@ public class Save implements Serializable{
 //	private final int mySystemTime;
 	
 	/**
-	 * 
+	 * The string that generates the maze GUI.
 	 */
 	private String myGameStatus;
 	
 	/**
-	 * 
+	 * The game data that needs to be saved.
 	 */
-	GameData myGameData;
+	private GameData myGameData;
 	
 	/**
 	 * The dir of the project.
 	 */
-	String myDir = System.getProperty("user.dir");
+	private final String myDir = System.getProperty("user.dir");
 	
 	/**
 	 * The folder which stores the saved game.
 	 */
-	File mySaveFolder = new File(myDir + "/savedGame");
+	private final File mySaveFolder = new File(myDir + "/savedGame");
 	
-	GameRunner myGameRunner;
-	MazeBuilder myBuilder; 
-	Maze myMaze;
-	TriviaMazeGUI myGUI;
-	IniMaze myIniMaze;
+
+	/**
+	 * The maze that needs to be saved.
+	 */
+	private Maze myMaze;
+	
+	/**
+	 * The initial maze that needs to be saved.
+	 */
+	private IniMaze myIniMaze;
 	
 	
 	/**
@@ -74,12 +74,8 @@ public class Save implements Serializable{
 //		this.myGameTime = InfoPanel.getGameTime();
 //		this.mySystemTime = InfoPanel.getSystemTime();
 		this.myGameStatus = GameRunner.getStatus();
-		//this.myBuilder = GameRunner.getGameMazeBuilder();
 		this.myMaze = GameRunner.getGameMaze();
 		this.myIniMaze = IniMaze.getInstance();
-		
-		//this.myGUI = GameRunner.getGameGUI();
-		//this.myGameRunner = GameRunner.getInstance();
 		myGameData = new GameData(myGameStatus, myMaze, myIniMaze);
 		generateFile(theFileName);
 

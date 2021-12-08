@@ -2,34 +2,33 @@ package view;
 
 import java.io.IOException;
 import java.io.Serializable;
-
 import io.GameData;
 import model.Maze;
 import model.MazeBuilder;
 
+/**
+ * The initial maze before the game. 
+ * @author Codi Chun
+ * @version Fall 2021
+ */
 public class IniMaze implements Serializable{
 	
 	private static IniMaze myInstance = null;
-	
 	private MazeBuilder myBuilder;
     private Maze myMaze;
     private String myMazeString;
     private transient TriviaMazeGUI myGUI;
     
-	
+	/**
+	 * Constructor.
+	 * @throws IOException
+	 */
 	private IniMaze() throws IOException{
 		myBuilder = new MazeBuilder();
 	    myMaze = myBuilder.buildRoom();
 	    myMazeString = myMaze.toGUI();
 	    myGUI = new TriviaMazeGUI(myMazeString);
 	}
-	
-//	private IniMaze(Maze theMaze, String theGameStatus) throws IOException{
-//		myBuilder = new MazeBuilder();
-//	    myMaze = theMaze;
-//	    myMazeString = theGameStatus;
-//	    myGUI = new TriviaMazeGUI(myMazeString);
-//	}
 	
 	public static IniMaze getInstance() throws IOException {
 		if(myInstance == null) {
@@ -44,7 +43,7 @@ public class IniMaze implements Serializable{
 	}
 	
 	public void setData(GameData theGameData) {
-		myBuilder = theGameData.getBuilder();
+		//myBuilder = theGameData.getBuilder();
 		myMaze = theGameData.getMaze();
 		myMazeString = theGameData.getMazeString();
 	}
