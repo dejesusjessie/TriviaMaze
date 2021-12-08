@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 /**
- * 
+ *
  * @author Codi Chun, Kannika Armstrong
  *
  */
@@ -57,12 +57,17 @@ public class RoomPanel2 extends JPanel {
 
 	private static JLabel currentRoom = new JLabel("✵ Current Room ✵" );
 
- 
+	// JOption image
+	private static ImageIcon huskyCryImg = new ImageIcon("src/image/huskyCry.gif");
+
+
 
 	public RoomPanel2(){
 
 		//add all pictures on JPanel
 		setLayout(new BorderLayout());
+		setBorder(new EmptyBorder(20,20,50,20));
+		setBackground(new Color(255,222,173));
 		add(myLeftPanel, BorderLayout.WEST);
 
 		setNorthButton();
@@ -95,8 +100,8 @@ public class RoomPanel2 extends JPanel {
 		myRightPanel.setBackground(new Color(255,222,173));
 
 	}
-	
-	private void setNorthButton() {	
+
+	private void setNorthButton() {
 		myNorthButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -119,15 +124,19 @@ public class RoomPanel2 extends JPanel {
 				else {
 					blockerSays();
 				}
-				if (isLost()) {
-					lostGameText();
+				try {
+					if (isLost()) {
+						lostGameText();
+					}
+				} catch (IOException ioException) {
+					ioException.printStackTrace();
 				}
 			}
 
 		});
 	}
-	
-	private void setSouthButton() {	
+
+	private void setSouthButton() {
 		mySouthButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -146,26 +155,30 @@ public class RoomPanel2 extends JPanel {
 				else if(hasBridgeS()) {
 					GameRunner.INSTANCE.moveS();
 				}
-				
+
 				else {
 					blockerSays();
 				}
-				
-				if (isLost()) {
-					lostGameText();
+
+				try {
+					if (isLost()) {
+						lostGameText();
+					}
+				} catch (IOException ioException) {
+					ioException.printStackTrace();
 				}
 
 
 			}
 		});
 	}
-	
-	private void setEastButton() {	
+
+	private void setEastButton() {
 		myEastButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if( canTryE()&& !EIsWall() &&!hasBridgeE()) {
 					Boolean moveE = showQA();
 					if(moveE) {
@@ -174,7 +187,7 @@ public class RoomPanel2 extends JPanel {
 					} else {
 						GameRunner.INSTANCE.lockE();
 					}
-				} 
+				}
 				else if (EIsWall()) {
 					wallSays();
 				}
@@ -184,15 +197,19 @@ public class RoomPanel2 extends JPanel {
 				else {
 					blockerSays();
 				}
-				if (isLost()) {
-					lostGameText();
+				try {
+					if (isLost()) {
+						lostGameText();
+					}
+				} catch (IOException ioException) {
+					ioException.printStackTrace();
 				}
 			}
 		});
-		
+
 	}
-	
-	private void setWestButton() {	
+
+	private void setWestButton() {
 		myWestButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -201,7 +218,7 @@ public class RoomPanel2 extends JPanel {
 					Boolean moveW = showQA();
 					if(moveW) {
 						GameRunner.INSTANCE.openW();
-GameRunner.INSTANCE.moveW();
+						GameRunner.INSTANCE.moveW();
 					}else {
 						GameRunner.INSTANCE.lockW();
 					}
@@ -212,16 +229,20 @@ GameRunner.INSTANCE.moveW();
 					GameRunner.INSTANCE.moveW();
 				}
 				else {
-						blockerSays();
+					blockerSays();
+				}
+				try {
+					if (isLost()) {
+						lostGameText();
 					}
-				if (isLost()) {
-					lostGameText();
+				} catch (IOException ioException) {
+					ioException.printStackTrace();
 				}
-				}
+			}
 
 		});
 	}
-	
+
 	private Boolean showQA() {
 	    Trivia trivia = Database.getQuestionList().get(0);
 	    String question = trivia.getQuestion();
@@ -230,23 +251,23 @@ GameRunner.INSTANCE.moveW();
 	    
 	    //Showing answer for developer mode.  
 		System.out.println("Deverloper mode message: the answer is : " + answerLetter);
-		
+
 		int x = JOptionPane.showOptionDialog(null, question,
-                "Trivia Question", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,null, options, options[0]);
+				"Trivia Question", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,null, options, options[0]);
 
 		String myAnswer = checkAnswer(answerLetter, options);
 
 		if(options[x].equals(myAnswer)) {
 			JOptionPane.showMessageDialog(null, "Correct!");
 			return true;
-			
+
 		} else {
 			JOptionPane.showMessageDialog(null, "Wrong.");
 			return false;
 		}
-		
+
 	}
-	
+
 	private String checkAnswer(String theLetter, String[] theOptions) {
 		String Answer;
 		if(theLetter.equals("A")) {
@@ -262,7 +283,7 @@ GameRunner.INSTANCE.moveW();
 		}
 		return Answer;
 	}
-	
+
 	private Boolean canTryE() {
 		Boolean result = true;
 		result = GameRunner.INSTANCE.EIsLock();
@@ -274,92 +295,107 @@ GameRunner.INSTANCE.moveW();
 		result = GameRunner.INSTANCE.WIsLock();
 		return result;
 	}
-	
+
 	private Boolean canTryN() {
 		Boolean result = true;
 		result = GameRunner.INSTANCE.NIsLock();
 		return result;
 	}
-	
 
-	
+
+
 	private Boolean canTryS() {
 		Boolean result = true;
 		result = GameRunner.INSTANCE.SIsLock();
 		return result;
 	}
-	
+
 	private boolean NIsWall() {
 		boolean result = false;
 		result = GameRunner.INSTANCE.getCurrentRoom().getNIsWall();
 		return result;
 	}
-	
+
 	private boolean SIsWall() {
 		boolean result = false;
 		result = GameRunner.INSTANCE.getCurrentRoom().getSIsWall();
 		return result;
 	}
-	
+
 	private boolean WIsWall() {
 		boolean result = false;
 		result = GameRunner.INSTANCE.getCurrentRoom().getWIsWall();
 		return result;
 	}
-	
+
 	private boolean EIsWall() {
 		boolean result = false;
 		result = GameRunner.INSTANCE.getCurrentRoom().getEIsWall();
 		return result;
 	}
-	
+
 	private void blockerSays() {
 		JOptionPane.showMessageDialog(null, "You are going to be eaten!! Muhahaha");
 	}
-	
+
 	private void wallSays() {
 		JOptionPane.showMessageDialog(null, "You are hitting the wall!!");
 	}
-	
-	private void lostGameText() {
-		JOptionPane.showMessageDialog(null, "You are lost!! Exit and restart to try again!");
+
+	private void lostGameText() throws IOException {
+
+		Object[] options = {"Restart", "Exit"};
+		int response = JOptionPane.showOptionDialog(null,
+				"You lose!! Let's try it again!!",
+				"Husky Lose",
+				JOptionPane.YES_NO_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				huskyCryImg,
+				options,  //the titles of buttons
+				options[0]); //default button title
+		if (response == JOptionPane.YES_OPTION){
+			IniMaze.getInstance();
+			GameRunner.INSTANCE.setNewGame();;
+		}
+		if (response == JOptionPane.NO_OPTION){
+			System.exit(0);
+		}
+
+		//JOptionPane.showMessageDialog(null, "You are lost!! Exit and restart to try again!");
 	}
-	
+
 
 	private boolean isLost() {
 		boolean s = !GameRunner.INSTANCE.canTraverse() || (!canTryS() || SIsWall());
 		boolean w = !GameRunner.INSTANCE.canTraverse() || (!canTryW() || WIsWall());
 		boolean n = !GameRunner.INSTANCE.canTraverse() || (!canTryN() || NIsWall());
 		boolean e = !GameRunner.INSTANCE.canTraverse() || (!canTryE() || EIsWall());
-
-
 		return s && w && n && e;
 	}
-	
+
 	private boolean hasBridgeN() {
 		boolean result = false;
-		result = GameRunner.INSTANCE.getCurrentRoom().getNorthDoor().isOpen();
+		result = GameRunner.INSTANCE.getCurrentRoom().getMyNorthDoor().isOpen();
 		return result;
 	}
-	
+
 	private boolean hasBridgeS() {
 		boolean result = false;
-		result = GameRunner.INSTANCE.getCurrentRoom().getSouthDoor().isOpen();
+		result = GameRunner.INSTANCE.getCurrentRoom().getMySouthDoor().isOpen();
 		return result;
 	}
-	
+
 	private boolean hasBridgeE() {
 		boolean result = false;
-		result = GameRunner.INSTANCE.getCurrentRoom().getEastDoor().isOpen();
+		result = GameRunner.INSTANCE.getCurrentRoom().getMyEastDoor().isOpen();
 		return result;
 	}
-	
+
 	private boolean hasBridgeW() {
 		boolean result = false;
-		result = GameRunner.INSTANCE.getCurrentRoom().getWestDoor().isOpen();
+		result = GameRunner.INSTANCE.getCurrentRoom().getMyWestDoor().isOpen();
 		return result;
 	}
 
 
 }
-

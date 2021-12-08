@@ -1,16 +1,18 @@
 package triviaMaze;
 
-// Not finished yet
-import io.Database;
-import io.Trivia;
+/**
+ *
+ * @author Kannika Armstrong
+ *
+ */
 
 import model.Maze;
 import model.MazeBuilder;
 import model.Room;
 
-public class TriviaMazeGameControl {
+public class TriviaMazeBuilder {
 
-    public TriviaMazeGameControl(){
+    public TriviaMazeBuilder(){
         gameRunner();
     }
 
@@ -33,7 +35,14 @@ public class TriviaMazeGameControl {
         String myDirection; //
         String myAnswer;
 
-        //If the player still can move and does not reach the exit
+        playGame(myMazeGame, promptUser);
+        endGame(myMazeGame, promptUser);
+    }
+
+    private void playGame(Maze myMazeGame, PromptUser promptUser) {
+        String myDirection;
+        String myAnswer;
+        Room myCurrentRoom;
         do {
             myCurrentRoom = myMazeGame.getCurrentRoom();
             System.out.println(myMazeGame.toString()); // print out the maze
@@ -60,7 +69,9 @@ public class TriviaMazeGameControl {
             }
 
         } while (myMazeGame.mazeTraversal() && !myMazeGame.reachExit());
+    }
 
+    private void endGame(Maze myMazeGame, PromptUser promptUser) {
         if (myMazeGame.reachExit()){
             promptUser.displayWinningMessage();
         } else {
@@ -70,13 +81,13 @@ public class TriviaMazeGameControl {
 
     private static void openDoor(Room currentRoom, String direction) {
         if(direction.equalsIgnoreCase("N"))
-            currentRoom.getNorthDoor().open();
+            currentRoom.getMyNorthDoor().open();
         else if(direction.equalsIgnoreCase("S"))
-            currentRoom.getSouthDoor().open();
+            currentRoom.getMySouthDoor().open();
         else if(direction.equalsIgnoreCase("E"))
-            currentRoom.getEastDoor().open();
+            currentRoom.getMyEastDoor().open();
         else
-            currentRoom.getWestDoor().open();
+            currentRoom.getMyWestDoor().open();
     }
 
     private static void lockDoor(Maze myMazeGame, String direction) {
@@ -94,37 +105,25 @@ public class TriviaMazeGameControl {
 
     private static boolean doorOpened(String direction, Room currentRoom) {
         if (direction.equalsIgnoreCase("N")) {
-            return currentRoom.getNorthDoor().isOpen();
+            return currentRoom.getMyNorthDoor().isOpen();
         } else if (direction.equalsIgnoreCase("S")) {
-            return currentRoom.getSouthDoor().isOpen();
+            return currentRoom.getMySouthDoor().isOpen();
         } else if (direction.equalsIgnoreCase("E")) {
-            return currentRoom.getEastDoor().isOpen();
+            return currentRoom.getMyEastDoor().isOpen();
         } else {
-            return currentRoom.getWestDoor().isOpen();
-        }
-    }
-
-    private static void wallLocked(String direction, Room currentRoom) {
-        if (direction.equalsIgnoreCase("N")) {
-            currentRoom.lockNorth();
-        } else if (direction.equalsIgnoreCase("S")) {
-            currentRoom.lockSouth();
-        } else if (direction.equalsIgnoreCase("E")) {
-            currentRoom.lockEast();
-        } else {
-            currentRoom.lockWest();
+            return currentRoom.getMyWestDoor().isOpen();
         }
     }
 
     private static boolean doorController (String direction, Room currentRoom) {
         if (direction.equalsIgnoreCase("N")) {
-            return currentRoom.getNorthDoor().canEnter();
+            return currentRoom.getMyNorthDoor().canEnter();
         } else if (direction.equalsIgnoreCase("S")) {
-            return currentRoom.getSouthDoor().canEnter();
+            return currentRoom.getMySouthDoor().canEnter();
         } else if (direction.equalsIgnoreCase("E")) {
-            return currentRoom.getEastDoor().canEnter();
+            return currentRoom.getMyEastDoor().canEnter();
         } else {
-            return currentRoom.getWestDoor().canEnter();
+            return currentRoom.getMyWestDoor().canEnter();
         }
     }
 

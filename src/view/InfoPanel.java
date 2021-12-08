@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
+import javax.swing.border.EmptyBorder;
 
 
 
@@ -144,6 +145,7 @@ public class InfoPanel extends JPanel implements ActionListener{
 		//myStopwatchLabel.setVisible(true);
 		topPanel.setBackground(new Color(255,222,173));
 
+
 		//setup the bottom panel
 //		JPanel bottomPanel = new JPanel();
 //		bottomPanel.add(myHintButton);
@@ -166,12 +168,16 @@ public class InfoPanel extends JPanel implements ActionListener{
 				+"Luckly, you have a magic skill learnt from the Woof God, that when you point your paw on a river, the Woof God will ask you a trivia question. "
 				+ "If you answer it right, the Woof God will give you a bridge to cross the river. "
 				+ "However, if you provide a wrong answer... Muhahahaha...!! ", 10,20);
-		myWelcomeText.setForeground(new Color(0,128,0));
+		myWelcomeText.setForeground(new Color(204,153,255));
 		myWelcomeText.setWrapStyleWord(true);
 		myWelcomeText.setLineWrap(true);
 		myWelcomeText.setBackground(new Color(255,222,173));
 		myWelcomeText.setFont(new Font("Wawati SC", Font.BOLD, 21));
+		myWelcomeText.setEnabled(false);
+		myWelcomeText.setDisabledTextColor(new Color(106,90,205));
+		myWelcomeText.setBorder(new EmptyBorder(20,20,20,20));
 		add(myWelcomeText, BorderLayout.CENTER);
+
 	}
 
 	

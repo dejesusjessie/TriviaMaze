@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import model.GameRunner;
-import model.Maze;
+import model.MazeForGUI;
 import view.IniMaze;
 
 /**
@@ -56,7 +56,7 @@ public class Save implements Serializable{
 	/**
 	 * The maze that needs to be saved.
 	 */
-	private Maze myMaze;
+	private MazeForGUI myMaze;
 	
 	/**
 	 * The initial maze that needs to be saved.

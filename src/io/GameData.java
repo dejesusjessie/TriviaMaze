@@ -2,8 +2,7 @@ package io;
 
 import java.io.Serializable;
 import model.GameRunner;
-import model.Maze;
-import model.MazeBuilder;
+import model.MazeForGUI;
 import view.IniMaze;
 import view.TriviaMazeGUI;
 
@@ -34,7 +33,7 @@ public class GameData implements Serializable{
 	/**
 	 * The maze that we use for serialization. 
 	 */
-	private Maze myMaze;
+	private MazeForGUI myMaze;
 	
 	/**
 	 * The initial maze that we use for serialization. 
@@ -47,7 +46,7 @@ public class GameData implements Serializable{
 	 * @param theSystemTime
 	 * @param theGameTime
 	 */
-	public GameData(String theGameStatus, Maze theMaze, IniMaze theIniMaze) {
+	public GameData(String theGameStatus, MazeForGUI theMaze, IniMaze theIniMaze) {
 //		this.mySystemTime = theSystemTime;
 		//this.myGameRunner = theGameRunner;
 		//this.myBuilder = theBuilder;
@@ -69,7 +68,7 @@ public class GameData implements Serializable{
 	 * The getter.
 	 * @return myMaze
 	 */
-	public Maze getMaze() {
+	public MazeForGUI getMaze() {
 		return myMaze;
 		
 	}

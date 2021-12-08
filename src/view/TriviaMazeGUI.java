@@ -80,7 +80,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * The left panel.
 	 * which will contain the info panel and the room panel.
 	 */
-	private static final JPanel leftPanel = new JPanel(new GridLayout(0,1));
+	private static final JPanel myLeftPanel = new JPanel(new GridLayout(0,1));
 
 	/**
 	 * The File menu at menu bar.
@@ -90,7 +90,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * The Help menu at menu bar.
 	 */
-	private static final JMenu helpMenu = new JMenu("Help");
+	private static final JMenu myHelpMenu = new JMenu("Help");
 
 	/**
 	 * The file chooser of loading game.
@@ -100,7 +100,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	/**
 	 * Set a filter that only allow to load .bin file
 	 */
-	final FileNameExtensionFilter fileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
+	final FileNameExtensionFilter myFileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
 
 	//String myDir = System.getProperty("user.dir");
 	//BufferedImage myHusky = ImageIO.read(new File(myDir + "/src/image/husky.png"));
@@ -152,7 +152,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		addExitMenu();
 
 		//adding Help menu
-		menuBar.add(helpMenu);
+		menuBar.add(myHelpMenu);
 		addAboutMenu();
 		addInstructionMenu();
 		addCheatsMenu();
@@ -173,7 +173,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	private void setMainPanel() {
 		//MY_MAIN_PANEL.setBackground(new Color(255,248,220));
 		MY_MAIN_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
-		MY_MAIN_PANEL.add(leftPanel, BorderLayout.EAST);
+		MY_MAIN_PANEL.add(myLeftPanel, BorderLayout.EAST);
 		MY_MAIN_PANEL.add(MY_MAZE_PANEL, BorderLayout.CENTER);
 		//mg.setSize(MY_WIDTH/2, MY_HEIGHT/2);
 		//MY_MAIN_PANEL.add(mg, BorderLayout.CENTER);
@@ -205,10 +205,10 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 *
 	 */
 	private void setLeftPanel() {
-		leftPanel.setOpaque(false);
-		leftPanel.add(MY_INFO_PANEL);
-		leftPanel.add(MY_PLAYER_PANEL);
-		leftPanel.setSize(MY_WIDTH/2, MY_HEIGHT);
+		myLeftPanel.setOpaque(false);
+		myLeftPanel.add(MY_INFO_PANEL);
+		myLeftPanel.add(MY_PLAYER_PANEL);
+		myLeftPanel.setSize(MY_WIDTH/2, MY_HEIGHT);
 	}
 
 	/**
@@ -257,7 +257,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		myFileMenu.add(loadMenu);
 
 		//Set only allow to load .bin file
-		myFileChooser.addChoosableFileFilter(fileNameFilter);
+		myFileChooser.addChoosableFileFilter(myFileNameFilter);
 		myFileChooser.setAcceptAllFileFilterUsed(false);
 
 		loadMenu.addActionListener(new ActionListener() {
@@ -292,7 +292,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	private void addAboutMenu() {
 		JMenuItem aboutMenu = new JMenuItem("About");
-		helpMenu.add(aboutMenu);
+		myHelpMenu.add(aboutMenu);
 		aboutMenu.addActionListener(new ActionListener() {
 
 			@Override
@@ -308,7 +308,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	private void addInstructionMenu() {
 		JMenuItem instructionMenu = new JMenuItem("Game Play Instructions");
-		helpMenu.add(instructionMenu);
+		myHelpMenu.add(instructionMenu);
 		instructionMenu.addActionListener(new ActionListener() {
 
 			@Override
@@ -329,7 +329,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 		JMenuItem hinsAngelMenu = new JMenuItem("Hins");
 		cheatsMenu.add(doorKeyMenu);
 		cheatsMenu.add(hinsAngelMenu);
-		helpMenu.add(cheatsMenu);
+		myHelpMenu.add(cheatsMenu);
 
 		doorKeyMenu.addActionListener(new ActionListener() {
 

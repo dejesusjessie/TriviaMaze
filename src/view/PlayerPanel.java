@@ -8,7 +8,7 @@ public class PlayerPanel extends JPanel {
     private static final TriviaPanel MY_TRIVIA_PANEL = new TriviaPanel();
 
     public PlayerPanel() {
-        this.setLayout(new GridLayout(1,2));
+        this.setLayout(new GridLayout(1, 2));
         this.add(MY_ROOM_PANEL);
         //this.add(MY_TRIVIA_PANEL);
     }

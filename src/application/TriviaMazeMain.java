@@ -16,6 +16,5 @@ public class TriviaMazeMain {
         IniMaze myIniMaze = IniMaze.getInstance();
         GameRunner myGameRunner = GameRunner.INSTANCE;
         myGameRunner.setData(myIniMaze);
-
 	}
 }

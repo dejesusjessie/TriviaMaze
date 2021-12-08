@@ -53,16 +53,11 @@ public class RoomPanel extends JPanel {
 	private static JLabel currentRoom = new JLabel("✵ Current Room ✵" );
 
 	// Panels to show in text panel
-
-
-
-
-
-
 	public RoomPanel(){
 		//add all pictures on JPanel
 		setLayout(new BorderLayout());
 		add(myLeftPanel, BorderLayout.WEST);
+		setBackground(new Color(255,222,173));
 
 		// Setting the graphic in the left panel of room panel
 		myLeftPanel.setPreferredSize(new Dimension(300,100));
@@ -118,7 +113,7 @@ public class RoomPanel extends JPanel {
 
 
 //		// Setting the graphic in the right panel
-		add(myRightPanel);
+//		add(myRightPanel);
 //
 //		myRightPanel.setPreferredSize(new Dimension(300,100));
 //		myRightPanel.setBackground(new Color(255,222,173));
@@ -130,10 +125,10 @@ public class RoomPanel extends JPanel {
 //		myRightPanel.add(myWestWallLabel,BorderLayout.WEST);
 //		myRightPanel.add(myTextDisplay, BorderLayout.CENTER);
 //		myTextDisplay.setBackground(Color.WHITE);
-		myRightPanel.setBackground(new Color(255,222,173));
-//
-//
-//		// the first welcome panel
+//		myRightPanel.setBackground(new Color(255,222,173));
+////
+////
+////		// the first welcome panel
 //		JLabel welcomeLabel = new JLabel("<html><center>Let's Go Hunting!!" +
 //				"<br><br>Click the wall in the current room" +
 //				"<br><br>to select your direction.</center></html>");
@@ -147,7 +142,7 @@ public class RoomPanel extends JPanel {
 
 
 
-		//add(myRightPanel); add the trivia panel on the right panel
+//		add(myRightPanel); //add the trivia panel on the right panel
 //		TriviaPanel triviaPanel = new TriviaPanel();
 //		add(triviaPanel);
 //		triviaPanel.setBackground(new Color(255,222,173));
@@ -157,5 +152,7 @@ public class RoomPanel extends JPanel {
 
 
 	}
+
+
 }
 

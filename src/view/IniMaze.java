@@ -3,8 +3,8 @@ package view;
 import java.io.IOException;
 import java.io.Serializable;
 import io.GameData;
-import model.Maze;
-import model.MazeBuilder;
+import model.MazeBuilderForGUI;
+import model.MazeForGUI;
 
 /**
  * The initial maze before the game. 
@@ -14,8 +14,8 @@ import model.MazeBuilder;
 public class IniMaze implements Serializable{
 	
 	private static IniMaze myInstance = null;
-	private MazeBuilder myBuilder;
-    private Maze myMaze;
+	private MazeBuilderForGUI myBuilder;
+    private MazeForGUI myMaze;
     private String myMazeString;
     private transient TriviaMazeGUI myGUI;
     
@@ -24,7 +24,7 @@ public class IniMaze implements Serializable{
 	 * @throws IOException
 	 */
 	private IniMaze() throws IOException{
-		myBuilder = new MazeBuilder();
+		myBuilder = new MazeBuilderForGUI();
 	    myMaze = myBuilder.buildRoom();
 	    myMazeString = myMaze.toGUI();
 	    myGUI = new TriviaMazeGUI(myMazeString);
@@ -38,8 +38,13 @@ public class IniMaze implements Serializable{
 				}
 			}
 		}
-		
 		return myInstance;
+	}
+
+
+	public void setNewIniMaze() throws IOException {
+		//myGUI.resetWindow();
+		myInstance = null;
 	}
 	
 	public void setData(GameData theGameData) {
@@ -64,11 +69,11 @@ public class IniMaze implements Serializable{
 		myInstance = null;
 	}
 	
-	public MazeBuilder getBuilder(){
+	public MazeBuilderForGUI getBuilder(){
 		return myBuilder;
 	}
 	
-	public Maze getMaze() {
+	public MazeForGUI getMaze() {
 		
 		return myMaze;
 		

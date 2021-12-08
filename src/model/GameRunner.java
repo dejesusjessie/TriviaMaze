@@ -16,8 +16,8 @@ public enum GameRunner {
 	
 	INSTANCE;
 	
-    public static MazeBuilder myBuilder;
-    public static Maze myMaze;
+    public static MazeBuilderForGUI myBuilder;
+    public static MazeForGUI myMaze;
     public static String myMazeString;
 	public static TriviaMazeGUI myGUI;
 	
@@ -31,7 +31,9 @@ public enum GameRunner {
 	}
 	
 	public void setNewGame() {
-        myMazeString = GameRunner.INSTANCE.myMazeString;
+        //TODO The whole class changed to enum type. myInstance doesn't work anymore.
+		//TODO This method needs to be rewrite. 
+		//myInstance = null;
 	}
 	
 	public void loadGame(String theGameStatus) {
@@ -108,19 +110,19 @@ public enum GameRunner {
 	 }
 	 
 	 public Boolean EIsLock() {
-		 return myMaze.getCurrentRoom().getEastDoor().canEnter();
+		 return myMaze.getCurrentRoom().getMyEastDoor().canEnter();
 	 }
 	 
 	 public Boolean WIsLock() {
-		 return myMaze.getCurrentRoom().getWestDoor().canEnter();
+		 return myMaze.getCurrentRoom().getMyWestDoor().canEnter();
 	 }
 	 
 	 public Boolean NIsLock() {
-		 return myMaze.getCurrentRoom().getNorthDoor().canEnter();
+		 return myMaze.getCurrentRoom().getMyNorthDoor().canEnter();
 	 }
 	 
 	 public Boolean SIsLock() {
-		 return myMaze.getCurrentRoom().getSouthDoor().canEnter();
+		 return myMaze.getCurrentRoom().getMySouthDoor().canEnter();
 	 }
 	 
 	/**
@@ -130,11 +132,11 @@ public enum GameRunner {
 		return myMazeString;
 	}
 	
-	public static MazeBuilder getGameMazeBuilder() {
+	public static MazeBuilderForGUI getGameMazeBuilder() {
 		return myBuilder;
 	}
 	
-	public static Maze getGameMaze() {
+	public static MazeForGUI getGameMaze() {
 		return myMaze;
 	}
 	

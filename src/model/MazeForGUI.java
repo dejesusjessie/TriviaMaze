@@ -1,33 +1,35 @@
 package model;
 
 import java.awt.Point;
+import java.io.Serializable;
 
-/**
- * The Maze class
- * @author Kannika Armstrong
- * @version Fall 2021
- */
+// Create the maze
+public class MazeForGUI implements Serializable{
 
-public class Maze {
+    int row; // number of rows of the maze
+    int column; // number of columns of the maze
+    Room[][] rooms; //create each room in the maze by using grip point
+    int dimension; // dimension of each room
 
-    private int myPlayerRow; // current row of the maze
-    private int myPlayerColumn; // current column of the maze
-    private Room[][] rooms; // create each room in the maze by using grid point
-    private int dimension; // dimension of the maze
+    //Maze constructor
+    public MazeForGUI() {
 
-    // Maze constructor
-    public Maze() {
-        this.myPlayerRow = 0;
-        this.myPlayerColumn = 0;
+        this.row = 0;
+        this.column = 0;
     }
 
     // Getter and setter of the room
     public Room[][] getRooms() {
         return rooms;
     }
+    
 
-    public void setRooms(Room[][] theRooms) {
-        this.rooms = theRooms;
+    public Room getCurrentRooms() {
+        return this.rooms[this.row][this.column];
+    }
+
+    public void setRooms(Room[][] rooms) {
+        this.rooms = rooms;
     }
 
     // Getter and setter of the dimension of the room
@@ -35,14 +37,15 @@ public class Maze {
         return dimension;
     }
 
-    public void setDimension(int theDimension) {
-        this.dimension = theDimension;
+    public void setDimension(int dimension) {
+        this.dimension = dimension;
+
     }
 
     // toString method --> print out the maze
     @Override
     public String toString() {
-        Room room = this.rooms[this.myPlayerRow][this.myPlayerColumn];
+        Room room = this.rooms[this.row][this.column];
         StringBuilder maze = new StringBuilder();
         int i, j;
 
@@ -73,14 +76,14 @@ public class Maze {
                 // in the room space
                 if(this.rooms[i][j].isExitRoom()) {
                     maze.append("E"); // Exit room at the bottom right corner
-                } else if(i == this.myPlayerRow && j == this.myPlayerColumn) {
+                } else if(i == this.row && j == this.column) {
                     maze.append("P"); // Represent the player position
                 } else {
                     maze.append(" "); // Empty room
                 }
             }
             if(this.rooms[i][j-1].getMyEastDoor().isLocked()) {
-                maze.append("x"); // print x when the door is locked on the west
+                maze.append("x");
             } else if (this.rooms[i][j-1].getMyEastDoor().isOpen()) {
                 maze.append(" ");
             } else {
@@ -94,7 +97,7 @@ public class Maze {
         for (j = 0; j < this.rooms[0].length; j++){
             maze.append("+"); // the corner of the room
             if(this.rooms[this.rooms.length-1][j].getMySouthDoor().isLocked()) {
-                maze.append("x"); // print x when the door is locked on the west
+                maze.append("x");
             } else if (this.rooms[this.rooms.length-1][j].getMySouthDoor().isOpen()) {
                 maze.append(" ");
             } else {
@@ -111,25 +114,41 @@ public class Maze {
 
     // moving to the north
     public void moveNorth() {
-        Room currentRoom = this.rooms[this.myPlayerRow][this.myPlayerColumn];
+        Room currentRoom = this.rooms[this.row][this.column];
         if(currentRoom.getMyNorthDoor().canEnter()) { // If canEnter to the north room
-            this.myPlayerRow--;
-            if(this.myPlayerRow <= 0) {
-                this.myPlayerRow = this.rooms.length - 1;
+            this.row--;
+
+            if(this.row <= 0) {
+                this.row = 0; // make sure that the player cannot move through the wall
+
+//            if(this.row < 0) {
+//                this.row = this.rooms.length - 1;
+                //this.row = 0; // make sure that the player cannot move through the wall
+
+                //System.out.println("This is the wall! Please try the other way.");
             }
+            //currentRoom.getNorthDoor().lock();
         } else {
-            System.out.println("Door is Locked.\n"); // Cannot enter if the door is locked
+            //System.out.println("Door is Locked.\n"); // Cannot enter if the door is locked
         }
     }
 
     // moving to the south
     public void moveSouth() {
-        Room currentRoom = this.rooms[this.myPlayerRow][this.myPlayerColumn];
+        Room currentRoom = this.rooms[this.row][this.column];
         if(currentRoom.getMySouthDoor().canEnter()) { // If canEnter to the south room
-            this.myPlayerRow++;
-            if (this.myPlayerRow >= this.rooms.length) {
-                this.myPlayerRow = 0;
+            this.row++;
+            if (this.row >= this.rooms.length) {
+
+                this.row = this.rooms.length - 1; // make sure that the player cannot move through the wall
+               // System.out.println("This is the wall! Please try the other way.");
+//=======
+//                this.row = 0;
+//                //this.row = this.rooms.length - 1; // make sure that the player cannot move through the wall
+//                //System.out.println("This is the wall! Please try the other way.");
+//>>>>>>> a399629c79fecac35e9d70c373ae106703ca20f3
             }
+            //currentRoom.getSouthDoor().lock();
         } else {
             System.out.println("Door is Locked.\n"); // Cannot enter if the door is locked
         }
@@ -137,43 +156,57 @@ public class Maze {
 
     // moving to the east
     public void moveEast() {
-        Room currentRoom = this.rooms[this.myPlayerRow][this.myPlayerColumn];
+        Room currentRoom = this.rooms[this.row][this.column];
         if(currentRoom.getMyEastDoor().canEnter()) { // If canEnter to the east room
-            this.myPlayerColumn++;
-            if(this.myPlayerColumn >= this.rooms.length) {
-                this.myPlayerColumn = 0;
-            };
+            this.column++;
+            if(this.column >= this.rooms.length) {
+//<<<<<<< HEAD
+                this.column = this.rooms.length - 1; // make sure that the player cannot move through the wall
+//=======
+//                this.column = 0;
+//                //this.column = this.rooms.length - 1; // make sure that the player cannot move through the wall
+//>>>>>>> a399629c79fecac35e9d70c373ae106703ca20f3
+                //System.out.println("This is the wall! Please try the other way.");
+            }
+            //currentRoom.getEastDoor().lock();
         } else {
-            System.out.println("Door is Locked.\n"); // Cannot enter if the door is locked
+            //System.out.println("Door is Locked.\n"); // Cannot enter if the door is locked
         }
     }
 
     // moving to the west
     public void moveWest() {
-        Room curRoom = this.rooms[this.myPlayerRow][this.myPlayerColumn];
+        Room curRoom = this.rooms[this.row][this.column];
         if(curRoom.getMyWestDoor().canEnter()) { // If canEnter to the west room
-            this.myPlayerColumn--;
-            if (this.myPlayerColumn <= 0) {
-                this.myPlayerColumn = this.rooms.length - 1;
+            this.column--;
+            if (this.column <= 0) {
+//<<<<<<< HEAD
+                this.column = 0; // make sure that the player cannot move through the wall
+//=======
+//                this.column = this.rooms.length - 1;
+//                //this.column = 0; // make sure that the player cannot move through the wall
+//>>>>>>> a399629c79fecac35e9d70c373ae106703ca20f3
+                //System.out.println("This is the wall! Please try the other way.");
             }
+            //curRoom.getWestDoor().lock();
         }else {
-            System.out.println("Door is Locked.\n"); // Cannot enter if the door is locked
+            //System.out.println("Door is Locked.\n"); // Cannot enter if the door is locked
         }
     }
 
     // When the player can reach the exit room --> exit the game
     public boolean reachExit() {
-        return this.rooms[this.myPlayerRow][this.myPlayerColumn].isExitRoom();
+        return this.rooms[this.row][this.column].isExitRoom();
     }
 
     // Get the position
     public Point getPosition() {
-        return new Point(this.myPlayerRow, this.myPlayerRow);
+        return new Point(this.row, this.row);
     }
 
     // Get the current room position
     public Room getCurrentRoom() {
-        return this.rooms[this.myPlayerRow][this.myPlayerColumn];
+        return this.rooms[this.row][this.column];
     }
     ////////////////////////////////////////////////////////////////////////////
     /////                   Maze Solving / Maze Traversal                  /////
@@ -186,22 +219,22 @@ public class Maze {
                 mazeGrid[i][j] = false;
             }
         }
-        mazeTraversHelper(this.myPlayerRow, this.myPlayerColumn, mazeGrid);
+        mazeTraversHelper(this.row, this.column, mazeGrid);
         return mazeGrid[this.dimension - 1][this.dimension - 1];
     }
 
     //
-    public void mazeTraversHelper(int theRow, int theColumn, boolean[][] theMazeGrid) {
-        Room currentRoom = this.rooms[theRow][theColumn];
-        theMazeGrid[theRow][theColumn] = true;
+    public void mazeTraversHelper(int row, int column, boolean[][] mazeGrid) {
+        Room currentRoom = this.rooms[row][column];
+        mazeGrid[row][column] = true;
         if(currentRoom.isExitRoom()) { //if the player is in the exit room
             return;
         }
         // set all direction around current position
-        int northRow = theRow - 1, northColumn = theColumn,
-                southRow = theRow + 1, southColumn = theColumn,
-                eastRow = theRow, eastColumn = theColumn + 1,
-                westRow = theRow, westColumn = theColumn - 1;
+        int northRow = row - 1, northColumn = column,
+                southRow = row + 1, southColumn = column,
+                eastRow = row, eastColumn = column + 1,
+                westRow = row, westColumn = column - 1;
 
         if(northRow < 0)
             northRow = this.dimension -1;
@@ -213,17 +246,17 @@ public class Maze {
             westColumn = this.dimension -1;
 
         // Traversal helper
-        if(!currentRoom.getMyNorthDoor().isLocked() && !theMazeGrid[northRow][theColumn]) {
-            mazeTraversHelper(northRow, theColumn, theMazeGrid);
+        if(!currentRoom.getMyNorthDoor().isLocked() && !mazeGrid[northRow][column]) {
+            mazeTraversHelper(northRow, column, mazeGrid);
         }
-        if(!currentRoom.getMySouthDoor().isLocked() && !theMazeGrid[southRow][theColumn]) {
-            mazeTraversHelper(southRow, theColumn, theMazeGrid);
+        if(!currentRoom.getMySouthDoor().isLocked() && !mazeGrid[southRow][column]) {
+            mazeTraversHelper(southRow, column, mazeGrid);
         }
-        if(!currentRoom.getMyEastDoor().isLocked() && !theMazeGrid[theRow][eastColumn]) {
-            mazeTraversHelper(theRow, eastColumn, theMazeGrid);
+        if(!currentRoom.getMyEastDoor().isLocked() && !mazeGrid[row][eastColumn]) {
+            mazeTraversHelper(row, eastColumn, mazeGrid);
         }
-        if(!currentRoom.getMyWestDoor().isLocked() && !theMazeGrid[theRow][westColumn]) {
-            mazeTraversHelper(theRow, westColumn, theMazeGrid);
+        if(!currentRoom.getMyWestDoor().isLocked() && !mazeGrid[row][westColumn]) {
+            mazeTraversHelper(row, westColumn, mazeGrid);
         }
     }
     /**
@@ -232,7 +265,7 @@ public class Maze {
      */
     public String toGUI() {
 
-        Room room = this.rooms[this.myPlayerRow][this.myPlayerColumn];
+        Room room = this.rooms[this.row][this.column];
         StringBuilder maze = new StringBuilder();
         int i, j;
         
@@ -275,7 +308,7 @@ public class Maze {
                 // in the room space
                 if(this.rooms[i][j].isExitRoom()) {
                     maze.append("e"); // Exit room at the bottom right corner
-                } else if(i == this.myPlayerRow && j == this.myPlayerColumn) {
+                } else if(i == this.row && j == this.column) {
                     maze.append("P"); // Represent the player position
                 } else {
                     maze.append(" "); // Empty room

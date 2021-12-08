@@ -2,6 +2,12 @@ package model;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @author Kannika Armstrong
+ *
+ */
+
 // Create Door for each room
 // Condition to pass the door: Locked/Open - Result
 // Cannot pass the door when the answer is wrong
@@ -49,9 +55,5 @@ public class Door implements Serializable{
             return true;
         }
         return !this.locked;
-    }
-
-    public boolean isWall() {
-        return this.locked;
     }
 }
