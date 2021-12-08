@@ -1,12 +1,14 @@
 package model;
 
+import java.io.Serializable;
+
 // Create Door for each room
 // Condition to pass the door: Locked/Open - Result
 // Cannot pass the door when the answer is wrong
 // Can pass the door when the answer is right
 // Cannot pass the door when do not answer the question yet
 
-public class Door {
+public class Door implements Serializable{
 
     private boolean locked = false;
     private boolean open = false;

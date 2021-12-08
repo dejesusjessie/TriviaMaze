@@ -1,11 +1,13 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Kannika Armstrong, Codi Chun
  *
  */
-public class Room {
+public class Room implements Serializable{
 
     // Create the doors of 4 direction
     private Door northDoor;

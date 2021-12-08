@@ -105,31 +105,17 @@ public class RoomPanel2 extends JPanel {
 				if( canTryN() && !NIsWall() && !hasBridgeN()) {
 					Boolean moveN = showQA();
 					if(moveN) {
-						try {
-							GameRunner.getInstance().openN();
-						GameRunner.getInstance().moveN();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+						GameRunner.INSTANCE.openN();
+						GameRunner.INSTANCE.moveN();
 					}else {
-						try {
-							GameRunner.getInstance().lockN();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						GameRunner.INSTANCE.lockN();
 					}
 
 				}else if (NIsWall()) {
 					wallSays();
 				}
 				else if(hasBridgeN()) {
-					try {
-						GameRunner.getInstance().moveN();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					GameRunner.INSTANCE.moveN();
 				}
 				else {
 					blockerSays();
@@ -150,30 +136,16 @@ public class RoomPanel2 extends JPanel {
 				if( canTryS()&& !SIsWall()&&!hasBridgeS()) {
 					Boolean moveS = showQA();
 					if(moveS) {
-						try {
-						GameRunner.getInstance().openS();
-						GameRunner.getInstance().moveS();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+						GameRunner.INSTANCE.openS();
+						GameRunner.INSTANCE.moveS();
 					}else {
-						try {
-							GameRunner.getInstance().lockS();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						GameRunner.INSTANCE.lockS();
 					}
 				} else if (SIsWall()) {
 					wallSays();
 				}
 				else if(hasBridgeS()) {
-					try {
-						GameRunner.getInstance().moveS();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					GameRunner.INSTANCE.moveS();
 				}
 				
 				else {
@@ -198,31 +170,17 @@ public class RoomPanel2 extends JPanel {
 				if( canTryE()&& !EIsWall() &&!hasBridgeE()) {
 					Boolean moveE = showQA();
 					if(moveE) {
-						try {
-						GameRunner.getInstance().openE();
-						GameRunner.getInstance().moveE();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+						GameRunner.INSTANCE.openE();
+						GameRunner.INSTANCE.moveE();
 					} else {
-						try {
-							GameRunner.getInstance().lockE();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						GameRunner.INSTANCE.lockE();
 					}
 				} 
 				else if (EIsWall()) {
 					wallSays();
 				}
 				else if(hasBridgeE()) {
-					try {
-						GameRunner.getInstance().moveE();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					GameRunner.INSTANCE.moveE();
 				}
 				else {
 					blockerSays();
@@ -243,30 +201,16 @@ public class RoomPanel2 extends JPanel {
 				if( canTryW()&& !WIsWall() && !hasBridgeW()) {
 					Boolean moveW = showQA();
 					if(moveW) {
-						try {
-							GameRunner.getInstance().openW();
-						GameRunner.getInstance().moveW();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+						GameRunner.INSTANCE.openW();
+GameRunner.INSTANCE.moveW();
 					}else {
-						try {
-							GameRunner.getInstance().lockW();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						GameRunner.INSTANCE.lockW();
 					}
 				} else if (WIsWall()) {
 					wallSays();
 				}
 				else if(hasBridgeW()) {
-					try {
-						GameRunner.getInstance().moveW();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					GameRunner.INSTANCE.moveW();
 				}
 				else {
 						blockerSays();
@@ -323,34 +267,19 @@ public class RoomPanel2 extends JPanel {
 	
 	private Boolean canTryE() {
 		Boolean result = true;
-		try {
-			result = GameRunner.getInstance().EIsLock();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = GameRunner.INSTANCE.EIsLock();
 		return result;
 	}
 
 	private Boolean canTryW() {
 		Boolean result = true;
-		try {
-			result = GameRunner.getInstance().WIsLock();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = GameRunner.INSTANCE.WIsLock();
 		return result;
 	}
 	
 	private Boolean canTryN() {
 		Boolean result = true;
-		try {
-			result = GameRunner.getInstance().NIsLock();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = GameRunner.INSTANCE.NIsLock();
 		return result;
 	}
 	
@@ -358,56 +287,31 @@ public class RoomPanel2 extends JPanel {
 	
 	private Boolean canTryS() {
 		Boolean result = true;
-		try {
-			result = GameRunner.getInstance().SIsLock();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = GameRunner.INSTANCE.SIsLock();
 		return result;
 	}
 	
 	private boolean NIsWall() {
 		boolean result = false;
-		try {
-			result = GameRunner.getInstance().getCurrentRoom().getNIsWall();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = GameRunner.INSTANCE.getCurrentRoom().getNIsWall();
 		return result;
 	}
 	
 	private boolean SIsWall() {
 		boolean result = false;
-		try {
-			result = GameRunner.getInstance().getCurrentRoom().getSIsWall();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = GameRunner.INSTANCE.getCurrentRoom().getSIsWall();
 		return result;
 	}
 	
 	private boolean WIsWall() {
 		boolean result = false;
-		try {
-			result = GameRunner.getInstance().getCurrentRoom().getWIsWall();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = GameRunner.INSTANCE.getCurrentRoom().getWIsWall();
 		return result;
 	}
 	
 	private boolean EIsWall() {
 		boolean result = false;
-		try {
-			result = GameRunner.getInstance().getCurrentRoom().getEIsWall();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = GameRunner.INSTANCE.getCurrentRoom().getEIsWall();
 		return result;
 	}
 	
@@ -423,56 +327,38 @@ public class RoomPanel2 extends JPanel {
 		JOptionPane.showMessageDialog(null, "You are lost!! Exit and restart to try again!");
 	}
 	
+
 	private boolean isLost() {
-		boolean s = !canTryS() || SIsWall();
-		boolean w = !canTryW() || WIsWall();
-		boolean n = !canTryN() || NIsWall();
-		boolean e = !canTryE() || EIsWall();
+		boolean s = !GameRunner.INSTANCE.canTraverse() || (!canTryS() || SIsWall());
+		boolean w = !GameRunner.INSTANCE.canTraverse() || (!canTryW() || WIsWall());
+		boolean n = !GameRunner.INSTANCE.canTraverse() || (!canTryN() || NIsWall());
+		boolean e = !GameRunner.INSTANCE.canTraverse() || (!canTryE() || EIsWall());
+
 
 		return s && w && n && e;
 	}
 	
 	private boolean hasBridgeN() {
 		boolean result = false;
-		try {
-			result = GameRunner.getInstance().getCurrentRoom().getNorthDoor().isOpen();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = GameRunner.INSTANCE.getCurrentRoom().getNorthDoor().isOpen();
 		return result;
 	}
 	
 	private boolean hasBridgeS() {
 		boolean result = false;
-		try {
-			result = GameRunner.getInstance().getCurrentRoom().getSouthDoor().isOpen();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = GameRunner.INSTANCE.getCurrentRoom().getSouthDoor().isOpen();
 		return result;
 	}
 	
 	private boolean hasBridgeE() {
 		boolean result = false;
-		try {
-			result = GameRunner.getInstance().getCurrentRoom().getEastDoor().isOpen();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = GameRunner.INSTANCE.getCurrentRoom().getEastDoor().isOpen();
 		return result;
 	}
 	
 	private boolean hasBridgeW() {
 		boolean result = false;
-		try {
-			result = GameRunner.getInstance().getCurrentRoom().getWestDoor().isOpen();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		result = GameRunner.INSTANCE.getCurrentRoom().getWestDoor().isOpen();
 		return result;
 	}
 

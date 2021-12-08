@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 
-
+import model.GameRunner;
 import model.Maze;
 import model.MazeBuilder;
 import view.InfoPanel;
@@ -73,14 +73,26 @@ public class Load implements Serializable {
 //        gameRunner myGameRunner = gameRunner.getInstance();
 //        myGameRunner.loadGame(myGameData.getGameStatus());
         //myGameRunner.runGame();
+		
 		IniMaze myIniMaze = IniMaze.getInstance();
+		//IniMaze myIniMaze = myGameData.myIniMaze;
+		myIniMaze.setData(myGameData);
+		
+	
 		//TriviaMazeGUI myGUI = myIniMaze.getGUI();
-		myIniMaze.setMazeString(myGameData.myGameStatus);
+//		myIniMaze.setMazeString(myGameData.myGameStatus);
+//        GameRunner.myBuilder = myIniMaze.getBuilder();
+//        GameRunner.myMaze = myIniMaze.getMaze();
+//        GameRunner.myMaze.setWalls();
+//        GameRunner.myGUI = myIniMaze.getGUI();
+//        GameRunner.myMazeString = myIniMaze.getString();
+        GameRunner.INSTANCE.setData(myIniMaze);
+		
 		myIniMaze.getGUI().repaintMaze(myGameData.myGameStatus);
 	
 		
 
-		System.out.println(myGameData.myGameTime);
+		//System.out.println(myGameData.myGameTime);
 		
 	}
 	

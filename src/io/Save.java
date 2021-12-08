@@ -9,8 +9,11 @@ import java.io.Serializable;
 import java.net.URL;
 
 import model.GameRunner;
-
+import model.Maze;
+import model.MazeBuilder;
 import view.InfoPanel;
+import view.IniMaze;
+import view.TriviaMazeGUI;
 
 /**
  * The save function.
@@ -24,15 +27,15 @@ public class Save implements Serializable{
 	 */
 	private static final long serialVersionUID = -9115733040629946710L;
 
-	/**
-	 * The game time.
-	 */
-	private final String myGameTime;
-	
-	/**
-	 * 
-	 */
-	private final int mySystemTime;
+//	/**
+//	 * The game time.
+//	 */
+//	private final String myGameTime;
+//	
+//	/**
+//	 * 
+//	 */
+//	private final int mySystemTime;
 	
 	/**
 	 * 
@@ -55,6 +58,11 @@ public class Save implements Serializable{
 	File mySaveFolder = new File(myDir + "/savedGame");
 	
 	GameRunner myGameRunner;
+	MazeBuilder myBuilder; 
+	Maze myMaze;
+	TriviaMazeGUI myGUI;
+	IniMaze myIniMaze;
+	
 	
 	/**
 	 * The constructor.
@@ -63,11 +71,16 @@ public class Save implements Serializable{
 	 * @throws IOException
 	 */
 	public Save(String theFileName) throws FileNotFoundException, IOException {
-		this.myGameTime = InfoPanel.getGameTime();
-		this.mySystemTime = InfoPanel.getSystemTime();
+//		this.myGameTime = InfoPanel.getGameTime();
+//		this.mySystemTime = InfoPanel.getSystemTime();
 		this.myGameStatus = GameRunner.getStatus();
-		this.myGameRunner = GameRunner.getInstance();
-		myGameData = new GameData(mySystemTime, myGameTime, myGameStatus, myGameRunner);
+		//this.myBuilder = GameRunner.getGameMazeBuilder();
+		this.myMaze = GameRunner.getGameMaze();
+		this.myIniMaze = IniMaze.getInstance();
+		
+		//this.myGUI = GameRunner.getGameGUI();
+		//this.myGameRunner = GameRunner.getInstance();
+		myGameData = new GameData(myGameStatus, myMaze, myIniMaze);
 		generateFile(theFileName);
 
 	}

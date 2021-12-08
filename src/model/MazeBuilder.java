@@ -1,6 +1,8 @@
 package model;
 
-public class MazeBuilder {
+import java.io.Serializable;
+
+public class MazeBuilder implements Serializable {
     private final int dimension;
 
     // The MazeBuilder constructor -> default 4 by 4 maze

@@ -3,6 +3,10 @@ package io;
 import java.io.Serializable;
 
 import model.GameRunner;
+import model.Maze;
+import model.MazeBuilder;
+import view.IniMaze;
+import view.TriviaMazeGUI;
 
 /**
  * 
@@ -41,18 +45,46 @@ public class GameData implements Serializable{
 	 */
 	GameRunner myGameRunner;
 	
+	MazeBuilder myBuilder; 
+	Maze myMaze;
+	TriviaMazeGUI myGUI;
+	IniMaze myIniMaze;
+	
 	
 	/**
 	 * 
 	 * @param theSystemTime
 	 * @param theGameTime
 	 */
-	public GameData(int theSystemTime, String theGameTime, String theGameStatus, GameRunner theGameRunner) {
-		this.mySystemTime = theSystemTime;
-		this.myGameTime = theGameTime;
+	public GameData(String theGameStatus, Maze theMaze, IniMaze theIniMaze) {
+//		this.mySystemTime = theSystemTime;
+		//this.myGameRunner = theGameRunner;
+		//this.myBuilder = theBuilder;
+		this.myMaze = theMaze;
+		//this.myGUI = theGUI;
 		this.myGameStatus = theGameStatus;
-		this.myGameRunner = theGameRunner;
+		this.myIniMaze = theIniMaze;
 	
+	}
+	
+	
+	public IniMaze getIniMaze() {
+		return myIniMaze;
+	}
+	
+	public MazeBuilder getBuilder() {
+		return myBuilder;
+		
+	}
+	
+	public Maze getMaze() {
+		return myMaze;
+		
+	}
+	
+	public String getMazeString() {
+		return myGameStatus;
+		
 	}
 	
 	/**

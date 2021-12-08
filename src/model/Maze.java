@@ -1,9 +1,10 @@
 package model;
 
 import java.awt.Point;
+import java.io.Serializable;
 
 // Create the maze
-public class Maze {
+public class Maze implements Serializable{
 
     int row; // number of rows of the maze
     int column; // number of columns of the maze

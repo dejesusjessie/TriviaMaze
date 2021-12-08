@@ -13,15 +13,35 @@ import view.TriviaMazeGUI;
  * @version Fall 2021
  */
 
-public class GameRunner {
+public enum GameRunner {
 	
-	private static GameRunner myInstance = null;
-	IniMaze myIniMaze = IniMaze.getInstance();
+	INSTANCE;
+	//private static GameRunner myInstance = null;
+	//IniMaze myIniMaze = IniMaze.getInstance();
 	
-    MazeBuilder myBuilder;
-    Maze myMaze;
-    static String myMazeString;
-	TriviaMazeGUI myGUI;
+    public static MazeBuilder myBuilder;
+    public static Maze myMaze;
+    public static String myMazeString;
+	public static TriviaMazeGUI myGUI;
+	
+	/**
+	 * Constructor.
+	 * @param theBuilder
+	 * @param theMaze
+	 * @param theMazeString
+	 * @param theGame
+	 */
+//	private GameRunner() throws IOException{
+//        myBuilder = myIniMaze.getBuilder();
+//        myMaze = myIniMaze.getMaze();
+//        myMaze.setWalls();
+//		myGUI = myIniMaze.getGUI();
+//		myMazeString = myIniMaze.getString();
+//		
+//
+//	}
+	
+
 	
 //	/**
 //	 * Constructor.
@@ -30,39 +50,53 @@ public class GameRunner {
 //	 * @param theMazeString
 //	 * @param theGame
 //	 */
-//	private gameRunner(MazeBuilder theBuilder, Maze theMaze, String theMazeString, TriviaMazeGUI theGame) throws IOException{
+//	private GameRunner(MazeBuilder theBuilder, Maze theMaze, TriviaMazeGUI theGUI, String theString) throws IOException{
 //        myBuilder = theBuilder;
 //        myMaze = theMaze;
-//        myMazeString = theMazeString;
-//		myGUI = theGame;
-//		runGame();
+//        myMaze.setWalls();
+//		myGUI = theGUI;
+//		myMazeString =theString;
+//		
+//
 //	}
 	
-	private GameRunner() throws IOException{
-        myBuilder = myIniMaze.getBuilder();
-        myMaze = myIniMaze.getMaze();
+	
+	
+	
+//	public static GameRunner getInstance() throws IOException {
+//		if(myInstance == null) {
+//			synchronized(IniMaze.class) {
+//				if(myInstance == null) {
+//					myInstance = new GameRunner();
+//				}
+//			}
+//		}
+//		
+//		return myInstance;
+//	}
+//	
+//	public GameRunner getInstance(MazeBuilder theBuilder, Maze theMaze, TriviaMazeGUI theGUI, String theString) throws IOException {
+//		if(myInstance == null) {
+//			synchronized(IniMaze.class) {
+//				if(myInstance == null) {
+//					myInstance = new GameRunner(theBuilder, theMaze, theGUI, theString);
+//				}
+//			}
+//		}
+//		
+//		return myInstance;
+//	}
+	
+	public void setData(IniMaze theIniMaze) {
+        myBuilder = theIniMaze.getBuilder();
+        myMaze = theIniMaze.getMaze();
         myMaze.setWalls();
-		myGUI = myIniMaze.getGUI();
-		myMazeString = myIniMaze.getString();
-		
-
-	}
-	
-	
-	public static GameRunner getInstance() throws IOException {
-		if(myInstance == null) {
-			synchronized(IniMaze.class) {
-				if(myInstance == null) {
-					myInstance = new GameRunner();
-				}
-			}
-		}
-		
-		return myInstance;
+        myGUI = theIniMaze.getGUI();
+        myMazeString = theIniMaze.getString();
 	}
 	
 	public void setNewGame() {
-        myMazeString = myIniMaze.getString();
+        myMazeString = GameRunner.INSTANCE.myMazeString;
 	}
 	
 	public void loadGame(String theGameStatus) {
@@ -161,6 +195,18 @@ public class GameRunner {
 		return myMazeString;
 	}
 	
+	public static MazeBuilder getGameMazeBuilder() {
+		return myBuilder;
+	}
+	
+	public static Maze getGameMaze() {
+		return myMaze;
+	}
+	
+	public static TriviaMazeGUI getGameGUI() {
+		return myGUI;
+	}
+	
 	/**
 	 * 
 	 */
@@ -185,6 +231,11 @@ public class GameRunner {
 	public Room getCurrentRoom() {
 		return myMaze.getCurrentRoom();
 		
+	}
+
+
+	public boolean canTraverse(){
+		return myMaze.mazeTraversal();
 	}
 
 
