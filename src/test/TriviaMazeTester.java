@@ -1,4 +1,7 @@
-package triviaMaze;
+package test;
+
+import triviaMaze.PromptUser;
+import triviaMaze.TriviaMazeBuilder;
 
 /**
  *
