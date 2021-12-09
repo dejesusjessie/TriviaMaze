@@ -36,7 +36,7 @@ public class PromptPanel extends JPanel implements ActionListener {
     private final JFileChooser myFileChooser = new JFileChooser(System.getProperty("user.dir") + "/savedGame");
     private final FileNameExtensionFilter myFileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
 
-    PromptPanel(){
+    public PromptPanel(){
 
         promptFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         promptFrame.setSize(800,600);
