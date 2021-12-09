@@ -1,10 +1,13 @@
-package model;
+package test;
 
 /**
  *
  * @author Kannika Armstrong
  *
  */
+
+import model.Maze;
+import model.MazeBuilder;
 
 import java.util.Scanner;
 
