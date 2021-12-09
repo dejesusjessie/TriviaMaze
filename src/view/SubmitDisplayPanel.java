@@ -51,4 +51,3 @@ public class SubmitDisplayPanel extends JPanel implements ActionListener {
         }
     }
 }
-

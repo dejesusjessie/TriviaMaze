@@ -1,12 +1,14 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * The Maze builder class
  * @author Kannika Armstrong
  * @version Fall 2021
  */
 
-public class MazeBuilder {
+public class MazeBuilder implements Serializable {
     private final int myMazeDimension;
 
     // The MazeBuilder constructor -> default 4 by 4 maze

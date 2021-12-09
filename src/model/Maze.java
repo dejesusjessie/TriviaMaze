@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Point;
+import java.io.Serializable;
 
 /**
  * The Maze class
@@ -8,7 +9,7 @@ import java.awt.Point;
  * @version Fall 2021
  */
 
-public class Maze {
+public class Maze implements Serializable {
 
     private int myPlayerRow; // current row of the maze
     private int myPlayerColumn; // current column of the maze
