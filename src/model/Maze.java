@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Point;
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * The Maze class
@@ -31,7 +32,7 @@ public class Maze implements Serializable {
         this.rooms = theRooms;
     }
 
-    // Getter and setter of the dimension of the room
+    // Getter and setter of the dimension of the maze
     public int getDimension() {
         return dimension;
     }
