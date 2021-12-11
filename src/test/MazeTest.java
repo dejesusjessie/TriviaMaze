@@ -59,7 +59,7 @@ class MazeTest {
     }
 
     @Test
-    void reachExit() {
+    void testReachExitMethod() {
 
     }
 
