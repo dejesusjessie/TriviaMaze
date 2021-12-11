@@ -22,12 +22,21 @@ public class PromptUser {
         this.myUserName = ""; // Initial to empty string
     }
 
+    public String getMyUserName() {
+        return myUserName;
+    }
+
+    public void setMyUserName(String myUserName) {
+        this.myUserName = myUserName;
+    }
+
     // Return the username
     // Take username from the player input and return it
     public String userName() {
 
         System.out.println("Please enter your username: ");
         this.myUserName = myUserInput.nextLine();
+        setMyUserName(myUserName);
 
         // The player have to create the username.
         while (this.myUserName.isEmpty()){
