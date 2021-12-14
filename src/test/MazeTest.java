@@ -6,8 +6,6 @@ import model.Room;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class MazeTest {
 
     @Test
@@ -43,7 +41,11 @@ class MazeTest {
 
     @Test
     void testMoveNorthMethod() {
-
+        MazeBuilder builder = new MazeBuilder(6);
+        Maze maze = builder.buildRoom();
+        maze.moveNorth();
+        Assertions.assertEquals(5, maze.getPosition().getX());
+        Assertions.assertEquals(0, maze.getPosition().getY());
     }
 
     @Test

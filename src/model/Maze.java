@@ -23,6 +23,10 @@ public class Maze implements Serializable {
         this.myPlayerColumn = 0;
     }
 
+    public Maze(int dimension){
+        this.dimension = dimension;
+    }
+
     // Getter and setter of the room
     public Room[][] getRooms() {
         return rooms;
@@ -170,7 +174,7 @@ public class Maze implements Serializable {
 
     // Get the position
     public Point getPosition() {
-        return new Point(this.myPlayerRow, this.myPlayerRow);
+        return new Point(this.myPlayerRow, this.myPlayerColumn);
     }
 
     // Get the current room position
