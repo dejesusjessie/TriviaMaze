@@ -40,7 +40,7 @@ public enum GameRunner {
 		myMazeString = theGameStatus;
 		myGUI.repaintMaze(myMazeString);
 	}
-	
+		
 	public TriviaMazeGUI getGUI() {
 		return myGUI;
 	}

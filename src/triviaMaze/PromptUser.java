@@ -22,12 +22,21 @@ public class PromptUser {
         this.myUserName = ""; // Initial to empty string
     }
 
+    public String getMyUserName() {
+        return myUserName;
+    }
+
+    public void setMyUserName(String myUserName) {
+        this.myUserName = myUserName;
+    }
+
     // Return the username
     // Take username from the player input and return it
     public String userName() {
 
         System.out.println("Please enter your username: ");
         this.myUserName = myUserInput.nextLine();
+        setMyUserName(myUserName);
 
         // The player have to create the username.
         while (this.myUserName.isEmpty()){
@@ -84,17 +93,20 @@ public class PromptUser {
         char myDirection = '\0';
         String myUserDirection = "";
 
-        System.out.println("The direction option: \n" +
+        System.out.println("The game options: \n" +
                 "Type N for moving North\n" +
                 "Type S for moving South\n" +
                 "Type E for moving East\n" +
                 "Type W for moving West\n" +
-                "Please select the direction that you want to move:");
+                "Type G for exit with saving game\n" +
+                "Type Q for exit without saving game\n" +
+                "Please select your option:");
         myUserDirection = myUserInput.nextLine();
         myDirection = myUserDirection.toUpperCase().charAt(0); // For the case that the user input the lower case
 
-        while( myDirection != 'N' && myDirection != 'S' && myDirection != 'E' && myDirection != 'W') {
-            System.out.println(myDirection + " is invalid option, please select the direction (N, S, E, W):");
+        while( myDirection != 'N' && myDirection != 'S' && myDirection != 'E' && myDirection != 'W'
+                && myDirection != 'G' && myDirection != 'Q') {
+            System.out.println(myDirection + " is invalid option, please select your option (N, S, E, W, G, or Q):");
             myUserDirection = myUserInput.nextLine();
             myDirection = myUserDirection.toUpperCase().charAt(0);
         }

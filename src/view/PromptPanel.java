@@ -1,10 +1,15 @@
 package view;
 
+import io.Load;
+import model.GameRunner;
+
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -28,7 +33,10 @@ public class PromptPanel extends JPanel implements ActionListener {
 
     Font cartoonFont;
 
-    PromptPanel(){
+    private final JFileChooser myFileChooser = new JFileChooser(System.getProperty("user.dir") + "/savedGame");
+    private final FileNameExtensionFilter myFileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
+
+    public PromptPanel(){
 
         promptFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         promptFrame.setSize(800,600);
@@ -78,6 +86,41 @@ public class PromptPanel extends JPanel implements ActionListener {
         exitBtn.setFont(new Font("Serif", Font.PLAIN, 24));
 
         loginBtn.addActionListener(this);
+        loadGame();
+
+    }
+
+    private void loadGame() {
+        //Set only allow to load .bin file
+        myFileChooser.addChoosableFileFilter(myFileNameFilter);
+        myFileChooser.setAcceptAllFileFilterUsed(false);
+
+        loadBtn.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                promptFrame.dispose();
+
+                final int selection = myFileChooser.showOpenDialog(null);
+                if(selection == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        String fileName = myFileChooser.getSelectedFile().getName();
+                        new Load(fileName);
+                    } catch (FileNotFoundException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    } catch (ClassNotFoundException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    } catch (IOException e1) {
+                        JOptionPane.showMessageDialog(null,
+                                "The selected file did not contain an game record!",
+                                "Error!", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+
+            }
+        });
     }
 
     private void graphicPanel() {
@@ -111,9 +154,17 @@ public class PromptPanel extends JPanel implements ActionListener {
         if (e.getSource() == loginBtn) {
             promptFrame.dispose();
 
-            //TriviaMazeGUI triviaMazeGUI = new TriviaMazeGUI();
-
+            IniMaze myIniMaze = null;
+            try {
+                myIniMaze = IniMaze.getInstance();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            GameRunner myGameRunner = GameRunner.INSTANCE;
+            myGameRunner.setData(myIniMaze);
         }
-
+        if (e.getSource() == exitBtn){
+            System.exit(0);
+        }
     }
 }

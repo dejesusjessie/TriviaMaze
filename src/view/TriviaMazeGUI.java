@@ -10,6 +10,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -21,6 +26,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import io.GameData;
 import io.Load;
+import io.PlaySound;
 import io.Save;
 
 /**
@@ -123,11 +129,6 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	public void basicWindow(String theMaze) throws IOException {
 
-
-		//Setting the panels.
-		//setMazePanel();
-//		setInfoPanel();
-//		setRoomPanel();
 		setLeftPanel();
 		setMainPanel();
 
@@ -164,6 +165,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 
 		//prevent the resizable
 		myWindow.setResizable(false);
+		playBackgroundMusic();
+
 
 	}
 
@@ -171,35 +174,10 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 * Setting the main panel.
 	 */
 	private void setMainPanel() {
-		//MY_MAIN_PANEL.setBackground(new Color(255,248,220));
 		MY_MAIN_PANEL.setSize(MY_WIDTH, MY_HEIGHT);
 		MY_MAIN_PANEL.add(myLeftPanel, BorderLayout.EAST);
 		MY_MAIN_PANEL.add(MY_MAZE_PANEL, BorderLayout.CENTER);
-		//mg.setSize(MY_WIDTH/2, MY_HEIGHT/2);
-		//MY_MAIN_PANEL.add(mg, BorderLayout.CENTER);
 	}
-
-//	/**
-//	 * Setting the maze panel.
-//	 * @throws IOException
-//	 */
-//	private void setMazePanel() throws IOException {
-//	}
-//
-//	/**
-//	 * Setting the info panel.
-//	 */
-//	private void setInfoPanel() {
-//		//MY_INFO_PANEL.setBackground(Color.white);
-//	}
-//
-//	/**
-//	 * Setting the room panel.
-//	 */
-//	private void setRoomPanel() {
-//
-//		//MY_ROOM_PANEL.setBackground(Color.pink);
-//	}
 
 	/**
 	 *
@@ -356,8 +334,12 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	public void repaintMaze(String theString) {
 		MY_MAZE_PANEL.setMaze(theString);
 	}
-
-
+	
+	public void playBackgroundMusic() {
+		File musicFile = new File(System.getProperty("user.dir") + "/src/sound/African_fun_long.wav");
+		PlaySound backgroundMusic = new PlaySound(musicFile);
+		backgroundMusic.loopSound();
+	}
 
 
 	@Override

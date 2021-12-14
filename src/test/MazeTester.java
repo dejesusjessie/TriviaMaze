@@ -1,10 +1,13 @@
-package model;
+package test;
 
 /**
  *
  * @author Kannika Armstrong
  *
  */
+
+import model.Maze;
+import model.MazeBuilder;
 
 import java.util.Scanner;
 
@@ -17,6 +20,7 @@ public class MazeTester {
         Scanner input = new Scanner(System.in);
         MazeBuilder builder = new MazeBuilder();
         Maze maze = builder.buildRoom();
+
 
         while(!maze.reachExit()) {
             System.out.println(maze.toString());

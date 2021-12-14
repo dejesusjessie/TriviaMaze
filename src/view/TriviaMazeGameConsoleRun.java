@@ -7,10 +7,16 @@ package view;
  */
 
 import triviaMaze.TriviaMazeBuilder;
+import triviaMaze.TriviaMazeGameRunner;
 
 public class TriviaMazeGameConsoleRun {
 
     public static void main(String[] args) {
-        new TriviaMazeBuilder();
+
+        TriviaMazeGameRunner game = new TriviaMazeGameRunner();
+        game.gameRunner();
+
+        //new TriviaMazeBuilder();
     }
+
 }

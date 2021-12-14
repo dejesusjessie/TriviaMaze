@@ -1,11 +1,14 @@
-package triviaMaze;
+package test;
+
+import triviaMaze.PromptUser;
+import triviaMaze.TriviaMazeBuilder;
 
 /**
  *
  * @author Kannika Armstrong
  *
  */
-public class triviaMazeTester {
+public class TriviaMazeTester {
 
     public static void main(String[] args) {
         //======= Uncomment to test each method =======//

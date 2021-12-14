@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class PlayerPanel extends JPanel {
     private static final RoomPanel2 MY_ROOM_PANEL = new RoomPanel2();
+    //private static final RoomPanel MY_ROOM_PANEL = new RoomPanel();
     private static final TriviaPanel MY_TRIVIA_PANEL = new TriviaPanel();
 
     public PlayerPanel() {

@@ -1,6 +1,8 @@
 package model;
 
 import java.awt.Point;
+import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * The Maze class
@@ -8,7 +10,7 @@ import java.awt.Point;
  * @version Fall 2021
  */
 
-public class Maze {
+public class Maze implements Serializable {
 
     private int myPlayerRow; // current row of the maze
     private int myPlayerColumn; // current column of the maze
@@ -30,7 +32,7 @@ public class Maze {
         this.rooms = theRooms;
     }
 
-    // Getter and setter of the dimension of the room
+    // Getter and setter of the dimension of the maze
     public int getDimension() {
         return dimension;
     }
