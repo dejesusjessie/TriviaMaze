@@ -49,15 +49,30 @@ class MazeTest {
     }
 
     @Test
-    void moveSouth() {
+    void testMoveSouthMethod() {
+        MazeBuilder builder = new MazeBuilder(6);
+        Maze maze = builder.buildRoom();
+        maze.moveSouth();
+        Assertions.assertEquals(1, maze.getPosition().getX());
+        Assertions.assertEquals(0, maze.getPosition().getY());
     }
 
     @Test
-    void moveEast() {
+    void testMoveEastMethod() {
+        MazeBuilder builder = new MazeBuilder(6);
+        Maze maze = builder.buildRoom();
+        maze.moveEast();
+        Assertions.assertEquals(0, maze.getPosition().getX());
+        Assertions.assertEquals(1, maze.getPosition().getY());
     }
 
     @Test
-    void moveWest() {
+    void testMoveWestMethod() {
+        MazeBuilder builder = new MazeBuilder(6);
+        Maze maze = builder.buildRoom();
+        maze.moveWest();
+        Assertions.assertEquals(0, maze.getPosition().getX());
+        Assertions.assertEquals(5, maze.getPosition().getY());
     }
 
     @Test
