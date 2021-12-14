@@ -21,7 +21,6 @@ public class MazeTester {
         MazeBuilder builder = new MazeBuilder();
         Maze maze = builder.buildRoom();
 
-
         while(!maze.reachExit()) {
             System.out.println(maze.toString());
             System.out.println("Select your option: \nn --> Move North\ns --> Move South" +
