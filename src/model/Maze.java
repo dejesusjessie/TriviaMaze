@@ -197,17 +197,17 @@ public class Maze implements Serializable {
     }
 
     //
-    public void mazeTraversHelper(int theRow, int theColumn, boolean[][] theMazeGrid) {
-        Room currentRoom = this.myRooms[theRow][theColumn];
-        theMazeGrid[theRow][theColumn] = true;
+    public void mazeTraversHelper(int row, int column, boolean[][] mazeGrid) {
+        Room currentRoom = this.myRooms[row][column];
+        mazeGrid[row][column] = true;
         if(currentRoom.isExitRoom()) { //if the player is in the exit room
             return;
         }
         // set all direction around current position
-        int northRow = theRow - 1;
-        int southRow = theRow + 1;
-        int eastColumn = theColumn + 1;
-        int westColumn = theColumn - 1;
+        int northRow = row - 1, northColumn = column,
+                southRow = row + 1, southColumn = column,
+                eastRow = row, eastColumn = column + 1,
+                westRow = row, westColumn = column - 1;
 
         if(northRow < 0)
             northRow = this.myDimension -1;
@@ -219,17 +219,17 @@ public class Maze implements Serializable {
             westColumn = this.myDimension -1;
 
         // Traversal helper
-        if(!currentRoom.getMyNorthDoor().isLocked() && !theMazeGrid[northRow][theColumn]) {
-            mazeTraversHelper(northRow, theColumn, theMazeGrid);
+        if(!currentRoom.getMyNorthDoor().isLocked() && !mazeGrid[northRow][column]) {
+            mazeTraversHelper(northRow, column, mazeGrid);
         }
-        if(!currentRoom.getMySouthDoor().isLocked() && !theMazeGrid[southRow][theColumn]) {
-            mazeTraversHelper(southRow, theColumn, theMazeGrid);
+        if(!currentRoom.getMySouthDoor().isLocked() && !mazeGrid[southRow][column]) {
+            mazeTraversHelper(southRow, column, mazeGrid);
         }
-        if(!currentRoom.getMyEastDoor().isLocked() && !theMazeGrid[theRow][eastColumn]) {
-            mazeTraversHelper(theRow, eastColumn, theMazeGrid);
+        if(!currentRoom.getMyEastDoor().isLocked() && !mazeGrid[row][eastColumn]) {
+            mazeTraversHelper(row, eastColumn, mazeGrid);
         }
-        if(!currentRoom.getMyWestDoor().isLocked() && !theMazeGrid[theRow][westColumn]) {
-            mazeTraversHelper(theRow, westColumn, theMazeGrid);
+        if(!currentRoom.getMyWestDoor().isLocked() && !mazeGrid[row][westColumn]) {
+            mazeTraversHelper(row, westColumn, mazeGrid);
         }
     }
 }

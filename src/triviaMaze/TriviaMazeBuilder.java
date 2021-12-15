@@ -30,17 +30,44 @@ public class TriviaMazeBuilder implements Serializable {
 
     // Game start controller
     void gameStartController(Maze myMazeGame, PromptUser promptUser) {
-        playGame(myMazeGame, promptUser);
-        endGame(myMazeGame, promptUser);
-    }
-
-    // during playing game
-    private void playGame(Maze mazeGame, PromptUser promptUser) {
+        Room myCurrentRoom; // create the current room
+        String myDirection; //
         String myAnswer;
-        this.myMazeGame = mazeGame;
-        runState(promptUser);
-    }
 
+        //If the player still can move and does not reach the exit
+        do {
+            myCurrentRoom = myMazeGame.getCurrentRoom();
+            System.out.println(myMazeGame.toString()); // print out the maze
+
+            // When the player
+            do {
+                myDirection = promptUser.userSelectedDirection();
+                if (!doorController(myDirection, myCurrentRoom)) {
+                    System.out.println("This door is locked. Please try the other way.");
+                }
+            } while(!doorController( myDirection, myCurrentRoom));
+
+            if (!doorOpened(myDirection, myCurrentRoom)) {
+                myAnswer = promptUser.displayTrivia();
+                if (myAnswer.equals("Correct")){
+                    movePlayer(myMazeGame,myDirection);
+                    openDoor(myCurrentRoom, myDirection);
+                    //System.out.println("Welcome to the next room!");
+                } else {
+                    lockDoor(myMazeGame, myDirection);
+                }
+            } else {
+                movePlayer(myMazeGame,myDirection);
+            }
+
+        } while (myMazeGame.mazeTraversal() && !myMazeGame.reachExit());
+
+        if (myMazeGame.reachExit()){
+            promptUser.displayWinningMessage();
+        } else {
+            promptUser.displayLosingMessage();
+        }
+    }
 
     //display text when end the game, winning and losing message
     private void endGame(Maze myMazeGame, PromptUser promptUser) {
@@ -140,58 +167,50 @@ public class TriviaMazeBuilder implements Serializable {
     void loadGame(){
         try {
             ConsoleGameData data = (ConsoleGameData) ResourceManager.load();
+
+            Room myCurrentRoom = data.getCurrentRoom(); // create the current room
+            String myDirection = data.getDirection(); //
+            String myAnswer;
             this.myMazeGame = data.getMyMazeGame();
-            this.myPlayerDirection = data.getDirection();
-            this.myPlayerCurrentRoom = data.getCurrentRoom();
+            //this.myPlayerDirection = data.getDirection();
+            //this.myPlayerCurrentRoom = data.getCurrentRoom();
             System.out.println("----- Loading Game Successful!! -----");
-            displayLoadGame(myMazeGame,myPlayerDirection,myPlayerCurrentRoom);
+
+            //String myAnswer;
+            PromptUser promptUser = new PromptUser();
+            do {
+                myCurrentRoom = myMazeGame.getCurrentRoom();
+                System.out.println(myMazeGame.toString()); // print out the maze
+
+                // When the player
+                do {
+                    myDirection = promptUser.userSelectedDirection();
+                    if (!doorController(myDirection, myCurrentRoom)) {
+                        System.out.println("This door is locked. Please try the other way.");
+                    }
+                } while(!doorController( myDirection, myCurrentRoom));
+
+                if (!doorOpened(myDirection, myCurrentRoom)) {
+                    myAnswer = promptUser.displayTrivia();
+                    if (myAnswer.equals("Correct")){
+                        movePlayer(myMazeGame,myDirection);
+                        openDoor(myCurrentRoom, myDirection);
+                    } else {
+                        lockDoor(myMazeGame, myDirection);
+                    }
+                } else {
+                    movePlayer(myMazeGame,myDirection);
+                }
+
+            } while (myMazeGame.mazeTraversal() && !myMazeGame.reachExit());
+
+            if (myMazeGame.reachExit()){
+                promptUser.displayWinningMessage();
+            } else {
+                promptUser.displayLosingMessage();
+            }
         } catch (Exception exception){
             System.out.println("Serialization Error! Can't save the game.");
         }
-    }
-
-    // Display game after load
-    private void displayLoadGame(Maze mazeGame, String direction, Room currentRoom){
-        String myAnswer;
-        this.myMazeGame = mazeGame;
-        PromptUser promptUser = new PromptUser();
-        runState(promptUser);
-        endGame(myMazeGame,promptUser);
-    }
-
-    // Use to run any state, both initial and load game
-    private void runState(PromptUser promptUser) {
-        String myAnswer;
-        do {
-            myPlayerCurrentRoom = myMazeGame.getCurrentRoom();
-            System.out.println(myMazeGame.toString()); // print out the maze
-
-            // When the player
-            myPlayerDirection = promptUser.userSelectedDirection();
-            if (myPlayerDirection.equalsIgnoreCase("G")) {
-                saveGame(myMazeGame, myPlayerDirection, myPlayerCurrentRoom);
-                System.exit(0);
-            } else if (myPlayerDirection.equalsIgnoreCase("Q")){
-                System.exit(0);
-            } else {
-                do {
-                    if (!doorController(myPlayerDirection, myPlayerCurrentRoom)) {
-                        System.out.println("This door is locked. Please try the other way.");
-                    }
-                } while (!doorController(myPlayerDirection, myPlayerCurrentRoom));
-            }
-
-            if (!doorOpened(myPlayerDirection, myPlayerCurrentRoom)) {
-                myAnswer = promptUser.displayTrivia();
-                if (myAnswer.equals("Correct")){
-                    movePlayer(myMazeGame,myPlayerDirection);
-                    openDoor(myPlayerCurrentRoom, myPlayerDirection);
-                } else {
-                    lockDoor(myMazeGame, myPlayerDirection);
-                }
-            } else {
-                movePlayer(myMazeGame,myPlayerDirection);
-            }
-        } while (myMazeGame.mazeTraversal() && !myMazeGame.reachExit());
     }
 }
