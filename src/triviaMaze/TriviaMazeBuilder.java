@@ -39,7 +39,6 @@ public class TriviaMazeBuilder implements Serializable {
         String myAnswer;
         this.myMazeGame = mazeGame;
         runState(promptUser);
-        endGame(myMazeGame,promptUser);
     }
 
 
@@ -157,6 +156,7 @@ public class TriviaMazeBuilder implements Serializable {
         this.myMazeGame = mazeGame;
         PromptUser promptUser = new PromptUser();
         runState(promptUser);
+        endGame(myMazeGame,promptUser);
     }
 
     // Use to run any state, both initial and load game

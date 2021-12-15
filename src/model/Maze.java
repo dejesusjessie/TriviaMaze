@@ -179,7 +179,6 @@ public class Maze implements Serializable {
 
     // Get the current room position
     public Room getCurrentRoom() {
-        System.out.println(Arrays.deepToString(myRooms));
         return this.myRooms[this.myPlayerRow][this.myPlayerColumn];
     }
     ////////////////////////////////////////////////////////////////////////////
