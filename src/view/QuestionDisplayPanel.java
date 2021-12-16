@@ -1,7 +1,5 @@
 package view;
 
-import io.Trivia;
-
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -9,12 +7,18 @@ import javax.swing.text.StyledDocument;
 import java.awt.*;
 
 
-
+/**
+ * Question Display Panel displays the question
+ */
 public class QuestionDisplayPanel extends JPanel {
 
 
     private final JTextPane questionPane = new JTextPane();
 
+    /**
+     * Constructs the Question Display panel to display in the
+     * north position within the trivia panel
+     */
     protected QuestionDisplayPanel(){
         this.setLayout(new BorderLayout());
         this.setBackground(Color.WHITE);
@@ -24,6 +28,9 @@ public class QuestionDisplayPanel extends JPanel {
 
     }
 
+    /**
+     * Configures display of Question
+     */
     public void configureQuestionTextPane(){
         questionPane.setText(TriviaPanel.MY_QUESTION);
         questionPane.setBounds(70,30,200,75);

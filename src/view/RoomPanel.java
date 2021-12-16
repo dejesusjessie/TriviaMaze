@@ -17,7 +17,8 @@ import java.io.IOException;
  * @author Codi Chun, Kannika Armstrong
  *
  */
-public class RoomPanel extends JPanel {
+public class RoomPanel extends JPanel{
+//public class RoomPanel extends JPanel implements ActionListener {
 
 	/**
 	 * The serial version UID.
@@ -60,6 +61,7 @@ public class RoomPanel extends JPanel {
 	// JOption image
 	private static ImageIcon huskyCryImg = new ImageIcon("src/image/huskyCry.gif");
 
+	protected static String myPlayerDirection;
 
 
 	public RoomPanel(){
@@ -69,7 +71,10 @@ public class RoomPanel extends JPanel {
 		setBorder(new EmptyBorder(20,20,50,20));
 		setBackground(new Color(255,222,173));
 		add(myLeftPanel, BorderLayout.WEST);
-
+//		myNorthButton.addActionListener(this);
+//		mySouthButton.addActionListener(this);
+//		myEastButton.addActionListener(this);
+//		myWestButton.addActionListener(this);
 		setNorthButton();
 		setSouthButton();
 		setWestButton();
@@ -94,11 +99,6 @@ public class RoomPanel extends JPanel {
 		myRoomDisplay.add(mySouthButton, BorderLayout.SOUTH);
 		myAvatar.setIcon(myAvatarImg);
 		myRoomDisplay.add(myAvatar, BorderLayout.CENTER);
-
-
-		add(myRightPanel);
-		myRightPanel.setBackground(new Color(255,222,173));
-
 	}
 
 	private void setNorthButton() {
@@ -244,18 +244,17 @@ public class RoomPanel extends JPanel {
 	}
 
 	private Boolean showQA() {
-		//TriviaPanel.showPanel("TRIVIA");
-
 		Trivia trivia = Database.getQuestionList().get(0);
 		String question = trivia.getQuestion();
 		String answerLetter = trivia.getAnswer();
 		String[] options = trivia.getOptions();
 
 		//Showing answer for developer mode.
-		System.out.println("Deverloper mode message: the answer is : " + answerLetter);
+		//Order in JOptionPane is from Right to Left. D, C, B, A
+		System.out.println("Developer mode message: the answer is : " + answerLetter);
 
 		int x = JOptionPane.showOptionDialog(null, question,
-				"Trivia Question", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,null, options, options[0]);
+				"Trivia Question", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,null, options, options);
 
 		String myAnswer = checkAnswer(answerLetter, options);
 
@@ -267,18 +266,19 @@ public class RoomPanel extends JPanel {
 			JOptionPane.showMessageDialog(null, "Wrong.");
 			return false;
 		}
+
 	}
 
 	private String checkAnswer(String theLetter, String[] theOptions) {
 		String Answer;
 		if(theLetter.equals("A")) {
-			Answer = theOptions[3];
-		} else if (theLetter.equals("B")) {
-			Answer = theOptions[2];
-		} else if (theLetter.equals("C")){
-			Answer = theOptions[1];
-		} else if(theLetter.equals("D")) {
 			Answer = theOptions[0];
+		} else if (theLetter.equals("B")) {
+			Answer = theOptions[1];
+		} else if (theLetter.equals("C")){
+			Answer = theOptions[2];
+		} else if(theLetter.equals("D")) {
+			Answer = theOptions[3];
 		} else {
 			Answer = theLetter;
 		}
@@ -302,8 +302,6 @@ public class RoomPanel extends JPanel {
 		result = GameRunner.INSTANCE.NIsLock();
 		return result;
 	}
-
-
 
 	private Boolean canTryS() {
 		Boolean result = true;
@@ -365,7 +363,6 @@ public class RoomPanel extends JPanel {
 		//JOptionPane.showMessageDialog(null, "You are lost!! Exit and restart to try again!");
 	}
 
-
 	private boolean isLost() {
 		boolean s = !GameRunner.INSTANCE.canTraverse() || (!canTryS() || SIsWall());
 		boolean w = !GameRunner.INSTANCE.canTraverse() || (!canTryW() || WIsWall());
@@ -398,5 +395,33 @@ public class RoomPanel extends JPanel {
 		return result;
 	}
 
+
+//	public void showTrivia(){
+//		TriviaPanel.showPanel("TRIVIA");
+//	}
+
+//	@Override
+//	public void actionPerformed(ActionEvent theEvent) {
+//		if(theEvent.getSource() == myNorthButton){
+//			showTrivia();
+//			myPlayerDirection="NORTH";
+//
+//		}
+//		if(theEvent.getSource() == mySouthButton){
+//			showTrivia();
+//			myPlayerDirection="SOUTH";
+//		}
+//		if(theEvent.getSource() == myEastButton){
+//			showTrivia();
+//			System.out.println("EAST");
+//			myPlayerDirection= "EAST";
+//		}
+//		if(theEvent.getSource() == myWestButton){
+//			showTrivia();
+//			myPlayerDirection= "WEST";
+//
+//		}
+//
+//	}
 
 }
