@@ -48,7 +48,7 @@ public class Load implements Serializable {
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
-	public Load(String theFileName) throws FileNotFoundException, ClassNotFoundException, IOException {
+	public Load(String theFileName) throws FileNotFoundException, ClassNotFoundException, IOException, NullPointerException {
 		this.myFileName = theFileName;
 		readFile(theFileName);
 		showLoadedGame();

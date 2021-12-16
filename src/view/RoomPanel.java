@@ -244,14 +244,12 @@ public class RoomPanel extends JPanel {
 	}
 
 	private Boolean showQA() {
-		//TriviaPanel.showPanel("TRIVIA");
-
-		Trivia trivia = Database.getQuestionList().get(0);
-		String question = trivia.getQuestion();
-		String answerLetter = trivia.getAnswer();
-		String[] options = trivia.getOptions();
-
-		//Showing answer for developer mode.
+	    Trivia trivia = Database.getQuestionList().get(0);
+	    String question = trivia.getQuestion();
+	    String answerLetter = trivia.getAnswer();
+	    String[] options = trivia.getOptions();
+	    
+	    //Showing answer for developer mode.  
 		System.out.println("Deverloper mode message: the answer is : " + answerLetter);
 
 		int x = JOptionPane.showOptionDialog(null, question,
@@ -267,6 +265,7 @@ public class RoomPanel extends JPanel {
 			JOptionPane.showMessageDialog(null, "Wrong.");
 			return false;
 		}
+
 	}
 
 	private String checkAnswer(String theLetter, String[] theOptions) {

@@ -108,8 +108,6 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	final FileNameExtensionFilter myFileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
 
-	//String myDir = System.getProperty("user.dir");
-	//BufferedImage myHusky = ImageIO.read(new File(myDir + "/src/image/husky.png"));
 
 
 	/**
@@ -291,9 +289,12 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, ","
-						+"\n1. For moving to another room, you need to open a door."
-						+"\n2. You need to selecte the correct answer to open a door, otherwise, the door closes forever.");
+				JOptionPane.showMessageDialog(null, ""
+						+"\n1. For wining the game, you need to let the husky move to the room that has fruit."
+						+"\n2. There are 4 direction controlers on the current room, they are north button, south botton, east button, and west button."
+						+"\n3. Click a direction button, you will get a question, if you choose the correct one, the husky will move based on the direction you choose."
+						+"\n4. If you choose a wrong question, you can't use that way anymore."
+						+"\n5. If there is no way can lead the husky to the fruit, you lose the game.");
 			}
 		});
 	}
@@ -303,19 +304,19 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	private void addCheatsMenu() {
 		JMenu cheatsMenu = new JMenu("Cheats");
-		JMenuItem doorKeyMenu = new JMenuItem("Bridge");
+		//JMenuItem doorKeyMenu = new JMenuItem("Bridge");
 		JMenuItem hinsAngelMenu = new JMenuItem("Hins");
-		cheatsMenu.add(doorKeyMenu);
+		//cheatsMenu.add(doorKeyMenu);
 		cheatsMenu.add(hinsAngelMenu);
 		myHelpMenu.add(cheatsMenu);
 
-		doorKeyMenu.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "needs to be edied");
-			}
-		});
+//		doorKeyMenu.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				JOptionPane.showMessageDialog(null, "needs to be edied");
+//			}
+//		});
 
 		hinsAngelMenu.addActionListener(new ActionListener() {
 
