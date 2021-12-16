@@ -6,7 +6,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="sqlite-jdbc-3.36.0.3.jar">
+	<classpathentry kind="lib" path="/Users/codichun/Desktop/Java/305/workplace for 305/TriviaMaze/sqlite-jdbc-3.36.0.3.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/codichun/Desktop/Java/305/workplace for 305/TriviaMaze/jgoodies-forms-1.8.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

@@ -8,7 +8,7 @@ import view.PromptPanel;
 
 /**
  * The main of running the program on GUI.
- * @author Codi Chun
+ * @author Codi Chun, Kannika Armstrong
  * @version Fall 2021
  */
 public class TriviaMaze {

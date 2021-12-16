@@ -19,6 +19,14 @@ public class Door implements Serializable{
     private boolean locked = false;
     private boolean open = false;
 
+    public void setLocked(boolean locked) {
+        this.locked = locked;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
     // If the door is locked
     public boolean isLocked() {
         return this.locked;

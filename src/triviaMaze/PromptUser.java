@@ -36,7 +36,6 @@ public class PromptUser {
 
         System.out.println("Please enter your username: ");
         this.myUserName = myUserInput.nextLine();
-        setMyUserName(myUserName);
 
         // The player have to create the username.
         while (this.myUserName.isEmpty()){
@@ -109,6 +108,19 @@ public class PromptUser {
             System.out.println(myDirection + " is invalid option, please select your option (N, S, E, W, G, or Q):");
             myUserDirection = myUserInput.nextLine();
             myDirection = myUserDirection.toUpperCase().charAt(0);
+        }
+        if (myDirection == 'N') {
+            System.out.println("You want to go North.");
+        } else if ( myDirection == 'S') {
+            System.out.println("You want to go South.");
+        } else if ( myDirection == 'W') {
+            System.out.println("You want to go West.");
+        } else if ( myDirection == 'E') {
+            System.out.println("You want to go East.");
+        } else if ( myDirection == 'G') {
+            System.out.println("Save your game.");
+        } else {
+            System.out.println("Quit your game.");
         }
         return String.valueOf(myDirection);
     }

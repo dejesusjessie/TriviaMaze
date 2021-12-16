@@ -1,12 +1,14 @@
 package view;
 
-import io.Trivia;
-
 import javax.swing.*;
 import java.awt.*;
 
-public class OptionDisplayPanel extends JPanel {
+/**
+ * This panel displays the available option for the trivia in JRadio format
+ * Author: Jessie De Jesus
+ */
 
+public class OptionDisplayPanel extends JPanel {
 
     protected static final ButtonGroup multipleQuestionGroup = new ButtonGroup();
     protected static final ButtonGroup trueFalseQuestionGroup = new ButtonGroup();
@@ -18,7 +20,10 @@ public class OptionDisplayPanel extends JPanel {
     private final JRadioButton falseOption = new JRadioButton();
     private final GridBagConstraints gbc = new GridBagConstraints();
 
-
+    /**
+     * Constructs the Option Display Panel to display in the
+     * center position within the trivia panel
+     */
     protected OptionDisplayPanel() {
         this.setLayout(new GridBagLayout());
         this.setBackground(Color.WHITE);
@@ -26,13 +31,20 @@ public class OptionDisplayPanel extends JPanel {
         displayOptions();
     }
 
+    /**
+     * Determines which option to display based on trivia type
+     */
     private void displayOptions(){
         switch (TriviaPanel.myTrivia.getType()) {
-            case "MULTIPLE_CHOICE" -> { getMultipleChoiceOptions();}
-            case "TRUE_FALSE" -> {getTrueFalseOptions();}
+            case "MULTIPLE_CHOICE" -> { displayMultipleChoiceOptions();}
+            case "TRUE_FALSE" -> {displayTrueFalseOptions();}
         }
     }
-    private void getMultipleChoiceOptions(){
+
+    /**
+     * Displays multiple choice options
+     */
+    private void displayMultipleChoiceOptions(){
         gbc.anchor = GridBagConstraints.NORTHWEST;
         optionA.setText(TriviaPanel.MY_OPTIONS[0]);
         gbc.gridx = 0;
@@ -50,20 +62,21 @@ public class OptionDisplayPanel extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 3;
         this.add(optionD,gbc);
-//        optionA.setActionCommand("A");
-//        optionB.setActionCommand("B");
-//        optionC.setActionCommand("C");
-//        optionD.setActionCommand("D");
-        
-        
-        
+        optionA.setActionCommand("D");
+        optionB.setActionCommand("C");
+        optionC.setActionCommand("B");
+        optionD.setActionCommand("A");
+
         multipleQuestionGroup.add(optionA);
         multipleQuestionGroup.add(optionB);
         multipleQuestionGroup.add(optionC);
         multipleQuestionGroup.add(optionD);
     }
 
-    private void getTrueFalseOptions(){
+    /**
+     * Displays true/false options
+     */
+    private void displayTrueFalseOptions(){
         gbc.anchor = GridBagConstraints.WEST;
         trueOption.setText(TriviaPanel.MY_OPTIONS[0]);
         gbc.gridx = 0;

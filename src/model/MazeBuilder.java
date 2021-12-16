@@ -24,8 +24,8 @@ public class MazeBuilder implements Serializable {
     // Create the build function to build the room
     public Maze buildRoom() {
         Maze maze = new Maze();
-        maze.setRooms(this.roomSetup());
-        maze.setDimension(this.myMazeDimension);
+        maze.setMyRooms(this.roomSetup());
+        maze.setMyDimension(this.myMazeDimension);
         return maze;
     }
 

@@ -40,7 +40,6 @@ public class TriviaMazeGameRunner {
                 break;
             case ('L'):
                 myPlayerGameBuilder.loadGame();
-                //new TriviaMazeBuilder();
                 break;
             case ('E'):
                 System.exit(0);

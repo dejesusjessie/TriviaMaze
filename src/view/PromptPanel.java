@@ -121,6 +121,13 @@ public class PromptPanel extends JPanel implements ActionListener {
 
             }
         });
+        exitBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
     }
 
     private void graphicPanel() {
@@ -162,9 +169,6 @@ public class PromptPanel extends JPanel implements ActionListener {
             }
             GameRunner myGameRunner = GameRunner.INSTANCE;
             myGameRunner.setData(myIniMaze);
-        }
-        if (e.getSource() == exitBtn){
-            System.exit(0);
         }
     }
 }

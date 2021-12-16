@@ -18,9 +18,8 @@ public class MazeTester {
 
     private static void MazeTest() {
         Scanner input = new Scanner(System.in);
-        MazeBuilder builder = new MazeBuilder();
+        MazeBuilder builder = new MazeBuilder(8);
         Maze maze = builder.buildRoom();
-
 
         while(!maze.reachExit()) {
             System.out.println(maze.toString());
