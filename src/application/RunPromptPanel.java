@@ -1,4 +1,4 @@
-package test;
+package application;
 
 import io.Database;
 import io.Trivia;
