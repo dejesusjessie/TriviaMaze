@@ -69,15 +69,6 @@ public class TriviaMazeBuilder implements Serializable {
         }
     }
 
-    //display text when end the game, winning and losing message
-    private void endGame(Maze myMazeGame, PromptUser promptUser) {
-        if (myMazeGame.reachExit()){
-            promptUser.displayWinningMessage();
-        } else {
-            promptUser.displayLosingMessage();
-        }
-    }
-
     //
     private static void openDoor(Room currentRoom, String direction) {
         if(direction.equalsIgnoreCase("N"))
@@ -138,7 +129,6 @@ public class TriviaMazeBuilder implements Serializable {
 
 
     // Moving the player when can move
-
     private static void movePlayer(Maze myMazeGame, String direction) {
         if (direction.equalsIgnoreCase("N"))
             myMazeGame.moveNorth();
@@ -150,9 +140,7 @@ public class TriviaMazeBuilder implements Serializable {
             myMazeGame.moveWest();
     }
 
-
     // saving game
-
     private static void saveGame(Maze myMazeGame, String direction, Room currentRoom) {
         ConsoleGameData data = new ConsoleGameData(myMazeGame, direction, currentRoom);
         try {
