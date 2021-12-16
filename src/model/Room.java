@@ -55,7 +55,7 @@ public class Room implements Serializable{
 
     // Set exit room --> Win the game if can enter to this room
     public boolean isExitRoom() {
-        return exitRoom;
+        return this.exitRoom;
     }
     public void setExit() {
         this.exitRoom = true;
