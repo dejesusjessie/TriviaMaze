@@ -1,5 +1,8 @@
 package model;
 
+import java.io.IOException;
+
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import view.IniMaze;
 import view.TriviaMazeGUI;
@@ -30,10 +33,12 @@ public enum GameRunner {
         myMazeString = theIniMaze.getString();
 	}
 	
-	public void setNewGame() {
-        //TODO The whole class changed to enum type. myInstance doesn't work anymore.
-		//TODO This method needs to be rewrite. 
-		//myInstance = null;
+	public void setNewGame() throws IOException, NullPointerException {
+		IniMaze myIniMaze = IniMaze.getInstance();
+		myIniMaze.setNewMaze();
+        GameRunner.INSTANCE.setData(myIniMaze);
+		myIniMaze.getGUI().repaintMaze(myIniMaze.getString());
+		myIniMaze.getGUI().playBackgroundMusic();
 	}
 	
 	public void loadGame(String theGameStatus) {
@@ -161,8 +166,35 @@ public enum GameRunner {
 		if(myMaze.reachExit()) {
 			myGUI.getRoomPanel().stopBackgroundMusic();
 			myGUI.getRoomPanel().playWinSound();
-			JOptionPane.showMessageDialog(null, "You win!! Exit the game and ask Tom for the num-num!");
+			//JOptionPane.showMessageDialog(null, "You win!! Exit the game and ask Tom for the num-num!");
+			ImageIcon huskyClapImg = new ImageIcon("src/image/huskyClap.gif");
+			
+			Object[] options = {"Restart", "Exit"};
+			int response = JOptionPane.showOptionDialog(null,
+					"You win!! Exit the game and ask Tom for the num-num!",
+					"Congrats!",
+					JOptionPane.YES_NO_OPTION,
+					JOptionPane.QUESTION_MESSAGE,
+					huskyClapImg,
+					options,  //the titles of buttons
+					options[0]); //default button title
+			if (response == JOptionPane.YES_OPTION){
+				try {
+					GameRunner.INSTANCE.setNewGame();
+				} catch (NullPointerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if (response == JOptionPane.NO_OPTION){
+				System.exit(0);
+			}
 		} 
+		
+
 	}
 	
 	public Room getCurrentRoom() {

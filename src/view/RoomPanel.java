@@ -40,12 +40,12 @@ public class RoomPanel extends JPanel{
 	/**
 	 * ImageIcon
 	 */
-	private static ImageIcon redWallNSImg = new ImageIcon("src/image/redWallNS.png");
-	private static ImageIcon redWallEWImg = new ImageIcon("src/image/redWallEW.png");
-	private static ImageIcon blueNorthWallImg = new ImageIcon("src/image/blueWallNorth.png");
-	private static ImageIcon blueSouthWallImg = new ImageIcon("src/image/blueWallSouth.png");
-	private static ImageIcon blueEastWallImg = new ImageIcon("src/image/blueWallEast.png");
-	private static ImageIcon blueWestWallImg = new ImageIcon("src/image/blueWallWest.png");
+//	private static ImageIcon redWallNSImg = new ImageIcon("src/image/redWallNS.png");
+//	private static ImageIcon redWallEWImg = new ImageIcon("src/image/redWallEW.png");
+	private static ImageIcon myBlueNorthWallImg = new ImageIcon("src/image/blueWallNorth.png");
+	private static ImageIcon myBlueSouthWallImg = new ImageIcon("src/image/blueWallSouth.png");
+	private static ImageIcon myBlueEastWallImg = new ImageIcon("src/image/blueWallEast.png");
+	private static ImageIcon myBlueWestWallImg = new ImageIcon("src/image/blueWallWest.png");
 	private static ImageIcon myAvatarImg = new ImageIcon("src/image/huskyAvatar1.gif");
 	private static ImageIcon myDoorNSImg = new ImageIcon("src/image/myDoorH.gif");
 	private static ImageIcon myDoorEWImg = new ImageIcon(("src/image/myDoorV.gif"));
@@ -60,18 +60,18 @@ public class RoomPanel extends JPanel{
 	private JPanel myLeftPanel = new JPanel();
 	private JPanel myRightPanel = new JPanel();
 
-	private static JButton myNorthButton = new JButton(blueNorthWallImg); // Use to display the north wall
-	private static JButton mySouthButton = new JButton(blueSouthWallImg); // Use to display the south wall
-	private static JButton myWestButton = new JButton(blueWestWallImg); // Use to display the west wall
-	private static JButton myEastButton = new JButton(blueEastWallImg); // Use to display the east wall
+	private static JButton myNorthButton = new JButton(myBlueNorthWallImg); // Use to display the north wall
+	private static JButton mySouthButton = new JButton(myBlueSouthWallImg); // Use to display the south wall
+	private static JButton myWestButton = new JButton(myBlueWestWallImg); // Use to display the west wall
+	private static JButton myEastButton = new JButton(myBlueEastWallImg); // Use to display the east wall
 	private static JButton myDoorNS = new JButton(myDoorNSImg); // Use to display the east wall
 	private static JButton myDoorEW = new JButton(myDoorEWImg); // Use to display the east wall
 	private static JLabel myAvatar = new JLabel(myAvatarImg); // Use to display the Avatar in the room
 
-	private static JLabel currentRoom = new JLabel("✵ Current Room ✵" );
+	private static JLabel myLabel = new JLabel("✵ Current Room ✵" );
 
 	// JOption image
-	private static ImageIcon huskyCryImg = new ImageIcon("src/image/huskyCry.gif");
+	private static ImageIcon myHuskyCryImg = new ImageIcon("src/image/huskyCry.gif");
 
 	protected static String myPlayerDirection;
 
@@ -98,8 +98,8 @@ public class RoomPanel extends JPanel{
 		myLeftPanel.add(myCurrentRoom, BorderLayout.NORTH);
 		myCurrentRoom.setBackground(Color.WHITE);
 		myCurrentRoom.setPreferredSize(new Dimension(100, 30));
-		myCurrentRoom.add(currentRoom);
-		currentRoom.setFont(new Font("Serif", Font.PLAIN, 24));
+		myCurrentRoom.add(myLabel);
+		myLabel.setFont(new Font("Serif", Font.PLAIN, 24));
 		//myCurrentRoom.setBorder(new EmptyBorder(0,0,10,0));
 		myLeftPanel.add(myRoomDisplay);
 		myRoomDisplay.setBackground(Color.WHITE);
@@ -389,12 +389,11 @@ public class RoomPanel extends JPanel{
 				"Husky Lose",
 				JOptionPane.YES_NO_OPTION,
 				JOptionPane.QUESTION_MESSAGE,
-				huskyCryImg,
+				myHuskyCryImg,
 				options,  //the titles of buttons
 				options[0]); //default button title
 		if (response == JOptionPane.YES_OPTION){
-			IniMaze.getInstance();
-			GameRunner.INSTANCE.setNewGame();;
+			GameRunner.INSTANCE.setNewGame();
 		}
 		if (response == JOptionPane.NO_OPTION){
 			System.exit(0);

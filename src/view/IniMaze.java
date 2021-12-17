@@ -40,18 +40,20 @@ public class IniMaze implements Serializable{
 		}
 		return myInstance;
 	}
-
-
-	public void setNewIniMaze() throws IOException {
-		//myGUI.resetWindow();
-		myInstance = null;
-	}
 	
 	public void setData(GameData theGameData) {
 		//myBuilder = theGameData.getBuilder();
 		myMaze = theGameData.getMaze();
 		myMazeString = theGameData.getMazeString();
 	}
+	
+	public void setNewMaze() {
+		myBuilder = new MazeBuilderForGUI();
+	    myMaze = myBuilder.buildRoom();
+	    myMazeString = myMaze.toGUI();
+	 
+	}
+	
 	
 	public static IniMaze getInstance(IniMaze theIniMaze) throws IOException {
 		if(myInstance == null) {
