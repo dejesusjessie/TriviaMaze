@@ -73,6 +73,7 @@ public class RoomPanel extends JPanel{
 	// JOption image
 	private static ImageIcon myHuskyCryImg = new ImageIcon("src/image/huskyCry.gif");
 
+	protected static String hint;
 	protected static String myPlayerDirection;
 
 
@@ -260,21 +261,22 @@ public class RoomPanel extends JPanel{
 		});
 	}
 
-	private Trivia trivia = Database.getQuestionList().get(0);
-	private String question = trivia.getQuestion();
-	private String answerLetter = trivia.getAnswer();
-	private String[] options = trivia.getOptions();
+//	private Trivia trivia = Database.getQuestionList().get(0);
+//	private String question = trivia.getQuestion();
+//	private String answerLetter = trivia.getAnswer();
+//	private String[] options = trivia.getOptions();
 
 	private Boolean showQA() {
 
-//		Trivia trivia = Database.getQuestionList().get(0);
-//		String question = trivia.getQuestion();
-//		String answerLetter = trivia.getAnswer();
-//		String[] options = trivia.getOptions();
+		Trivia trivia = Database.getQuestionList().get(0);
+		String question = trivia.getQuestion();
+		String answerLetter = trivia.getAnswer();
+		String[] options = trivia.getOptions();
+		hint = trivia.getHint();
 
 		//Showing answer for developer mode.
 		//Order in JOptionPane is from Right to Left. D, C, B, A
-		
+
 		System.out.println("Developer mode message: the answer is : " + printAnswer(answerLetter));
 
 		int x = JOptionPane.showOptionDialog(null, question,
@@ -286,18 +288,19 @@ public class RoomPanel extends JPanel{
 			playCorrectSound();
 			JOptionPane.showMessageDialog(null, "Correct!");
 			return true;
-
-		} else {
+		}
+		else {
 			playWrongSound();
 			JOptionPane.showMessageDialog(null, "Wrong.");
 			return false;
 		}
 
+
 	}
 
-	public String hintAnswer(){
-		return printAnswer(answerLetter);
-	}
+//	public String hintAnswer(){
+//		return printAnswer(answerLetter);
+//	}
 	
 	private String printAnswer(String theLetter) {
 		String Answer;

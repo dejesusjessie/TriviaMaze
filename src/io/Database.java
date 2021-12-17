@@ -81,7 +81,7 @@ public class Database {
         while (theSet.next()) {
             String question = theSet.getString(queryQuestion);
             String answer = theSet.getString(queryAnswer);
-            TRIVIA_LIST.add(TriviaFactory.createQuestion(question, answer,null,TF));
+            TRIVIA_LIST.add(TriviaFactory.createQuestion(question, answer,null,TF, null));
 
         }
     }
@@ -95,12 +95,14 @@ public class Database {
         String queryQuestion = "question";
         String queryAnswer = "answer";
         String queryOptions = "options";
+        String queryHint = "hint";
 
         while(theSet.next()){
             String question = theSet.getString(queryQuestion);
             String answer = theSet.getString(queryAnswer);
             String[] options = splitOptions(theSet.getString( queryOptions));
-            TRIVIA_LIST.add(TriviaFactory.createQuestion(question, answer,options,MC));
+            String hint = theSet.getString(queryHint);
+            TRIVIA_LIST.add(TriviaFactory.createQuestion(question, answer,options,MC, hint));
         }
 
     }

@@ -28,4 +28,10 @@ public class TrueFalse extends Question{
     public String[] getOptions() {
         return myOptions;
     }
+
+    @Override
+    public String getHint() {
+        return "No hints available. You have a 50/50 chance";
+    }
 }
+

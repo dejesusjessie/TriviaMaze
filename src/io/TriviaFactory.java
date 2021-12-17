@@ -13,11 +13,11 @@ public class TriviaFactory {
      * @param theType the type of trivia
      * @return the new trivia object
      */
-    static Trivia createQuestion(String theQuestion, String theAnswer, String[] theOptions, String theType) {
+    static Trivia createQuestion(String theQuestion, String theAnswer, String[] theOptions, String theType, String theHint) {
         Trivia trivia = null;
         switch (theType) {
             case "MULTIPLE_CHOICE":
-                trivia = new MultipleChoice(theQuestion, theAnswer, theOptions);
+                trivia = new MultipleChoice(theQuestion, theAnswer, theOptions, theHint);
                 break;
             case "TRUE_FALSE":
                 trivia = new TrueFalse(theQuestion, theAnswer);
@@ -26,3 +26,4 @@ public class TriviaFactory {
         return trivia;
     }
 }
+

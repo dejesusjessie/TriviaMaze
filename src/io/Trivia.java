@@ -29,4 +29,11 @@ public interface Trivia {
      * @return the trivia type
      */
     String getType();
+
+    /**
+     * Provides the hint for this trivia
+     * @return the trivia hint
+     */
+    String getHint();
 }
+
