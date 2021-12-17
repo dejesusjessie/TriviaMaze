@@ -260,12 +260,17 @@ public class RoomPanel extends JPanel{
 		});
 	}
 
+	private Trivia trivia = Database.getQuestionList().get(0);
+	private String question = trivia.getQuestion();
+	private String answerLetter = trivia.getAnswer();
+	private String[] options = trivia.getOptions();
+
 	private Boolean showQA() {
 
-		Trivia trivia = Database.getQuestionList().get(0);
-		String question = trivia.getQuestion();
-		String answerLetter = trivia.getAnswer();
-		String[] options = trivia.getOptions();
+//		Trivia trivia = Database.getQuestionList().get(0);
+//		String question = trivia.getQuestion();
+//		String answerLetter = trivia.getAnswer();
+//		String[] options = trivia.getOptions();
 
 		//Showing answer for developer mode.
 		//Order in JOptionPane is from Right to Left. D, C, B, A
@@ -288,6 +293,10 @@ public class RoomPanel extends JPanel{
 			return false;
 		}
 
+	}
+
+	public String hintAnswer(){
+		return printAnswer(answerLetter);
 	}
 	
 	private String printAnswer(String theLetter) {
