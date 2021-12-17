@@ -16,7 +16,7 @@ import java.io.IOException;
 
 /**
  * The Room Panel.
- * @author Codi Chun, Kannika Armstrong
+ * @author Codi Chun, Kannika Armstrong, Jessie De Jesus
  *
  */
 public class RoomPanel extends JPanel{
