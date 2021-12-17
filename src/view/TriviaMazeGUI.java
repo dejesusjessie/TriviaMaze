@@ -15,19 +15,14 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import io.GameData;
 import io.Load;
 import io.PlaySound;
 import io.Save;
+import model.GameRunner;
 
 /**
  * A basic GUI for the game.
@@ -108,7 +103,8 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	 */
 	final FileNameExtensionFilter myFileNameFilter = new FileNameExtensionFilter("Binary Files", "bin");
 
-
+	// the image in the hints
+	private static ImageIcon myHuskyLoveImg = new ImageIcon("src/image/huskyLove.gif");
 
 	/**
 	 * Constructor.
@@ -305,7 +301,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	private void addCheatsMenu() {
 		JMenu cheatsMenu = new JMenu("Cheats");
 		//JMenuItem doorKeyMenu = new JMenuItem("Bridge");
-		JMenuItem hinsMenu = new JMenuItem("Hins");
+		JMenuItem hinsMenu = new JMenuItem("Hints");
 		//cheatsMenu.add(doorKeyMenu);
 		cheatsMenu.add(hinsMenu);
 		myHelpMenu.add(cheatsMenu);
@@ -322,7 +318,19 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "The choice is wrong! (needs to be edied)");
+				//JOptionPane.showMessageDialog(null, "The choice is wrong! (needs to be edied)");
+				Object[] options = {"Show me!", "Nope!"};
+				int response = JOptionPane.showOptionDialog(null,
+						"Do you want to see the answer?",
+						"Hint..Hint..For Husky ^_^",
+						JOptionPane.YES_NO_OPTION,
+						JOptionPane.QUESTION_MESSAGE,
+						myHuskyLoveImg,
+						options,  //the titles of buttons
+						options[0]); //default button title
+				if (response == JOptionPane.YES_OPTION){
+					JOptionPane.showMessageDialog(null, new RoomPanel().hintAnswer());
+				}
 			}
 		});
 	}
