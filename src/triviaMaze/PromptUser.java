@@ -9,6 +9,7 @@ import java.util.Scanner;
  * The prompt user -- console game.
  * @author Kannika Armstrong
  * @version Fall 2021
+ *
  */
 
 public class PromptUser {

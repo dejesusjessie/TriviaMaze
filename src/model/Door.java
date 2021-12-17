@@ -3,16 +3,11 @@ package model;
 import java.io.Serializable;
 
 /**
- *
  * @author Kannika Armstrong
- *
+ * @version Fall 2021
  */
 
 // Create Door for each room
-// Condition to pass the door: Locked/Open - Result
-// Cannot pass the door when the answer is wrong
-// Can pass the door when the answer is right
-// Cannot pass the door when do not answer the question yet
 
 public class Door implements Serializable{
 

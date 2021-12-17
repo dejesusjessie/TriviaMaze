@@ -1,7 +1,11 @@
 package triviaMaze;
 
 /**
- * The prompt panel.
+ * The Player class will use for the store the player information
+ * We don't use it in this version, but we created it because
+ * in the first plan, we want to store the information of the Player in the database
+ * to create the ranking. We will keep it for the case
+ * that we will use it again in the future version
  * @author Kannika Armstrong
  * @version Fall 2021
  */
