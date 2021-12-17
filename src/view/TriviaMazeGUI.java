@@ -163,7 +163,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 
 		//prevent the resizable
 		myWindow.setResizable(false);
-		playBackgroundMusic();
+		//playBackgroundMusic();
 
 
 	}
@@ -305,9 +305,9 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	private void addCheatsMenu() {
 		JMenu cheatsMenu = new JMenu("Cheats");
 		//JMenuItem doorKeyMenu = new JMenuItem("Bridge");
-		JMenuItem hinsAngelMenu = new JMenuItem("Hins");
+		JMenuItem hinsMenu = new JMenuItem("Hins");
 		//cheatsMenu.add(doorKeyMenu);
-		cheatsMenu.add(hinsAngelMenu);
+		cheatsMenu.add(hinsMenu);
 		myHelpMenu.add(cheatsMenu);
 
 //		doorKeyMenu.addActionListener(new ActionListener() {
@@ -318,7 +318,7 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 //			}
 //		});
 
-		hinsAngelMenu.addActionListener(new ActionListener() {
+		hinsMenu.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -335,11 +335,17 @@ public class TriviaMazeGUI extends JFrame implements ActionListener {
 	public void repaintMaze(String theString) {
 		MY_MAZE_PANEL.setMaze(theString);
 	}
+
+	public RoomPanel getRoomPanel() {
+		return MY_PLAYER_PANEL.getRoomPanel();
+	}
 	
 	public void playBackgroundMusic() {
-		File musicFile = new File(System.getProperty("user.dir") + "/src/sound/African_fun_long.wav");
-		PlaySound backgroundMusic = new PlaySound(musicFile);
-		backgroundMusic.loopSound();
+		RoomPanel roomPanel = MY_PLAYER_PANEL.getRoomPanel();
+		if(!roomPanel.isPlayingMusic()) {
+			roomPanel.myBackgroundMusic.start();
+			roomPanel.myBackgroundMusic.loop();
+		}
 	}
 
 

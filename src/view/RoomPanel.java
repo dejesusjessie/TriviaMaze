@@ -4,16 +4,18 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import io.Database;
+import io.PlaySound;
 import io.Trivia;
 import model.GameRunner;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 
 /**
- *
+ * The Room Panel.
  * @author Codi Chun, Kannika Armstrong
  *
  */
@@ -24,6 +26,16 @@ public class RoomPanel extends JPanel{
 	 * The serial version UID.
 	 */
 	private static final long serialVersionUID = 5752800424701404623L;
+	
+	/**
+	 * Background music file.
+	 */
+	File myMusicFile = new File(System.getProperty("user.dir") + "/src/sound/African_fun_long.wav");
+	
+	/**
+	 * Background musi player.
+	 */
+	PlaySound myBackgroundMusic = new PlaySound(myMusicFile);
 
 	/**
 	 * ImageIcon
@@ -99,6 +111,7 @@ public class RoomPanel extends JPanel{
 		myRoomDisplay.add(mySouthButton, BorderLayout.SOUTH);
 		myAvatar.setIcon(myAvatarImg);
 		myRoomDisplay.add(myAvatar, BorderLayout.CENTER);
+		playBackgroundMusic();
 	}
 
 	private void setNorthButton() {
@@ -106,6 +119,7 @@ public class RoomPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				playButtonSound();
 				if( canTryN() && !NIsWall() && !hasBridgeN()) {
 					Boolean moveN = showQA();
 					if(moveN) {
@@ -141,6 +155,7 @@ public class RoomPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				playButtonSound();
 				if( canTryS()&& !SIsWall()&&!hasBridgeS()) {
 					Boolean moveS = showQA();
 					if(moveS) {
@@ -175,9 +190,9 @@ public class RoomPanel extends JPanel{
 
 	private void setEastButton() {
 		myEastButton.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				playButtonSound();
 
 				if( canTryE()&& !EIsWall() &&!hasBridgeE()) {
 					Boolean moveE = showQA();
@@ -214,7 +229,9 @@ public class RoomPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				playButtonSound();
 				if( canTryW()&& !WIsWall() && !hasBridgeW()) {
+					playButtonSound();
 					Boolean moveW = showQA();
 					if(moveW) {
 						GameRunner.INSTANCE.openW();
@@ -261,10 +278,12 @@ public class RoomPanel extends JPanel{
 		String myAnswer = checkAnswer(answerLetter, options);
 
 		if(options[x].equals(myAnswer)) {
+			playCorrectSound();
 			JOptionPane.showMessageDialog(null, "Correct!");
 			return true;
 
 		} else {
+			playWrongSound();
 			JOptionPane.showMessageDialog(null, "Wrong.");
 			return false;
 		}
@@ -353,15 +372,17 @@ public class RoomPanel extends JPanel{
 	}
 
 	private void blockerSays() {
+		playStopSound();
 		JOptionPane.showMessageDialog(null, "You are going to be eaten!! Muhahaha");
 	}
 
 	private void wallSays() {
+		playStopSound();
 		JOptionPane.showMessageDialog(null, "You are hitting the wall!!");
 	}
 
 	private void lostGameText() throws IOException {
-
+		playLoseSound();
 		Object[] options = {"Restart", "Exit"};
 		int response = JOptionPane.showOptionDialog(null,
 				"You lose!! Let's try it again!!",
@@ -412,6 +433,53 @@ public class RoomPanel extends JPanel{
 		boolean result = false;
 		result = GameRunner.INSTANCE.getCurrentRoom().getMyWestDoor().isOpen();
 		return result;
+	}
+	
+	private void playButtonSound() {
+		File soundFile = new File(System.getProperty("user.dir") + "/src/sound/smw_kick.wav");
+		PlaySound buttonSound = new PlaySound(soundFile);
+	}
+	
+	
+	
+	private void playLoseSound() {
+		File soundFile = new File(System.getProperty("user.dir") + "/src/sound/smb_mariodie.wav");
+		stopBackgroundMusic();
+		PlaySound loseSound = new PlaySound(soundFile);
+		
+	}
+	
+	public void stopBackgroundMusic() {
+		myBackgroundMusic.stop();
+	}
+	
+	public void playBackgroundMusic() {
+		myBackgroundMusic.loop();
+	}
+	
+	public boolean isPlayingMusic() {
+		return myBackgroundMusic.isPlaying();
+	}
+	
+	public void playWinSound() {
+		File soundFile = new File(System.getProperty("user.dir") + "/src/sound/mparty8_hammer_bro_10.wav");
+		stopBackgroundMusic();
+		PlaySound winSound = new PlaySound(soundFile);
+	}
+	
+	public void playStopSound() {
+		File soundFile = new File(System.getProperty("user.dir") + "/src/sound/smb3_bonus_game_no_match.wav");
+		PlaySound stopSound = new PlaySound(soundFile);
+	}
+	
+	public void playCorrectSound() {
+		File soundFile = new File(System.getProperty("user.dir") + "/src/sound/smb3_coin.wav");
+		PlaySound correctSound = new PlaySound(soundFile);
+	}
+	
+	private void playWrongSound() {
+		File soundFile = new File(System.getProperty("user.dir") + "/src/sound/smb3_bump.wav");
+		PlaySound correctSound = new PlaySound(soundFile);
 	}
 
 

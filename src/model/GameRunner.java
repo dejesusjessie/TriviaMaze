@@ -159,6 +159,8 @@ public enum GameRunner {
 	
 	public void isExit() {
 		if(myMaze.reachExit()) {
+			myGUI.getRoomPanel().stopBackgroundMusic();
+			myGUI.getRoomPanel().playWinSound();
 			JOptionPane.showMessageDialog(null, "You win!! Exit the game and ask Tom for the num-num!");
 		} 
 	}
@@ -172,6 +174,8 @@ public enum GameRunner {
 	public boolean canTraverse(){
 		return myMaze.mazeTraversal();
 	}
+	
+
 
 
 

@@ -5,7 +5,7 @@ import java.awt.*;
 
 /**
  * Splits the player panel to the room panel and trivia panel
- * Author: Kannika Armstrong, Jessie De Jesus
+ * Author: Kannika Armstrong, Jessie De Jesus, Codi Chun
  */
 public class PlayerPanel extends JPanel {
     private static final RoomPanel MY_ROOM_PANEL = new RoomPanel();
@@ -18,5 +18,9 @@ public class PlayerPanel extends JPanel {
         this.setLayout(new GridLayout(1, 2));
         this.add(MY_ROOM_PANEL);
         this.add(MY_TRIVIA_PANEL);
+    }
+    
+    public RoomPanel getRoomPanel() {
+    	return MY_ROOM_PANEL;
     }
 }

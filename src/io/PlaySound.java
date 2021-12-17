@@ -59,10 +59,31 @@ public class PlaySound {
 	}
 	
 	/**
+	 * Srart playing.
+	 */
+	public void start() {
+	    myClip.start();
+	}
+	
+	/**
 	 * Looping the sound continuously.
 	 */
-	public void loopSound() {
+	public void loop() {
 		myClip.loop(Clip.LOOP_CONTINUOUSLY);
+	}
+	
+	/**
+	 * Stopping playing the sound.
+	 */
+	public void stop() {
+		myClip.stop();
+	}
+	
+	/**
+	 * Check if the music is playing.
+	 */
+	public boolean isPlaying() {
+		return myClip.isRunning();
 	}
 
 }

@@ -75,5 +75,6 @@ public class Load implements Serializable {
 		myIniMaze.setData(myGameData);
         GameRunner.INSTANCE.setData(myIniMaze);
 		myIniMaze.getGUI().repaintMaze(myGameData.getGameStatus());
+		myIniMaze.getGUI().playBackgroundMusic();
 	}
 }

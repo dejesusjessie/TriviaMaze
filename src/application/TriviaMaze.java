@@ -13,7 +13,7 @@ import view.PromptPanel;
  */
 public class TriviaMaze {
 
-	public static void main(String[] args) throws ClassNotFoundException, IOException {
+	public static void main(String[] args) throws ClassNotFoundException, IOException, NullPointerException {
 //        IniMaze myIniMaze = IniMaze.getInstance();
 //        GameRunner myGameRunner = GameRunner.INSTANCE;
 //        myGameRunner.setData(myIniMaze);
