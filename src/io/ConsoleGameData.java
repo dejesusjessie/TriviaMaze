@@ -1,5 +1,11 @@
 package io;
 
+/**
+ *
+ * @author Kannika Armstrong
+ * The ConsoleGameData class use to update game data for save and load method
+ */
+
 import model.Maze;
 import model.Room;
 
