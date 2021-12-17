@@ -1,9 +1,24 @@
 package io;
 
+/**
+ * An abstract class that implements attributes and behavior shared by the Trivia class.
+ * Author: Jessie De Jesus
+ */
 public abstract class Question implements Trivia {
 
+    /**
+     * The question
+     */
     private final String myQuestion;
+
+    /**
+     * The correct answer
+     */
     private final String myAnswer;
+
+    /**
+     * The type of trivia
+     */
     private final String myType;
 
 
