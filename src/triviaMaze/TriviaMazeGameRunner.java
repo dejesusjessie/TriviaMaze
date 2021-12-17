@@ -1,5 +1,12 @@
 package triviaMaze;
 
+/**
+ *
+ * @author Kannika Armstrong
+ * @version Fall 2021
+ *
+ */
+
 import model.Maze;
 import model.MazeBuilder;
 

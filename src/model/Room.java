@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 
  * @author Kannika Armstrong, Codi Chun
- *
+ * @version Fall 2021
  */
 public class Room implements Serializable{
 
@@ -92,7 +92,7 @@ public class Room implements Serializable{
         this.myNorthDoor.open();
     }
     
-    // Set of the walls
+    // Set of the walls, make sure all walls are locked
     boolean NIsWall = false;
     public void setNIsWall() {
         this.myNorthDoor.lock();
